@@ -5,16 +5,15 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 
 // Redux
-import { createStore } from 'redux';
-import { Provider } from 'react-redux';
-import reducer from './reducers';
+// import { createStore } from 'redux';
+// import { Provider } from 'react-redux';
+// import reducer from './reducers';
 
-const store = createStore(reducer);
+// const store = createStore(reducer);
+//remember to pass Provider the store={store}
 
 ReactDOM.render(
-  <Provider store={store}>
-    <App />
-  </Provider>, 
+    <App />,
   document.getElementById('root')
 );
 
