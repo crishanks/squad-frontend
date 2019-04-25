@@ -1,6 +1,16 @@
+// Libraries
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 
+// Components
 import MyInfoContainer from './MyInfoContainer'
+// import CandidatesContainer from './CandidatesContainer'
+
+// Actions
+import { choosePlayer } from '../actions/discoverActions'
+import { chooseTeam } from '../actions/discoverActions'
+import { declinePlayer } from '../actions/discoverActions'
+import { declineTeam } from '../actions/discoverActions'
 
 class DiscoverContainer extends Component {
   constructor(props) {
@@ -19,4 +29,20 @@ class DiscoverContainer extends Component {
   }
 }
 
-export default DiscoverContainer
+const mapStateToProps = state => {
+  return {
+    myTeams: state.discoverReducer.myTeams,
+    myPlayers: state.discoverReducer.myPlayers
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    choosePlayer: () => dispatch(choosePlayer()),
+    chooseTeam: () => dispatch(chooseTeam()),
+    declinePlayer: () => dispatch(declinePlayer()),
+    declineTeam: () => dispatch(declineTeam())
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(DiscoverContainer)

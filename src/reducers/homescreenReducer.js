@@ -1,7 +1,9 @@
 const initialState = {
   loggedIn: false, 
-  user: null,
-  showCreateProfileForm: false
+  currentPlayer: null,
+  showCreateProfileForm: false,
+  allTeams: [],
+  allPlayers: []
 }
 
 const homescreenReducer = (state = initialState, action) => {
@@ -9,15 +11,15 @@ const homescreenReducer = (state = initialState, action) => {
     case 'LOG_IN':
       return {
         ...state,
-        loggedIn: true,
-        user: null
+        loggedIn: true
+        // currentPlayer: update with current player on login or on profile creation
       }
     case 'LOG_OUT':
       return {
         ...state,
         loggedIn: false,
-        showCreateProfileForm: false,
-        user:null
+        showCreateProfileForm: false
+        // currentPlayer: make currentPlayer null on logout
       }
     case 'SIGN_UP':
       return {

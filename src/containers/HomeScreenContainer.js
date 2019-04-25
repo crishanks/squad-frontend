@@ -45,7 +45,7 @@ const mapStateToProps = state => {
   console.log('hs mapstatetoprops state', state)
   return {
     loggedIn: state.homescreenReducer.loggedIn,
-    user: state.homescreenReducer.user,
+    currentPlayer: state.homescreenReducer.currentPlayer,
     showCreateProfileForm: state.homescreenReducer.showCreateProfileForm
   }
 }
