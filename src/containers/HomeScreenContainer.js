@@ -1,37 +1,46 @@
+// Libraries
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+
+// Actions
+import { login } from '../actions/homescreenActions'
+import { logout } from '../actions/homescreenActions'
+
+
+// Components
 import WelcomeBanner from '../components/WelcomeBanner'
 import DiscoverContainer from './DiscoverContainer'
 
 class HomeScreenContainer extends Component {
-  constructor() {
-    super()
-    this.state = {
-      loggedIn: false,
-      userID: ''
-    }
-  }
-
-  handleLoginClick = (response) => {
-    this.setState({
-      loggedIn: true,
-      userID: response.userID
-    })
-  }
-
-  handleGoHomeClick = () => {
-    this.setState({
-      loggedIn: false,
-      userID: ''
-    })
+  constructor(props) {
+    super(props)
   }
 
   render() {
-    return (
+    console.log('hsc props', this.props)
+    console.log('hsc state', this.state)
+
+  return (
       <div>
-        {this.state.loggedIn ? <DiscoverContainer goHome={this.handleGoHomeClick}/> : <WelcomeBanner handleLoginClick={this.handleLoginClick} state={this.state}/>}
+        {this.props.loggedIn ? <DiscoverContainer logoutClick={this.props.logout}/> : <WelcomeBanner loginClick={this.props.login}/>}
       </div>
     )
   }
 }
 
-export default HomeScreenContainer
+const mapStateToProps = state => {
+  console.log('hs mapstatetoprops state', state)
+  return {
+    loggedIn: state.homescreenReducer.loggedIn,
+    user: state.user
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    login: () => dispatch(login()),
+    logout: () => dispatch(logout())
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(HomeScreenContainer)

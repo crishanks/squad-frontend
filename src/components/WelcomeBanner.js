@@ -1,5 +1,4 @@
-import React, { Component } from 'react'
-import FacebookLoginButton from '../components/FacebookLoginButton'
+import React from 'react'
 
 const WelcomeBanner = (props) => {
   return (
@@ -8,7 +7,7 @@ const WelcomeBanner = (props) => {
         <h1>Squad</h1>
         <p>Team Up</p>
         <button>Sign Up</button>
-        <FacebookLoginButton login={props.handleLoginClick} state={props.state}/>
+        <button onClick={props.loginClick}>Log In</button>
       </div>
     </div>
   )
