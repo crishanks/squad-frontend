@@ -1,6 +1,7 @@
 const initialState = {
   loggedIn: false, 
-  user: null
+  user: null,
+  showCreateProfileForm: false
 }
 
 const homescreenReducer = (state = initialState, action) => {
@@ -16,6 +17,12 @@ const homescreenReducer = (state = initialState, action) => {
         ...state,
         loggedIn: false,
         user:null
+      }
+    case 'SIGN_UP':
+      return {
+        ...state,
+        loggedIn: false,
+        showCreateProfileForm: true
       }
    default:
     return state

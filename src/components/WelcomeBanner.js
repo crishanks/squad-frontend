@@ -6,7 +6,7 @@ const WelcomeBanner = (props) => {
       <div className='hero-text'>
         <h1>Squad</h1>
         <p>Team Up</p>
-        <button>Sign Up</button>
+        <button onClick={props.signupClick}>Sign Up</button>
         <button onClick={props.loginClick}>Log In</button>
       </div>
     </div>

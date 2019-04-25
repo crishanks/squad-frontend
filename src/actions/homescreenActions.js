@@ -9,3 +9,9 @@ export const logout = () => {
     type: 'LOG_OUT'
   }
 }
+
+export const signup = () => {
+  return {
+    type: 'SIGN_UP'
+  }
+}
