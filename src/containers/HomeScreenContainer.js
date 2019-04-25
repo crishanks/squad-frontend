@@ -23,7 +23,7 @@ class HomeScreenContainer extends Component {
     if (this.props.loggedIn) {
       return <DiscoverContainer logoutClick={this.props.logout}/>
     } else if (this.props.showCreateProfileForm) {
-      return <CreateProfileForm />
+      return <CreateProfileForm loginClick={this.props.login}/>
     } else if (!this.props.loggedIn && !this.props.showCreateProfileForm) {
       return <WelcomeBanner loginClick={this.props.login} signupClick={this.props.signup}/>
     }
