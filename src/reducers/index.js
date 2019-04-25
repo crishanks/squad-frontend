@@ -2,12 +2,12 @@
 import { combineReducers } from 'redux'
 
 //Reducers
-import playerReducer from './playerReducer'
-import teamReducer from './teamReducer'
+import candidatesReducer from './candidatesReducer'
+import myInfoReducer from './myInfoReducer'
 import homescreenReducer from './homescreenReducer'
 
 export default combineReducers({
-  playerReducer,
-  teamReducer,
+  candidatesReducer,
+  myInfoReducer,
   homescreenReducer
 })

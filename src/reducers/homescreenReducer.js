@@ -16,6 +16,7 @@ const homescreenReducer = (state = initialState, action) => {
       return {
         ...state,
         loggedIn: false,
+        showCreateProfileForm: false,
         user:null
       }
     case 'SIGN_UP':
