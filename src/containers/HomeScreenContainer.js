@@ -19,31 +19,42 @@ import LoginForm from '../components/LoginForm'
 import ProfileContainer from './ProfileContainer'
 import CreateTeamContainer from './CreateTeamContainer'
 
+//URLs
+const JWT_API = "http://localhost:3000/api/v1/login"
+
 class HomeScreenContainer extends Component {
   constructor(props) {
     super(props)
   }
 
-  componentDidMount = () => {
-    //request access token, fetch players, fetch teams
-  }
 
-  // requestAccessToken = () => {
-  //   request_params = {
-  //     method: 'POST',
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //       Accept: 'application/json'
-  //     },
-  //     body: JSON.stringify({
-  //       player: {
-  //         username: this.props.currentPlayer.username,
-  //         password: this.props.currentPlayer.password
-  //       }
-  //     })
-  //   }
-  //   fetch()
+
+  // componentDidMount = () => {
+  //   this.requestAccessToken()
   // }
+
+  requestAccessToken = (ev) => {
+    console.log('request access token values', ev.target.username.value)
+    const requestParams = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json'
+      },
+      body: JSON.stringify({
+        player: {
+          username: ev.target.username.value,
+          password: ev.target.password.value
+        }
+      })
+    }
+
+    fetch(JWT_API, requestParams)
+    .then((response) => {return response.json()})
+    .then((json) => {
+      console.log(json)
+    })
+  }
 
   renderComponents = () => {
     console.log(' homescreen render components props', this.props)
@@ -54,7 +65,7 @@ class HomeScreenContainer extends Component {
     } else if (this.props.showCreateProfileForm) {
       return <CreateProfileForm loginClick={this.props.login}/>
     } else if (this.props.showLoginForm) {
-      return <LoginForm loginClick={this.props.login}/>
+      return <LoginForm loginClick={this.props.login} requestAccessToken={this.requestAccessToken}/>
     } else if (!this.props.loggedIn && !this.props.showCreateProfileForm && !this.props.showLoginForm) {
       return <WelcomeBanner showLoginFormClick={this.props.toggleShowLoginForm} signupClick={this.props.signup}/>
     } else if (this.props.loggedIn) {
