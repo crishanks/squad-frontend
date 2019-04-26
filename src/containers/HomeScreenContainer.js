@@ -27,6 +27,8 @@ class HomeScreenContainer extends Component {
     super(props)
   }
 
+
+
   // componentDidMount = () => {
   //   this.requestAccessToken()
   // }
