@@ -25,7 +25,7 @@ class DiscoverContainer extends Component {
         <h1>Discover</h1>
         <button onClick={this.props.logoutClick}>Log Out</button>
         <MyInfoContainer />
-        <CandidatesContainer />
+        <CandidatesContainer currentPlayer={this.props.currentPlayer}/>
         <ProfileBar showProfileContainer={this.props.showProfileContainer}/>
       </div>
     )

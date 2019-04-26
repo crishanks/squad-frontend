@@ -6,19 +6,16 @@ import { connect } from 'react-redux'
 import TeamProfileCardsContainer from './TeamProfileCardsContainer'
 import PlayerProfileCardsContainer from './PlayerProfileCardsContainer'
 
-// Actions
-import { showTeams } from '../actions/candidatesActions'
-import { showPlayers } from '../actions/candidatesActions'
-
 class CandidatesContainer extends Component {
   constructor(props) {
     super(props)
   }
 
   renderComponents = () => {
-    if (this.props.showTeams) {
+    // if the current player's showTeams is true render component...
+    if (this.props.currentPlayer.showTeams) {
       return <TeamProfileCardsContainer /> 
-    } else if (this.props.showPlayers) {
+    } else {
       return <PlayerProfileCardsContainer />
     }
   }
@@ -36,19 +33,4 @@ class CandidatesContainer extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    showTeams: state.candidatesReducer.showTeams,
-    showPlayers: state.candidatesReducer.showPlayers
-  }
-}
-
-const mapDispatchToProps = dispatch => {
-  return {
-    showTeams: () => dispatch(showTeams()),
-    showPlayers: () => dispatch(showPlayers())
-  }
-}
-
-
-export default connect(mapStateToProps, mapDispatchToProps)(CandidatesContainer)
+export default CandidatesContainer
