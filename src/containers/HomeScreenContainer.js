@@ -48,9 +48,9 @@ class HomeScreenContainer extends Component {
   renderComponents = () => {
     console.log(' homescreen render components props', this.props)
     if (this.props.loggedIn && this.props.showProfileContainer) {
-      return <ProfileContainer loginClick={this.props.login}/>
+      return <ProfileContainer loginClick={this.props.login} showCreateTeamForm={this.props.createTeam}/>
     } else if (this.props.loggedIn && this.props.showCreateTeamForm) {
-      return <CreateTeamContainer />
+      return <CreateTeamContainer/>
     } else if (this.props.showCreateProfileForm) {
       return <CreateProfileForm loginClick={this.props.login}/>
     } else if (this.props.showLoginForm) {

@@ -11,7 +11,7 @@ class CreateTeamContainer extends Component {
     return (
       <div>
         <h1>In Create Team Container</h1>
-        <CreateTeamForm />
+        <CreateTeamForm/>
       </div>
     )
   }
