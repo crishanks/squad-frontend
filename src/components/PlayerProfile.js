@@ -2,7 +2,7 @@ import React from 'react'
 
 const PlayerProfile = (props) => {
 
-  //buttons need to do a patch request to update the current user's showPlayersOrTeams column.
+  //buttons need to do a patch request to update the current user's showTeams column.
 
   return (
     <div>
