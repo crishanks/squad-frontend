@@ -27,8 +27,6 @@ class HomeScreenContainer extends Component {
     super(props)
   }
 
-
-
   // componentDidMount = () => {
   //   this.requestAccessToken()
   // }
@@ -52,7 +50,8 @@ class HomeScreenContainer extends Component {
     fetch(JWT_API, requestParams)
     .then((response) => {return response.json()})
     .then((json) => {
-      console.log(json)
+      console.log('json', json)
+      localStorage.setItem('token', json.jwt)
     })
   }
 
