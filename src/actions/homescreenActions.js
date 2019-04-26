@@ -21,3 +21,15 @@ export const login = () => {
     type: 'LOG_IN'
   }
 }
+
+export const toggleShowProfileContainer = () => {
+  return {
+    type: 'SHOW_PROFILE_CONTAINER'
+  }
+}
+
+export const createTeam = () => {
+  return {
+    type: 'SHOW_CREATE_TEAM_FORM'
+  }
+}

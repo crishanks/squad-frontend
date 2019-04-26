@@ -25,9 +25,9 @@ class CreateProfileForm extends Component {
           <input type="text" name="image"/>
           <label htmlFor="">Height</label>
           <input type="text" name="height"/>
-          <label htmlFor="">Experience Level</label>
-          <input type="text" name="position"/>
           <label htmlFor="">Position</label>
+          <input type="text" name="position"/>
+          <label htmlFor="">Experience Level</label>
           <select name="experience-level">
             <option value="1">1</option>
             <option value="2">2</option>
