@@ -3,7 +3,7 @@ import React from 'react'
 const TeamProfileCard = (props) => {
   return (
     <div>
-      <h1>This is a team profile card</h1>
+      <h3>Team Profile Card</h3>
     </div>
   )
 }

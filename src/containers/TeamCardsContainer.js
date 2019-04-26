@@ -6,7 +6,7 @@ const TeamCardsContainer = (props) => {
 
   return (
     <div>
-      <h1>In Team Cards Container</h1>
+      <h3>In Team Cards Container</h3>
     </div>
   )
 }

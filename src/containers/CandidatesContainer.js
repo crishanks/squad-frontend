@@ -4,10 +4,11 @@ import { connect } from 'react-redux'
 
 // Components
 import TeamProfileCardsContainer from './TeamProfileCardsContainer'
-import TeamProfileCardsContainer from './PlayerProfileCardsContainer'
+import PlayerProfileCardsContainer from './PlayerProfileCardsContainer'
 
 // Actions
-
+import { showTeams } from '../actions/candidatesActions'
+import { showPlayers } from '../actions/candidatesActions'
 
 class CandidatesContainer extends Component {
   constructor(props) {
@@ -15,9 +16,9 @@ class CandidatesContainer extends Component {
   }
 
   renderComponents = () => {
-    if (this.props.showTeamProfileCards) {
-      return < TeamProfileCardsContainer /> 
-    } else if (this.props.showPlayerProfileCards) {
+    if (this.props.showTeams) {
+      return <TeamProfileCardsContainer /> 
+    } else if (this.props.showPlayers) {
       return <PlayerProfileCardsContainer />
     }
   }
@@ -26,11 +27,28 @@ class CandidatesContainer extends Component {
     console.log('candidates container props', this.props)
     return (
       <div>
-        {this.renderComponents()}
+        <div>
+          <h1>In Candidates Container</h1>
+          {this.renderComponents()}
+        </div>
       </div>
     )
   }
 }
 
+const mapStateToProps = state => {
+  return {
+    showTeams: state.candidatesReducer.showTeams,
+    showPlayers: state.candidatesReducer.showPlayers
+  }
+}
 
-export default CandidatesContainer
+const mapDispatchToProps = dispatch => {
+  return {
+    showTeams: () => dispatch(showTeams()),
+    showPlayers: () => dispatch(showPlayers())
+  }
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(CandidatesContainer)

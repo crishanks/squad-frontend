@@ -12,7 +12,10 @@ class PlayerProfileCardsContainer extends Component {
   render() {
     return (
       <div>
+        <div>
+          <h2>In Player Profile Cards Container</h2>
         <PlayerProfileCard />
+        </div>
       </div>
     )
   }

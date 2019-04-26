@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 
 // Components
 import MyInfoContainer from './MyInfoContainer'
-// import CandidatesContainer from './CandidatesContainer'
+import CandidatesContainer from './CandidatesContainer'
 
 // Actions
 import { choosePlayer } from '../actions/discoverActions'
@@ -24,6 +24,7 @@ class DiscoverContainer extends Component {
         <h1>Discover</h1>
         <button onClick={this.props.logoutClick}>Log Out</button>
         <MyInfoContainer />
+        <CandidatesContainer />
       </div>
     )
   }

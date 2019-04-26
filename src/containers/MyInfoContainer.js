@@ -27,7 +27,10 @@ class MyInfoContainer extends Component {
     console.log('MyInfo container props', this.props)
     return (
       <div>
-        {this.renderComponents()}
+        <div>
+          <h1>In MyInfo Container</h1>
+          {this.renderComponents()}
+        </div>
       </div>
     )
   }
