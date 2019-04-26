@@ -33,3 +33,15 @@ export const createTeam = () => {
     type: 'SHOW_CREATE_TEAM_FORM'
   }
 }
+
+export const chooseShowTeams = () => {
+  return {
+    type: 'SHOW_TEAMS'
+  }
+}
+
+export const chooseShowPlayers = () => {
+  return {
+    type: 'SHOW_PLAYERS'
+  }
+}

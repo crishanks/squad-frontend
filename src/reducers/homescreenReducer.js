@@ -7,7 +7,9 @@ const initialState = {
   showProfileContainer: false,
   showCreateTeamForm: false,
   allTeams: [],
-  allPlayers: []
+  allPlayers: [],
+  showTeams: false,
+  showPlayers: true
 }
 
 const homescreenReducer = (state = initialState, action) => {
@@ -69,6 +71,18 @@ const homescreenReducer = (state = initialState, action) => {
         showCreateProfileForm: false,
         showProfileContainer: false,
         showCreateTeamForm: true
+      }
+    case 'SHOW_TEAMS':
+      return {
+        ...state,
+        showTeams: true,
+        showPlayers: false
+      }
+    case 'SHOW_PLAYERS':
+      return {
+        ...state,
+        showTeams: false,
+        showPlayers: true
       }
    default:
     return state

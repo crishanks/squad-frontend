@@ -9,7 +9,8 @@ import { signup } from '../actions/homescreenActions'
 import { toggleShowLoginForm } from '../actions/homescreenActions'
 import { toggleShowProfileContainer } from '../actions/homescreenActions'
 import { createTeam } from '../actions/homescreenActions'
-
+import { chooseShowTeams } from '../actions/homescreenActions'
+import { chooseShowPlayers } from '../actions/homescreenActions'
 
 // Components
 import WelcomeBanner from '../components/WelcomeBanner'
@@ -48,7 +49,12 @@ class HomeScreenContainer extends Component {
   renderComponents = () => {
     console.log(' homescreen render components props', this.props)
     if (this.props.loggedIn && this.props.showProfileContainer) {
-      return <ProfileContainer loginClick={this.props.login} showCreateTeamForm={this.props.createTeam}/>
+      return <ProfileContainer 
+        loginClick={this.props.login} 
+        showCreateTeamForm={this.props.createTeam}
+        showTeams={this.props.chooseShowTeams}
+        showPlayers={this.props.chooseShowPlayers}
+      />
     } else if (this.props.loggedIn && this.props.showCreateTeamForm) {
       return <CreateTeamContainer/>
     } else if (this.props.showCreateProfileForm) {
@@ -58,7 +64,12 @@ class HomeScreenContainer extends Component {
     } else if (!this.props.loggedIn && !this.props.showCreateProfileForm && !this.props.showLoginForm) {
       return <WelcomeBanner showLoginFormClick={this.props.toggleShowLoginForm} signupClick={this.props.signup}/>
     } else if (this.props.loggedIn) {
-      return <DiscoverContainer logoutClick={this.props.logout} showProfileContainer={this.props.toggleShowProfileContainer}/>
+      return <DiscoverContainer 
+        logoutClick={this.props.logout} 
+        showProfileContainer={this.props.toggleShowProfileContainer}
+        showTeams={this.props.showTeams}
+        showPlayers={this.props.showPlayers}
+      />
     }
   }
 
@@ -82,7 +93,9 @@ const mapStateToProps = state => {
     currentPlayer: state.homescreenReducer.currentPlayer,
     showCreateProfileForm: state.homescreenReducer.showCreateProfileForm,
     showProfileContainer: state.homescreenReducer.showProfileContainer,
-    showCreateTeamForm: state.homescreenReducer.showCreateTeamForm
+    showCreateTeamForm: state.homescreenReducer.showCreateTeamForm,
+    showTeams: state.homescreenReducer.showTeams,
+    showPlayers: state.homescreenReducer.showPlayers
   }
 }
 
@@ -93,7 +106,9 @@ const mapDispatchToProps = dispatch => {
     signup: () => dispatch(signup()),
     toggleShowLoginForm: () => dispatch(toggleShowLoginForm()),
     toggleShowProfileContainer: () => dispatch(toggleShowProfileContainer()),
-    createTeam: () => dispatch(createTeam())
+    createTeam: () => dispatch(createTeam()),
+    chooseShowTeams: () => dispatch(chooseShowTeams()),
+    chooseShowPlayers: () => dispatch(chooseShowPlayers())
   }
 }
 
