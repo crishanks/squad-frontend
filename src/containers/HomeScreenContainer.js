@@ -9,6 +9,7 @@ import { signup } from '../actions/homescreenActions'
 import { toggleShowLoginForm } from '../actions/homescreenActions'
 import { toggleShowProfileContainer } from '../actions/homescreenActions'
 import { createTeam } from '../actions/homescreenActions'
+import { receiveJSON } from '../actions/homescreenActions'
 
 
 // Components
@@ -51,6 +52,7 @@ class HomeScreenContainer extends Component {
     .then((response) => {return response.json()})
     .then((json) => {
       console.log('json', json)
+      this.props.receiveJSON(json)
       localStorage.setItem('token', json.jwt)
     })
   }
@@ -92,7 +94,8 @@ const mapStateToProps = state => {
     currentPlayer: state.homescreenReducer.currentPlayer,
     showCreateProfileForm: state.homescreenReducer.showCreateProfileForm,
     showProfileContainer: state.homescreenReducer.showProfileContainer,
-    showCreateTeamForm: state.homescreenReducer.showCreateTeamForm
+    showCreateTeamForm: state.homescreenReducer.showCreateTeamForm,
+    json: state.homescreenReducer.json,
   }
 }
 
@@ -103,7 +106,8 @@ const mapDispatchToProps = dispatch => {
     signup: () => dispatch(signup()),
     toggleShowLoginForm: () => dispatch(toggleShowLoginForm()),
     toggleShowProfileContainer: () => dispatch(toggleShowProfileContainer()),
-    createTeam: () => dispatch(createTeam())
+    createTeam: () => dispatch(createTeam()),
+    receiveJSON: (json) => dispatch(receiveJSON(json))
   }
 }
 

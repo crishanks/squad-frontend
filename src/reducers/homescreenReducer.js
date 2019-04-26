@@ -7,11 +7,18 @@ const initialState = {
   showProfileContainer: false,
   showCreateTeamForm: false,
   allTeams: [],
-  allPlayers: []
+  allPlayers: [],
+  json: {}
 }
 
 const homescreenReducer = (state = initialState, action) => {
   switch(action.type) {
+    case 'HOME_RECEIVE_JSON':
+      console.log('JSON', action.payload.json)
+      return {
+        ...state,
+        json: action.payload.json
+      }
     case 'SHOW_LOGIN_FORM':
       return {
         ...state,

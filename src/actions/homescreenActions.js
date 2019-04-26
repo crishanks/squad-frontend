@@ -33,3 +33,11 @@ export const createTeam = () => {
     type: 'SHOW_CREATE_TEAM_FORM'
   }
 }
+
+export const receiveJSON = (json) => {
+  console.log('action creator receive json')
+  return {
+    type: 'HOME_RECEIVE_JSON',
+    payload: {json}
+  }
+}
