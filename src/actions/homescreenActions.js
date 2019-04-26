@@ -1,6 +1,6 @@
-export const login = () => {
+export const toggleShowLoginForm = () => {
   return {
-    type: 'LOG_IN'
+    type: 'SHOW_LOGIN_FORM'
   }
 }
 
@@ -13,5 +13,11 @@ export const logout = () => {
 export const signup = () => {
   return {
     type: 'SIGN_UP'
+  }
+}
+
+export const login = () => {
+  return {
+    type: 'LOG_IN'
   }
 }

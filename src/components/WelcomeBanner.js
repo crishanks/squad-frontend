@@ -7,7 +7,7 @@ const WelcomeBanner = (props) => {
         <h1>Squad</h1>
         <p>Team Up</p>
         <button onClick={props.signupClick}>Sign Up</button>
-        <button onClick={props.loginClick}>Log In</button>
+        <button onClick={props.showLoginFormClick}>Log In</button>
       </div>
     </div>
   )

@@ -6,27 +6,52 @@ import { connect } from 'react-redux'
 import { login } from '../actions/homescreenActions'
 import { logout } from '../actions/homescreenActions'
 import { signup } from '../actions/homescreenActions'
+import { toggleShowLoginForm } from '../actions/homescreenActions'
 
 
 // Components
 import WelcomeBanner from '../components/WelcomeBanner'
 import DiscoverContainer from './DiscoverContainer'
 import CreateProfileForm from '../components/CreateProfileForm'
+import LoginForm from '../components/LoginForm'
 
 class HomeScreenContainer extends Component {
   constructor(props) {
     super(props)
   }
 
+  componentDidMount = () => {
+    //request access token, fetch players, fetch teams
+  }
+
+  // requestAccessToken = () => {
+  //   request_params = {
+  //     method: 'POST',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //       Accept: 'application/json'
+  //     },
+  //     body: JSON.stringify({
+  //       player: {
+  //         username: this.props.currentPlayer.username,
+  //         password: this.props.currentPlayer.password
+  //       }
+  //     })
+  //   }
+  //   fetch()
+  // }
+
   renderComponents = () => {
-    console.log('render components', this.props)
+    console.log(' homescreen render components props', this.props)
     if (this.props.loggedIn) {
       return <DiscoverContainer logoutClick={this.props.logout}/>
     } else if (this.props.showCreateProfileForm) {
-      return <CreateProfileForm loginClick={this.props.login}/>
-    } else if (!this.props.loggedIn && !this.props.showCreateProfileForm) {
-      return <WelcomeBanner loginClick={this.props.login} signupClick={this.props.signup}/>
-    }
+      return <CreateProfileForm />
+    } else if (this.props.showLoginForm) {
+      return <LoginForm loginClick={this.props.login}/>
+    } else if (!this.props.loggedIn && !this.props.showCreateProfileForm && !this.props.showLoginForm) {
+      return <WelcomeBanner showLoginFormClick={this.props.toggleShowLoginForm} signupClick={this.props.signup}/>
+    } 
   }
 
   render() {
@@ -45,6 +70,7 @@ const mapStateToProps = state => {
   console.log('hs mapstatetoprops state', state)
   return {
     loggedIn: state.homescreenReducer.loggedIn,
+    showLoginForm: state.homescreenReducer.showLoginForm,
     currentPlayer: state.homescreenReducer.currentPlayer,
     showCreateProfileForm: state.homescreenReducer.showCreateProfileForm
   }
@@ -53,6 +79,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     login: () => dispatch(login()),
+    toggleShowLoginForm: () => dispatch(toggleShowLoginForm()),
     logout: () => dispatch(logout()),
     signup: () => dispatch(signup())
   }
