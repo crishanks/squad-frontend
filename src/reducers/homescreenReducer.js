@@ -1,8 +1,6 @@
 const initialState = {
   loggedIn: false, 
   showLoginForm: false,
-  currentPlayer: null,
-  currentPlayerJWTToken: null,
   showCreateProfileForm: false,
   showProfileContainer: false,
   showCreateTeamForm: false,
@@ -26,9 +24,6 @@ const homescreenReducer = (state = initialState, action) => {
         loggedIn: false,
         showCreateProfileForm: false,
         showCreateTeamForm: false
-        // currentPlayer: update with current player on login or on profile creation
-        //currentPlayerJWTToken: update with token in response
-        //they'll hit this method when they submit the sign up form as well
       }
     case 'LOG_OUT':
       return {
@@ -38,8 +33,6 @@ const homescreenReducer = (state = initialState, action) => {
         showLoginForm: false,
         showProfileContainer: false,
         showCreateTeamForm: false
-        // currentPlayer: make currentPlayer null on logout
-        // JWT token null on logout
       }
     case 'SIGN_UP':
       return {
