@@ -41,3 +41,11 @@ export const receiveJSON = (json) => {
     payload: {json}
   }
 }
+
+export const receiveAllPlayers = (json) => {
+  console.log('action creator recieve all players')
+  return {
+    type: 'RECEIVE_ALL_PLAYERS',
+    payload: {json}
+  }
+}

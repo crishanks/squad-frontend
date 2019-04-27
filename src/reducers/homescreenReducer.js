@@ -17,6 +17,11 @@ const homescreenReducer = (state = initialState, action) => {
         ...state,
         currentPlayer: action.payload.json
       }
+    case 'RECEIVE_ALL_PLAYERS':
+      return {
+        ...state,
+        allPlayers: action.payload.json
+      }
     case 'SHOW_LOGIN_FORM':
       return {
         ...state,

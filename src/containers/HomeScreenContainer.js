@@ -10,6 +10,8 @@ import { toggleShowLoginForm } from '../actions/homescreenActions'
 import { toggleShowProfileContainer } from '../actions/homescreenActions'
 import { createTeam } from '../actions/homescreenActions'
 import { receiveJSON } from '../actions/homescreenActions'
+import { receiveAllPlayers } from '../actions/homescreenActions'
+
 
 
 // Components
@@ -22,6 +24,8 @@ import CreateTeamContainer from './CreateTeamContainer'
 
 //URLs
 const JWT_API = "http://localhost:3000/api/v1/login"
+const ALL_PLAYERS_API = "http://localhost:3000/api/v1/players"
+const ALL_TEAMS_API = "http://localhost:3000/api/v1/teams"
 
 class HomeScreenContainer extends Component {
   constructor(props) {
@@ -48,14 +52,48 @@ class HomeScreenContainer extends Component {
       })
     }
 
-    fetch(JWT_API, requestParams)
+    return fetch(JWT_API, requestParams)
     .then((response) => {return response.json()})
     .then((json) => {
       console.log('json', json)
       this.props.receiveJSON(json)
       localStorage.setItem('token', json.jwt)
     })
+    .then(this.fetchAllPlayers())
   }
+
+  fetchAllPlayers = () => {
+    const requestParams = {
+      method: 'GET',
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('token')}`
+      }
+    }
+
+    return fetch(ALL_PLAYERS_API, requestParams)
+    .then(response => response.json())
+    .then(json => {
+      console.log('all players json', json)
+      this.props.receiveAllPlayers(json)
+    })
+    .then(this.fetchAllTeams())
+  }
+
+  fetchAllTeams = () => {
+    const requestParams = {
+      method: 'GET',
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('token')}`
+      }
+    }
+
+    fetch(ALL_TEAMS_API, requestParams)
+    .then(response => response.json())
+    .then(json => {
+      console.log('all teams json', json)
+    })
+  }
+  
 
   renderComponents = () => {
     console.log(' homescreen render components props', this.props)
@@ -95,7 +133,8 @@ const mapStateToProps = state => {
     showCreateProfileForm: state.homescreenReducer.showCreateProfileForm,
     showProfileContainer: state.homescreenReducer.showProfileContainer,
     showCreateTeamForm: state.homescreenReducer.showCreateTeamForm,
-    currentPlayer: state.homescreenReducer.currentPlayer
+    currentPlayer: state.homescreenReducer.currentPlayer,
+    allPlayers: state.homescreenReducer.allPlayers
   }
 }
 
@@ -107,7 +146,8 @@ const mapDispatchToProps = dispatch => {
     toggleShowLoginForm: () => dispatch(toggleShowLoginForm()),
     toggleShowProfileContainer: () => dispatch(toggleShowProfileContainer()),
     createTeam: () => dispatch(createTeam()),
-    receiveJSON: (json) => dispatch(receiveJSON(json))
+    receiveJSON: (json) => dispatch(receiveJSON(json)),
+    receiveAllPlayers: (json) => dispatch(receiveAllPlayers(json))
   }
 }
 
