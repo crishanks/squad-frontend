@@ -23,8 +23,8 @@ import CreateTeamContainer from './CreateTeamContainer'
 
 //URLs
 const JWT_API = "http://localhost:3000/api/v1/login"
-const ALL_PLAYERS_API = "http://localhost:3000/api/v1/players"
-const ALL_TEAMS_API = "http://localhost:3000/api/v1/teams"
+const PLAYERS_API = "http://localhost:3000/api/v1/players"
+const TEAMS_API = "http://localhost:3000/api/v1/teams"
 
 class HomeScreenContainer extends Component {
   constructor(props) {
@@ -36,9 +36,22 @@ class HomeScreenContainer extends Component {
   // }
 
   requestAccessToken = (ev) => {
-    console.log('request access token values', ev.target.username.value)
-    const requestParams = {
-      method: 'POST',
+    // const requestParams = {
+    //   method: 'POST',
+    //   headers: {
+    //     'Content-Type': 'application/json',
+    //     Accept: 'application/json'
+    //   },
+    //   body: JSON.stringify({
+    //     player: {
+    //       username: ev.target.username.value,
+    //       password: ev.target.password.value
+    //     }
+    //   })
+    // }
+
+    return fetch(JWT_API, 
+      {method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         Accept: 'application/json'
@@ -49,12 +62,9 @@ class HomeScreenContainer extends Component {
           password: ev.target.password.value
         }
       })
-    }
-
-    return fetch(JWT_API, requestParams)
+    })
     .then((response) => {return response.json()})
     .then((json) => {
-      console.log('json', json)
       this.props.receiveJSON(json)
       localStorage.setItem('token', json.jwt)
     })
@@ -69,10 +79,9 @@ class HomeScreenContainer extends Component {
       }
     }
 
-    return fetch(ALL_PLAYERS_API, requestParams)
+    return fetch(PLAYERS_API, requestParams)
     .then(response => response.json())
     .then(json => {
-      console.log('all players json', json)
       this.props.receiveAllPlayers(json)
     })
     .then(this.fetchAllTeams())
@@ -86,17 +95,15 @@ class HomeScreenContainer extends Component {
       }
     }
 
-    fetch(ALL_TEAMS_API, requestParams)
+    fetch(TEAMS_API, requestParams)
     .then(response => response.json())
     .then(json => {
-      console.log('all teams json', json)
       this.props.receiveAllTeams(json)
     })
   }
   
 
   renderComponents = () => {
-    console.log(' homescreen render components props', this.props)
     if (this.props.loggedIn && this.props.showProfileContainer) {
       return <ProfileContainer loginClick={this.props.login} showCreateTeamForm={this.props.createTeam}/>
     } else if (this.props.loggedIn && this.props.showCreateTeamForm) {
@@ -114,7 +121,6 @@ class HomeScreenContainer extends Component {
 
   render() {
     console.log('hsc props', this.props)
-    console.log('hsc state', this.state)
 
   return (
       <div>
@@ -125,7 +131,6 @@ class HomeScreenContainer extends Component {
 }
 
 const mapStateToProps = state => {
-  console.log('hs mapstatetoprops state', state)
   return {
     loggedIn: state.homescreenReducer.loggedIn,
     showLoginForm: state.homescreenReducer.showLoginForm,

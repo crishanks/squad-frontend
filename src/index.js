@@ -7,10 +7,9 @@ import * as serviceWorker from './serviceWorker';
 // Redux-Related Packages
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
-import thunk from 'redux-thunk';
 import reducer from './reducers';
 
-const store = createStore(reducer, applyMiddleware(thunk));
+const store = createStore(reducer);
 
 console.log('index store state', store.getState())
 
