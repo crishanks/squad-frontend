@@ -11,8 +11,7 @@ import { toggleShowProfileContainer } from '../actions/homescreenActions'
 import { createTeam } from '../actions/homescreenActions'
 import { receiveJSON } from '../actions/homescreenActions'
 import { receiveAllPlayers } from '../actions/homescreenActions'
-
-
+import { receiveAllTeams } from '../actions/homescreenActions'
 
 // Components
 import WelcomeBanner from '../components/WelcomeBanner'
@@ -91,6 +90,7 @@ class HomeScreenContainer extends Component {
     .then(response => response.json())
     .then(json => {
       console.log('all teams json', json)
+      this.props.receiveAllTeams(json)
     })
   }
   
@@ -134,7 +134,8 @@ const mapStateToProps = state => {
     showProfileContainer: state.homescreenReducer.showProfileContainer,
     showCreateTeamForm: state.homescreenReducer.showCreateTeamForm,
     currentPlayer: state.homescreenReducer.currentPlayer,
-    allPlayers: state.homescreenReducer.allPlayers
+    allPlayers: state.homescreenReducer.allPlayers,
+    allTeams: state.homescreenReducer.allTeams
   }
 }
 
@@ -147,7 +148,8 @@ const mapDispatchToProps = dispatch => {
     toggleShowProfileContainer: () => dispatch(toggleShowProfileContainer()),
     createTeam: () => dispatch(createTeam()),
     receiveJSON: (json) => dispatch(receiveJSON(json)),
-    receiveAllPlayers: (json) => dispatch(receiveAllPlayers(json))
+    receiveAllPlayers: (json) => dispatch(receiveAllPlayers(json)),
+    receiveAllTeams: (json) => dispatch(receiveAllTeams(json))
   }
 }
 
