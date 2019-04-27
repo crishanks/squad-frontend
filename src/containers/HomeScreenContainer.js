@@ -70,7 +70,7 @@ class HomeScreenContainer extends Component {
     } else if (!this.props.loggedIn && !this.props.showCreateProfileForm && !this.props.showLoginForm) {
       return <WelcomeBanner showLoginFormClick={this.props.toggleShowLoginForm} signupClick={this.props.signup}/>
     } else if (this.props.loggedIn) {
-      return <DiscoverContainer logoutClick={this.props.logout} showProfileContainer={this.props.toggleShowProfileContainer} currentPlayer={this.props.json}/>
+      return <DiscoverContainer logoutClick={this.props.logout} showProfileContainer={this.props.toggleShowProfileContainer} currentPlayer={this.props.currentPlayer}/>
     }
   }
 
@@ -95,7 +95,7 @@ const mapStateToProps = state => {
     showCreateProfileForm: state.homescreenReducer.showCreateProfileForm,
     showProfileContainer: state.homescreenReducer.showProfileContainer,
     showCreateTeamForm: state.homescreenReducer.showCreateTeamForm,
-    json: state.homescreenReducer.json,
+    currentPlayer: state.homescreenReducer.currentPlayer
   }
 }
 

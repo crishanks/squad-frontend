@@ -6,7 +6,7 @@ const initialState = {
   showCreateTeamForm: false,
   allTeams: [],
   allPlayers: [],
-  json: {}
+  currentPlayer: {}
 }
 
 const homescreenReducer = (state = initialState, action) => {
@@ -15,7 +15,7 @@ const homescreenReducer = (state = initialState, action) => {
       console.log('JSON', action.payload.json)
       return {
         ...state,
-        json: action.payload.json
+        currentPlayer: action.payload.json
       }
     case 'SHOW_LOGIN_FORM':
       return {
