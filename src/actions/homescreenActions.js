@@ -17,6 +17,7 @@ export const signup = () => {
 }
 
 export const login = () => {
+  console.log('login action')
   return {
     type: 'LOG_IN'
   }
@@ -34,16 +35,16 @@ export const createTeam = () => {
   }
 }
 
-export const receiveJSON = (json) => {
-  console.log('action creator receive json')
+export const receiveJWT = (json) => {
+  console.log('receiveJWT action')
   return {
-    type: 'HOME_RECEIVE_JSON',
+    type: 'RECEIVE_JWT',
     payload: {json}
   }
 }
 
 export const receiveAllPlayers = (json) => {
-  console.log('action creator recieve all players')
+  console.log('receive all players action')
   return {
     type: 'RECEIVE_ALL_PLAYERS',
     payload: {json}
@@ -51,7 +52,7 @@ export const receiveAllPlayers = (json) => {
 }
 
 export const receiveAllTeams = (json) => {
-  console.log('action creator recieve all players')
+  console.log('receive all teams action')
   return {
     type: 'RECEIVE_ALL_TEAMS',
     payload: {json}

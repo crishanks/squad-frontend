@@ -9,7 +9,7 @@ import { signup } from '../actions/homescreenActions'
 import { toggleShowLoginForm } from '../actions/homescreenActions'
 import { toggleShowProfileContainer } from '../actions/homescreenActions'
 import { createTeam } from '../actions/homescreenActions'
-import { receiveJSON } from '../actions/homescreenActions'
+import { receiveJWT } from '../actions/homescreenActions'
 import { receiveAllPlayers } from '../actions/homescreenActions'
 import { receiveAllTeams } from '../actions/homescreenActions'
 
@@ -36,7 +36,7 @@ class HomeScreenContainer extends Component {
   // }
 
   requestAccessToken = (ev) => {
-    console.log('request access token values', ev.target.username.value)
+    console.log('request access token')
     const requestParams = {
       method: 'POST',
       headers: {
@@ -54,14 +54,15 @@ class HomeScreenContainer extends Component {
     return fetch(JWT_API, requestParams)
     .then((response) => {return response.json()})
     .then((json) => {
-      console.log('json', json)
-      this.props.receiveJSON(json)
+      // console.log('json', json)
+      this.props.receiveJWT(json)
       localStorage.setItem('token', json.jwt)
     })
     .then(this.fetchAllPlayers())
   }
 
   fetchAllPlayers = () => {
+    console.log('fetch players')
     const requestParams = {
       method: 'GET',
       headers: {
@@ -72,13 +73,14 @@ class HomeScreenContainer extends Component {
     return fetch(ALL_PLAYERS_API, requestParams)
     .then(response => response.json())
     .then(json => {
-      console.log('all players json', json)
+      // console.log('all players json', json)
       this.props.receiveAllPlayers(json)
     })
     .then(this.fetchAllTeams())
   }
 
   fetchAllTeams = () => {
+    console.log('fetch teams')
     const requestParams = {
       method: 'GET',
       headers: {
@@ -89,14 +91,12 @@ class HomeScreenContainer extends Component {
     fetch(ALL_TEAMS_API, requestParams)
     .then(response => response.json())
     .then(json => {
-      console.log('all teams json', json)
+      // console.log('all teams json', json)
       this.props.receiveAllTeams(json)
     })
   }
-  
 
   renderComponents = () => {
-    console.log(' homescreen render components props', this.props)
     if (this.props.loggedIn && this.props.showProfileContainer) {
       return <ProfileContainer loginClick={this.props.login} showCreateTeamForm={this.props.createTeam}/>
     } else if (this.props.loggedIn && this.props.showCreateTeamForm) {
@@ -104,18 +104,22 @@ class HomeScreenContainer extends Component {
     } else if (this.props.showCreateProfileForm) {
       return <CreateProfileForm loginClick={this.props.login}/>
     } else if (this.props.showLoginForm) {
-      return <LoginForm loginClick={this.props.login} requestAccessToken={this.requestAccessToken}/>
+      return <LoginForm requestAccessToken={this.requestAccessToken}/>
     } else if (!this.props.loggedIn && !this.props.showCreateProfileForm && !this.props.showLoginForm) {
       return <WelcomeBanner showLoginFormClick={this.props.toggleShowLoginForm} signupClick={this.props.signup}/>
     } else if (this.props.loggedIn) {
-      return <DiscoverContainer logoutClick={this.props.logout} showProfileContainer={this.props.toggleShowProfileContainer} currentPlayer={this.props.currentPlayer}/>
+      return <DiscoverContainer 
+        logoutClick={this.props.logout} 
+        showProfileContainer={this.props.toggleShowProfileContainer} 
+        currentPlayer={this.props.currentPlayer}
+        allTeams={this.props.allTeams}
+        allPlayers={this.props.allPlayers}
+      />
     }
   }
 
   render() {
     console.log('hsc props', this.props)
-    console.log('hsc state', this.state)
-
   return (
       <div>
         {this.renderComponents()}
@@ -125,7 +129,6 @@ class HomeScreenContainer extends Component {
 }
 
 const mapStateToProps = state => {
-  console.log('hs mapstatetoprops state', state)
   return {
     loggedIn: state.homescreenReducer.loggedIn,
     showLoginForm: state.homescreenReducer.showLoginForm,
@@ -147,7 +150,7 @@ const mapDispatchToProps = dispatch => {
     toggleShowLoginForm: () => dispatch(toggleShowLoginForm()),
     toggleShowProfileContainer: () => dispatch(toggleShowProfileContainer()),
     createTeam: () => dispatch(createTeam()),
-    receiveJSON: (json) => dispatch(receiveJSON(json)),
+    receiveJWT: (json) => dispatch(receiveJWT(json)),
     receiveAllPlayers: (json) => dispatch(receiveAllPlayers(json)),
     receiveAllTeams: (json) => dispatch(receiveAllTeams(json))
   }

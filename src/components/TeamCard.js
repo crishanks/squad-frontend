@@ -1,9 +1,12 @@
 import React from 'react'
 
 const TeamCard = (props) => {
+  console.log('TEAM CARD PROPS', props)
   return (
-    <div>
-      <h3>Hi, I'm a Team Card</h3>
+    <div className='team-card-image'>
+      <div className='team-card-text'>
+        <h3>Team Card</h3>
+      </div>
     </div>
   )
 }

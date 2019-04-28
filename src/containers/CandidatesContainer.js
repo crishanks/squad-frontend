@@ -14,9 +14,9 @@ class CandidatesContainer extends Component {
   renderComponents = () => {
     // if the current player's showTeams is true render component...
     if (this.props.currentPlayer.showTeams) {
-      return <TeamProfileCardsContainer /> 
+      return <TeamProfileCardsContainer allTeams={this.props.allTeams}/> 
     } else {
-      return <PlayerProfileCardsContainer />
+      return <PlayerProfileCardsContainer allPlayers={this.props.allPlayers}/>
     }
   }
 

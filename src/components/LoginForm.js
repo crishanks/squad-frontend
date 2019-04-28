@@ -9,10 +9,11 @@ class LoginForm extends Component {
   //onSubmit requests the user that matches the credentials and renders the discover component (changes state to showCreateProfile to false, and loggedIn to true)
 
   handleFormSubmit = (ev) => {
-    console.log('login form ev target', ev.target)
+    console.log('clicked login handle submit')
+
     ev.preventDefault()
     this.props.requestAccessToken(ev)
-    this.props.loginClick()
+    // this.props.loginClick()
   }
 
   render() {

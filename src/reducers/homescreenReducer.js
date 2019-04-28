@@ -11,18 +11,22 @@ const initialState = {
 
 const homescreenReducer = (state = initialState, action) => {
   switch(action.type) {
-    case 'HOME_RECEIVE_JSON':
-      console.log('JSON', action.payload.json)
+    case 'RECEIVE_JWT':
+      console.log('receiveJWT reducer')
       return {
         ...state,
         currentPlayer: action.payload.json
       }
     case 'RECEIVE_ALL_PLAYERS':
+    console.log('receive all players reducer')
       return {
         ...state,
-        allPlayers: action.payload.json
+        allPlayers: action.payload.json,
+        loggedIn: true,
+        showLoginForm: false
       }
     case 'RECEIVE_ALL_TEAMS':
+    console.log('receive all teams reducer')
       return {
         ...state,
         allTeams: action.payload.json
@@ -54,6 +58,7 @@ const homescreenReducer = (state = initialState, action) => {
         showCreateTeamForm: false
       }
     case 'LOG_IN':
+    console.log('login reducer')
       return {
         ...state,
         loggedIn: true,
