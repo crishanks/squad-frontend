@@ -17,6 +17,8 @@ class PlayerProfileCardsContainer extends Component {
         key={player.id}
         choosePlayer={this.props.choosePlayer}
         declinePlayer={this.props.declinePlayer}
+        associatePlayerWithTeam={this.props.associatePlayerWithTeam}
+        currentTeam={this.props.currentTeam}
       />
     })
   }

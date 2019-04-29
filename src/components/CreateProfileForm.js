@@ -45,7 +45,6 @@ class CreateProfileForm extends Component {
 
   createTeam = (ev, playerJson) => {
     ev.persist()
-    debugger
     const requestParams = {
       method: 'POST',
       headers: {
@@ -69,7 +68,6 @@ class CreateProfileForm extends Component {
   }
 
   associateTeamWithPlayer = (playerJson, teamJson) => {
-    debugger
     const requestParams = {
       method: 'POST',
       headers: {

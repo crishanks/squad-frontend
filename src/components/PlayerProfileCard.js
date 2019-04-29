@@ -4,6 +4,12 @@ const PlayerProfileCard = (props) => {
   // console.log('PLAYER PROFILE CARD PLAYER', props.player)
   // add columns to player for teams and players to choose from and do a patch request to remove?
   // or can keep as removing from state? If so, need to create handleclick for choose player that does bothe choosePlayer and removes player from allPlayers array.....
+
+  const handleChoosePlayer = () => {
+    props.associatePlayerWithTeam(props.player)
+    // props.choosePlayer(props.player)
+  }
+
   return (
     <div className="player-profile-card-image">
       <img src={props.player.image} alt="player image"/>
@@ -14,7 +20,7 @@ const PlayerProfileCard = (props) => {
         <p>{props.player.experience_level}</p>
         <p>{props.player.description}</p>
         <button onClick={() => props.declinePlayer(props.player)}>Decline</button>
-        <button onClick={() => props.choosePlayer(props.player)}>Choose</button>
+        <button onClick={(props) => handleChoosePlayer(props)}>Choose</button>
       </div>
     </div>
   )

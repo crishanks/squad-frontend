@@ -27,12 +27,14 @@ class DiscoverContainer extends Component {
         <MyInfoContainer/>
         <CandidatesContainer 
           currentPlayer={this.props.currentPlayer}
+          currentTeam={this.props.currentTeam}
           allTeams={this.props.allTeams}
           allPlayers={this.props.allPlayers}
           choosePlayer={this.props.choosePlayer}
           chooseTeam={this.props.chooseTeam}
           declinePlayer={this.props.declinePlayer}
           declineTeam={this.props.declineTeam}
+          fetchPlayersAndTeams={this.fetchAllPlayers}
         />
         <ProfileBar showProfileContainer={this.props.showProfileContainer}/>
       </div>

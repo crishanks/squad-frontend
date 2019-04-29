@@ -131,6 +131,8 @@ class HomeScreenContainer extends Component {
         allPlayers={this.props.allPlayers}
         declinePlayer={this.props.declinePlayer}
         declineTeam={this.props.declineTeam}
+        currentTeam={this.props.currentTeam}
+        fetchPlayersAndTeams={this.fetchAllPlayers}
       />
     }
   }
