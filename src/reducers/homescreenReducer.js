@@ -23,7 +23,8 @@ const homescreenReducer = (state = initialState, action) => {
         ...state,
         allPlayers: action.payload.json,
         loggedIn: true,
-        showLoginForm: false
+        showLoginForm: false,
+        showCreateProfileForm: false
       }
     case 'RECEIVE_ALL_TEAMS':
     console.log('receive all teams reducer')

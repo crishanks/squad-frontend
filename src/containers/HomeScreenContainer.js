@@ -54,7 +54,6 @@ class HomeScreenContainer extends Component {
     return fetch(JWT_API, requestParams)
     .then((response) => {return response.json()})
     .then((json) => {
-      // console.log('json', json)
       this.props.receiveJWT(json)
       localStorage.setItem('token', json.jwt)
     })
@@ -98,11 +97,15 @@ class HomeScreenContainer extends Component {
 
   renderComponents = () => {
     if (this.props.loggedIn && this.props.showProfileContainer) {
-      return <ProfileContainer loginClick={this.props.login} showCreateTeamForm={this.props.createTeam}/>
+      return <ProfileContainer 
+        loginClick={this.props.login} 
+        showCreateTeamForm={this.props.createTeam}
+        currentPlayer={this.props.currentPlayer}
+      />
     } else if (this.props.loggedIn && this.props.showCreateTeamForm) {
       return <CreateTeamContainer/>
     } else if (this.props.showCreateProfileForm) {
-      return <CreateProfileForm loginClick={this.props.login}/>
+      return <CreateProfileForm requestAccessToken={this.requestAccessToken}/>
     } else if (this.props.showLoginForm) {
       return <LoginForm requestAccessToken={this.requestAccessToken}/>
     } else if (!this.props.loggedIn && !this.props.showCreateProfileForm && !this.props.showLoginForm) {

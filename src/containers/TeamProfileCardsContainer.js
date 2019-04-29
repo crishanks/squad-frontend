@@ -10,7 +10,7 @@ class TeamProfileCardsContainer extends Component {
   // method to map over all teams and render all team profile cards. view one at a time like sushi
 
   renderTeamProfileCards = (props) => {
-    props.allTeams.map(team => {
+    return props.allTeams.map(team => {
       return <TeamProfileCard team={team} key={team.id}/>
     })
   }

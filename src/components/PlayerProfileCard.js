@@ -1,7 +1,7 @@
 import React from 'react'
 
 const PlayerProfileCard = (props) => {
-  console.log('player profile card props', props)
+  console.log('PLAYER PROFILE CARD PROPS', props)
   return (
     <div className="player-profile-card-image">
       <img src={props.player.image} alt="player image"/>
@@ -11,6 +11,8 @@ const PlayerProfileCard = (props) => {
         <p>{props.player.position}</p>
         <p>{props.player.experience_level}</p>
         <p>{props.player.description}</p>
+        <button>Decline</button>
+        <button>Choose</button>
       </div>
     </div>
   )

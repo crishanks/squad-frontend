@@ -9,8 +9,8 @@ const PlayerProfile = (props) => {
       <h2>Player Profile</h2>
       <button onClick={props.login}>Go to Discover</button> 
       <button onClick={props.showCreateTeamForm}>Create Team</button>
-      <button>Find Teams</button>
-      <button>Find Players</button>
+      <button onClick={props.showTeams}>Find Teams</button>
+      <button onClick={props.showPlayers}>Find Players</button>
     </div>
   )
 }

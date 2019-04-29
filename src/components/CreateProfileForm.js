@@ -11,31 +11,8 @@ class CreateProfileForm extends Component {
 
   //onSubmit posts to the api with a new user and renders the discover component (changes state to showCreateProfile to false, and loggedIn to true)
 
-  requestAccessToken = (ev) => {
-    // console.log('request token ev', ev.target.username.value)
-    return fetch(JWT_API, 
-     { method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Accept: 'application/json'
-      },
-      body: JSON.stringify({
-        player: {
-          username: ev.target.username.value,
-          password: ev.target.password.value
-        }
-      })}
-    )
-    .then((response) => {return response.json()})
-    .then((json) => {
-      // console.log('create profile json', json)
-      localStorage.setItem('token', json.jwt)
-    })
-    .then(this.props.loginClick())
-  }
-
   createPlayer = (ev) => {
-    // console.log('create player event target', ev.target.username.value)
+    console.log('creating player')
     const requestParams = {
       method: 'POST',
       headers: {
@@ -54,8 +31,8 @@ class CreateProfileForm extends Component {
         description: ev.target.bio.value
       })
     }
-    fetch(PLAYERS_API, requestParams)
-    .then(this.requestAccessToken(ev))
+    return fetch(PLAYERS_API, requestParams)
+    .then(this.props.requestAccessToken(ev))
   }
 
   handleSubmit = (ev) => {

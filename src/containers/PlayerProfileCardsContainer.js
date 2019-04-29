@@ -9,13 +9,9 @@ class PlayerProfileCardsContainer extends Component {
 
   //method to map over all players and create cards for them. Show just one at a time, like sushi
 
-  componentDidMount = () => {
-    this.renderPlayerProfileCards()
-  }
-
   renderPlayerProfileCards = () => {
     console.log('player profile cards container props', this.props)
-    this.props.allPlayers.map(player => {
+    return this.props.allPlayers.map(player => {
       return <PlayerProfileCard player={player} key={player.id}/>
     })
   }
@@ -23,6 +19,7 @@ class PlayerProfileCardsContainer extends Component {
   render() {
     return (
       <div>
+        <h2>In Player Profile Cards Container</h2>
         {this.renderPlayerProfileCards()}
       </div>
     )
