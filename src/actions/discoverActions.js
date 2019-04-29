@@ -1,24 +1,28 @@
-export const choosePlayer = () => {
+export const choosePlayer = (player) => {
   return {
-    type: 'CHOOSE_PLAYER'
+    type: 'CHOOSE_PLAYER',
+    payload: {player}
   }
 }
 
-export const chooseTeam = () => {
+export const chooseTeam = (team) => {
   return {
-    type: 'CHOOSE_TEAM'
+    type: 'CHOOSE_TEAM',
+    payload: {team}
   }
 }
 
-export const declinePlayer = () => {
+export const declinePlayer = (player) => {
   return {
-    type: 'DECLINE_PLAYER'
+    type: 'DECLINE_PLAYER',
+    payload: {player}
   }
 }
 
-export const declineTeam = () => {
+export const declineTeam = (team) => {
   return {
-    type: 'DECLINE_TEAM'
+    type: 'DECLINE_TEAM',
+    payload:  {team}
   }
 }
 

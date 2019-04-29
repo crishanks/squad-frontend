@@ -49,8 +49,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    choosePlayer: () => dispatch(choosePlayer()),
-    chooseTeam: () => dispatch(chooseTeam()),
+    choosePlayer: (player) => dispatch(choosePlayer(player)),
+    chooseTeam: (team) => dispatch(chooseTeam(team)),
     declinePlayer: () => dispatch(declinePlayer()),
     declineTeam: () => dispatch(declineTeam())
   }

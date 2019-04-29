@@ -7,12 +7,17 @@ class PlayerProfileCardsContainer extends Component {
     super(props)
   }
 
-  //method to map over all players and create cards for them. Show just one at a time, like sushi
+  //show one at a time: just like sushi. Add a state of current profile. Add a button the player profile card that is accept or decline. On accept, add to myPlayers
 
   renderPlayerProfileCards = () => {
-    console.log('player profile cards container props', this.props)
+    console.log('PLAYER PROFILE CARDS CONTAINER PROPS', this.props)
     return this.props.allPlayers.map(player => {
-      return <PlayerProfileCard player={player} key={player.id}/>
+      return <PlayerProfileCard 
+        player={player} 
+        key={player.id}
+        choosePlayer={this.props.choosePlayer}
+        declinePlayer={this.props.declinePlayer}
+      />
     })
   }
 
