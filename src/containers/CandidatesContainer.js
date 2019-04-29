@@ -13,20 +13,19 @@ class CandidatesContainer extends Component {
 
   renderComponents = () => {
     console.log('candidates container props', this.props)
-    if (this.props.currentPlayer.showTeams) {
-      return <TeamProfileCardsContainer 
-        allTeams={this.props.allTeams}
-        chooseTeam={this.props.chooseTeam}
-        declineTeam={this.props.declineTeam}
-      /> 
-    } else {
-      return <PlayerProfileCardsContainer 
-        allPlayers={this.props.allPlayers}
-        choosePlayer={this.props.choosePlayer}
-        declinePlayer={this.props.declinePlayer}
-      />
-    }
+    return <PlayerProfileCardsContainer 
+      allPlayers={this.props.allPlayers}
+      choosePlayer={this.props.choosePlayer}
+      declinePlayer={this.props.declinePlayer}
+    />
   }
+
+  // if (this.props.currentPlayer.showTeams) {
+  //   return <TeamProfileCardsContainer 
+  //     allTeams={this.props.allTeams}
+  //     chooseTeam={this.props.chooseTeam}
+  //     declineTeam={this.props.declineTeam}
+  //   /> 
 
   render() {
     console.log('candidates container props', this.props)

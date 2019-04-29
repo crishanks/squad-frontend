@@ -14,6 +14,8 @@ import { receiveAllPlayers } from '../actions/homescreenActions'
 import { receiveAllTeams } from '../actions/homescreenActions'
 import { declinePlayer } from '../actions/homescreenActions'
 import { declineTeam } from '../actions/homescreenActions'
+import { receiveCurrentTeam } from '../actions/homescreenActions'
+import { receiveCurrentPlayer } from '../actions/homescreenActions'
 
 // Components
 import WelcomeBanner from '../components/WelcomeBanner'
@@ -97,17 +99,26 @@ class HomeScreenContainer extends Component {
     })
   }
 
+  createNewTeam = () => {
+
+  }
+
   renderComponents = () => {
     if (this.props.loggedIn && this.props.showProfileContainer) {
       return <ProfileContainer 
         loginClick={this.props.login} 
-        showCreateTeamForm={this.props.createTeam}
+        /* showCreateTeamForm={this.props.createTeam} */
         currentPlayer={this.props.currentPlayer}
       />
-    } else if (this.props.loggedIn && this.props.showCreateTeamForm) {
-      return <CreateTeamContainer/>
     } else if (this.props.showCreateProfileForm) {
-      return <CreateProfileForm requestAccessToken={this.requestAccessToken}/>
+      return <CreateProfileForm 
+        fetchPlayersAndTeams={this.fetchAllPlayers} 
+        currentPlayer={this.props.currentPlayer} 
+        loginClick={this.props.login} 
+        receiveCurrentTeam={this.props.receiveCurrentTeam}
+        currentTeam={this.props.currentTeam}
+        receiveCurrentPlayer={this.props.receiveCurrentPlayer}
+      />
     } else if (this.props.showLoginForm) {
       return <LoginForm requestAccessToken={this.requestAccessToken}/>
     } else if (!this.props.loggedIn && !this.props.showCreateProfileForm && !this.props.showLoginForm) {
@@ -117,13 +128,15 @@ class HomeScreenContainer extends Component {
         logoutClick={this.props.logout} 
         showProfileContainer={this.props.toggleShowProfileContainer} 
         currentPlayer={this.props.currentPlayer}
-        allTeams={this.props.allTeams}
         allPlayers={this.props.allPlayers}
         declinePlayer={this.props.declinePlayer}
         declineTeam={this.props.declineTeam}
       />
     }
   }
+
+  // else if (this.props.loggedIn && this.props.showCreateTeamForm) {
+  //   return <CreateTeamContainer/>
 
   render() {
     console.log('hsc props', this.props)
@@ -142,10 +155,11 @@ const mapStateToProps = state => {
     currentPlayer: state.homescreenReducer.currentPlayer,
     showCreateProfileForm: state.homescreenReducer.showCreateProfileForm,
     showProfileContainer: state.homescreenReducer.showProfileContainer,
-    showCreateTeamForm: state.homescreenReducer.showCreateTeamForm,
+    // showCreateTeamForm: state.homescreenReducer.showCreateTeamForm,
     currentPlayer: state.homescreenReducer.currentPlayer,
     allPlayers: state.homescreenReducer.allPlayers,
-    allTeams: state.homescreenReducer.allTeams
+    allTeams: state.homescreenReducer.allTeams,
+    currentTeam: state.homescreenReducer.currentTeam
   }
 }
 
@@ -156,12 +170,14 @@ const mapDispatchToProps = dispatch => {
     signup: () => dispatch(signup()),
     toggleShowLoginForm: () => dispatch(toggleShowLoginForm()),
     toggleShowProfileContainer: () => dispatch(toggleShowProfileContainer()),
-    createTeam: () => dispatch(createTeam()),
+    createTeam: (team) => dispatch(createTeam(team)),
     receiveJWT: (json) => dispatch(receiveJWT(json)),
     receiveAllPlayers: (json) => dispatch(receiveAllPlayers(json)),
     receiveAllTeams: (json) => dispatch(receiveAllTeams(json)),
     declinePlayer: (player) => dispatch(declinePlayer(player)),
-    declineTeam: (team) => dispatch(declineTeam(team))
+    declineTeam: (team) => dispatch(declineTeam(team)),
+    receiveCurrentTeam: (json) => dispatch(receiveCurrentTeam(json)),
+    receiveCurrentPlayer: (player) => dispatch(receiveCurrentPlayer(player))
   }
 }
 

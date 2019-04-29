@@ -3,10 +3,10 @@ const initialState = {
   showLoginForm: false,
   showCreateProfileForm: false,
   showProfileContainer: false,
-  showCreateTeamForm: false,
   allTeams: [],
   allPlayers: [],
-  currentPlayer: {}
+  currentPlayer: {},
+  currentTeam: {}
 }
 
 const homescreenReducer = (state = initialState, action) => {
@@ -37,8 +37,7 @@ const homescreenReducer = (state = initialState, action) => {
         ...state,
         showLoginForm: true,
         loggedIn: false,
-        showCreateProfileForm: false,
-        showCreateTeamForm: false
+        showCreateProfileForm: false
       }
     case 'LOG_OUT':
       return {
@@ -46,8 +45,7 @@ const homescreenReducer = (state = initialState, action) => {
         loggedIn: false,
         showCreateProfileForm: false,
         showLoginForm: false,
-        showProfileContainer: false,
-        showCreateTeamForm: false
+        showProfileContainer: false
       }
     case 'SIGN_UP':
       return {
@@ -55,8 +53,7 @@ const homescreenReducer = (state = initialState, action) => {
         loggedIn: false,
         showLoginForm: false,
         showCreateProfileForm: true,
-        showProfileContainer: false,
-        showCreateTeamForm: false
+        showProfileContainer: false
       }
     case 'LOG_IN':
     console.log('login reducer')
@@ -65,8 +62,7 @@ const homescreenReducer = (state = initialState, action) => {
         loggedIn: true,
         showLoginForm: false,
         showCreateProfileForm: false,
-        showProfileContainer: false,
-        showCreateTeamForm: false
+        showProfileContainer: false
       }
     case 'SHOW_PROFILE_CONTAINER':
       return {
@@ -74,18 +70,17 @@ const homescreenReducer = (state = initialState, action) => {
         loggedIn: true,
         showLoginForm: false,
         showCreateProfileForm: false,
-        showProfileContainer: true,
-        showCreateTeamForm: false
+        showProfileContainer: true
       }
-    case 'SHOW_CREATE_TEAM_FORM':
-      return {
-        ...state,
-        loggedIn: true,
-        showLoginForm: false,
-        showCreateProfileForm: false,
-        showProfileContainer: false,
-        showCreateTeamForm: true
-      }
+    // case 'SHOW_CREATE_TEAM_FORM':
+    //   return {
+    //     ...state,
+    //     loggedIn: true,
+    //     showLoginForm: false,
+    //     showCreateProfileForm: false,
+    //     showProfileContainer: false,
+    //     // showCreateTeamForm: true
+    //   }
     case 'DECLINE_TEAM':
     const allTeamsExceptChosen = state.allTeams.filter(team => {
       return team.id !== action.payload.team.id
@@ -101,6 +96,21 @@ const homescreenReducer = (state = initialState, action) => {
       return {
         ...state,
         allPlayers: allPlayersExceptChosen
+      }
+    case 'CREATE_TEAM':
+    return {
+      ...state,
+      allTeams: [...state, action.payload.team]
+    }
+    case 'RECEIVE_CURRENT_TEAM':
+    return {
+      ...state,
+      currentTeam: action.payload.json
+    }
+    case 'RECEIVE_CURRENT_PLAYER':
+      return {
+        ...state,
+        currentPlayer: action.payload.player
       }
    default:
     return state

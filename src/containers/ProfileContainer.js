@@ -41,9 +41,9 @@ class ProfileContainer extends Component {
         <h1>In Profile Container</h1>
         <PlayerProfile 
           login={this.props.loginClick} 
-          showCreateTeamForm={this.props.showCreateTeamForm}
+          /* showCreateTeamForm={this.props.showCreateTeamForm} */
           currentPlayer={this.props.currentPlayer}
-          showTeams={this.updatePlayerShowTeams}
+          /* showTeams={this.updatePlayerShowTeams} */
           showPlayers={this.updatePlayerShowPlayers}
         />
       </div>

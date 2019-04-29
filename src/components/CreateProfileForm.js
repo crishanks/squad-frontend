@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 
-const JWT_API = "http://localhost:3000/api/v1/login"
+const TEAM_PLAYERS_API = "http://localhost:3000/api/v1/team_players"
 const PLAYERS_API = "http://localhost:3000/api/v1/players"
+const TEAMS_API = "http://localhost:3000/api/v1/teams"
 
 class CreateProfileForm extends Component {
   constructor(props) {
@@ -12,39 +13,88 @@ class CreateProfileForm extends Component {
   //onSubmit posts to the api with a new user and renders the discover component (changes state to showCreateProfile to false, and loggedIn to true)
 
   createPlayer = (ev) => {
-    console.log('creating player')
+    ev.persist()
+    console.log('creating player', ev.target)
     const requestParams = {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         Accept: 'application/json'
       },
-      body: JSON.stringify({
+      body: JSON.stringify({player: {
         name: ev.target.firstname.value + ' ' + ev.target.lastname.value,
         image: ev.target.image.value,
-        showTeams: false,
         username: ev.target.username.value,
         password: ev.target.password.value,
         height: ev.target.height.value,
         position: ev.target.position.value,
         experience_level: ev.target.experiencelevel.value,
         description: ev.target.bio.value
-      })
+      }})
     }
     return fetch(PLAYERS_API, requestParams)
-    .then(this.props.requestAccessToken(ev))
+    .then(res => res.json())
+    .then(json => {
+      localStorage.setItem('token', json.jwt)
+      console.log('CREATE NEW PLAYER JSON', json)
+      this.props.receiveCurrentPlayer(json)
+      return json
+    })
+    .then(json => this.createTeam(ev, json))
+  }
+
+  createTeam = (ev, playerJson) => {
+    ev.persist()
+    debugger
+    const requestParams = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+      },
+      body: JSON.stringify({team: {
+        name: ev.target.teamname.value,
+        location: ev.target.teamlocation.value,
+        league: ev.target.league.value
+      }})
+    }
+    return fetch(TEAMS_API, requestParams)
+    .then(results => results.json())
+    .then(json => {
+      console.log('CREATE NEW TEAM JSON', json)
+      this.props.receiveCurrentTeam(json)
+      return json
+    })
+    .then(json => this.associateTeamWithPlayer(playerJson, json))
+  }
+
+  associateTeamWithPlayer = (playerJson, teamJson) => {
+    debugger
+    const requestParams = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json'
+      },
+      body: JSON.stringify({team_player: {
+        player_id: playerJson.player.id,
+        team_id: teamJson.id
+      }})
+    }
+    return fetch(TEAM_PLAYERS_API, requestParams)
+    .then(this.props.fetchPlayersAndTeams())
   }
 
   handleSubmit = (ev) => {
-    // console.log('handlesubmit ev', ev.target)
     ev.preventDefault()
-    this.createPlayer(ev)
+    return this.createPlayer(ev)
+    // .then(this.props.loginClick())
   }
 
   render() {
     return (
       <div>
-        <h1>Create Your Profile</h1>
+        <h2>Create Your Profile</h2>
         <form onSubmit={(ev) => this.handleSubmit(ev)}>
           <label htmlFor="">First Name</label>
           <input type="text" name="firstname"/>
@@ -75,9 +125,17 @@ class CreateProfileForm extends Component {
           </select>
           <label htmlFor="">Bio</label>
           <textarea name="bio" cols="30" rows="10"></textarea>
+
+          <h2>Create Your Team</h2>
+          <label>Team Name</label>
+          <input type="text" name="teamname"/>
+          <label>Location</label>
+          <input type="text" name="teamlocation"/>
+          <label>League</label>
+          <input type="text" name="league"/>
           <input type="submit" value="Submit"/>
-        </form>
-      </div>
+      </form>
+    </div>
     )
   }
 }

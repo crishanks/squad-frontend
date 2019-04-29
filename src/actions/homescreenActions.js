@@ -29,9 +29,10 @@ export const toggleShowProfileContainer = () => {
   }
 }
 
-export const createTeam = () => {
+export const createTeam = (team) => {
   return {
-    type: 'SHOW_CREATE_TEAM_FORM'
+    type: 'CREATE_TEAM',
+    payload: {team}
   }
 }
 
@@ -59,6 +60,13 @@ export const receiveAllTeams = (json) => {
   }
 }
 
+export const receiveCurrentTeam = (json) => {
+  return {
+    type: 'RECEIVE_CURRENT_TEAM',
+    payload: {json}
+  }
+}
+
 export const declinePlayer = (player) => {
   return {
     type: 'DECLINE_PLAYER',
@@ -70,5 +78,12 @@ export const declineTeam = (team) => {
   return {
     type: 'DECLINE_TEAM',
     payload:  {team}
+  }
+}
+
+export const receiveCurrentPlayer = (player) => {
+  return {
+    type: 'RECEIVE_CURRENT_PLAYER',
+    payload: {player}
   }
 }

@@ -16,6 +16,8 @@ class DiscoverContainer extends Component {
     super(props)
   }
 
+  //choose player/team and decline player/team may need to be a patch request to the DB instead of updating state
+
   render() {
     console.log('discover props', this.props)
     return (
