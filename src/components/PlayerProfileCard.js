@@ -2,6 +2,8 @@ import React from 'react'
 
 const PlayerProfileCard = (props) => {
   // console.log('PLAYER PROFILE CARD PLAYER', props.player)
+  // add columns to player for teams and players to choose from and do a patch request to remove?
+  // or can keep as removing from state? If so, need to create handleclick for choose player that does bothe choosePlayer and removes player from allPlayers array.....
   return (
     <div className="player-profile-card-image">
       <img src={props.player.image} alt="player image"/>
