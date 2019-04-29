@@ -8,12 +8,12 @@ const discoverReducer = (state = initialState, action) => {
     case 'CHOOSE_TEAM':
       return {
         ...state,
-        myTeams: [...initialState.myTeams, action.payload.team]
+        myTeams: [...state.myTeams, action.payload.team]
       }
     case 'CHOOSE_PLAYER':
       return {
         ...state,
-        myPlayers: [...initialState.myPlayers, action.payload.player]
+        myPlayers: [...state.myPlayers, action.payload.player]
       }
     case 'DECLINE_TEAM':
       return {
