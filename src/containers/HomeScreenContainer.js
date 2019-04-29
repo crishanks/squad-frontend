@@ -12,6 +12,8 @@ import { createTeam } from '../actions/homescreenActions'
 import { receiveJWT } from '../actions/homescreenActions'
 import { receiveAllPlayers } from '../actions/homescreenActions'
 import { receiveAllTeams } from '../actions/homescreenActions'
+import { declinePlayer } from '../actions/homescreenActions'
+import { declineTeam } from '../actions/homescreenActions'
 
 // Components
 import WelcomeBanner from '../components/WelcomeBanner'
@@ -117,6 +119,8 @@ class HomeScreenContainer extends Component {
         currentPlayer={this.props.currentPlayer}
         allTeams={this.props.allTeams}
         allPlayers={this.props.allPlayers}
+        declinePlayer={this.props.declinePlayer}
+        declineTeam={this.props.declineTeam}
       />
     }
   }
@@ -155,7 +159,9 @@ const mapDispatchToProps = dispatch => {
     createTeam: () => dispatch(createTeam()),
     receiveJWT: (json) => dispatch(receiveJWT(json)),
     receiveAllPlayers: (json) => dispatch(receiveAllPlayers(json)),
-    receiveAllTeams: (json) => dispatch(receiveAllTeams(json))
+    receiveAllTeams: (json) => dispatch(receiveAllTeams(json)),
+    declinePlayer: (player) => dispatch(declinePlayer(player)),
+    declineTeam: (team) => dispatch(declineTeam(team))
   }
 }
 

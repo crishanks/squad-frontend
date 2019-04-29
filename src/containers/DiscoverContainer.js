@@ -10,8 +10,6 @@ import ProfileBar from '../components/ProfileBar'
 // Actions
 import { choosePlayer } from '../actions/discoverActions'
 import { chooseTeam } from '../actions/discoverActions'
-import { declinePlayer } from '../actions/discoverActions'
-import { declineTeam } from '../actions/discoverActions'
 
 class DiscoverContainer extends Component {
   constructor(props) {
@@ -30,8 +28,8 @@ class DiscoverContainer extends Component {
           allTeams={this.props.allTeams}
           allPlayers={this.props.allPlayers}
           choosePlayer={this.props.choosePlayer}
-          declinePlayer={this.props.declinePlayer}
           chooseTeam={this.props.chooseTeam}
+          declinePlayer={this.props.declinePlayer}
           declineTeam={this.props.declineTeam}
         />
         <ProfileBar showProfileContainer={this.props.showProfileContainer}/>
@@ -50,9 +48,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     choosePlayer: (player) => dispatch(choosePlayer(player)),
-    chooseTeam: (team) => dispatch(chooseTeam(team)),
-    declinePlayer: () => dispatch(declinePlayer()),
-    declineTeam: () => dispatch(declineTeam())
+    chooseTeam: (team) => dispatch(chooseTeam(team))
   }
 }
 

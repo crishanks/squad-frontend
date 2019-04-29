@@ -58,3 +58,17 @@ export const receiveAllTeams = (json) => {
     payload: {json}
   }
 }
+
+export const declinePlayer = (player) => {
+  return {
+    type: 'DECLINE_PLAYER',
+    payload: {player}
+  }
+}
+
+export const declineTeam = (team) => {
+  return {
+    type: 'DECLINE_TEAM',
+    payload:  {team}
+  }
+}

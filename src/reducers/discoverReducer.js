@@ -15,16 +15,6 @@ const discoverReducer = (state = initialState, action) => {
         ...state,
         myPlayers: [...state.myPlayers, action.payload.player]
       }
-    case 'DECLINE_TEAM':
-      return {
-        //...state,
-        //remove this team from app's allTeams array
-      }
-    case 'DECLINE_PLAYER':
-      return {
-        //...state,
-        //remove this player form app's allPlayers array
-      }
     default:
       return state
   }

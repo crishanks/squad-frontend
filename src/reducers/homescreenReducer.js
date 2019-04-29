@@ -86,6 +86,22 @@ const homescreenReducer = (state = initialState, action) => {
         showProfileContainer: false,
         showCreateTeamForm: true
       }
+    case 'DECLINE_TEAM':
+    const allTeamsExceptChosen = state.allTeams.filter(team => {
+      return team.id !== action.payload.team.id
+    })
+      return {
+        ...state,
+        allTeams: allTeamsExceptChosen
+    }
+    case 'DECLINE_PLAYER':
+    const allPlayersExceptChosen = state.allPlayers.filter(player => {
+      return player.id !== action.payload.player.id
+    })
+      return {
+        ...state,
+        allPlayers: allPlayersExceptChosen
+      }
    default:
     return state
   }
