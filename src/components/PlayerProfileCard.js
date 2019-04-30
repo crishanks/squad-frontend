@@ -14,7 +14,33 @@ const PlayerProfileCard = (props) => {
   }
 
   return (
-    <div className="player-profile-card-image">
+    <div id="player-card-container">
+      <div id="picture">
+        <img id="profile-image" src="" alt=""/>
+      </div>
+      <div id="name-box">
+        <div>
+          {props.player.name}, 28
+        </div>
+        <div>{props.player.position}</div>
+        <div>{props.player.height}</div>
+        <div>{props.player.experience_level}</div>
+      </div>
+      <div id="description">
+        <p>{props.player.description}</p>
+      </div>
+      <div id="footer">
+        <div className="circle" id="decline-circle" onClick={() => props.declinePlayer(props.player)}></div>
+        <div className="circle" id="accept-circle" onClick={(props) => handleChoosePlayer(props)}>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+export default PlayerProfileCard
+
+    {/* <div className="player-profile-card-image">
       <img src={props.player.image} alt="player image"/>
       <div className="player-prifoile-card-info">
         <h1>{props.player.name}</h1>
@@ -25,8 +51,4 @@ const PlayerProfileCard = (props) => {
         <button onClick={() => props.declinePlayer(props.player)}>Decline</button>
         <button onClick={(props) => handleChoosePlayer(props)}>Choose</button>
       </div>
-    </div>
-  )
-}
-
-export default PlayerProfileCard
+    </div> */}

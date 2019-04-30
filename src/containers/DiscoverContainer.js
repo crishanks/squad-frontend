@@ -21,10 +21,10 @@ class DiscoverContainer extends Component {
   render() {
     console.log('discover props', this.props)
     return (
-      <div>
-        <h1>Discover</h1>
-        <button onClick={this.props.logoutClick}>Log Out</button>
-        <MyInfoContainer/>
+      <div id="discover-page">
+        {/* <button onClick={this.props.logoutClick}>Log Out</button> */}
+        {/* <MyInfoContainer/> */}
+        <ProfileBar showProfileContainer={this.props.showProfileContainer}/>
         <CandidatesContainer 
           currentPlayer={this.props.currentPlayer}
           currentTeam={this.props.currentTeam}
@@ -36,7 +36,6 @@ class DiscoverContainer extends Component {
           declineTeam={this.props.declineTeam}
           fetchPlayersAndTeams={this.fetchAllPlayers}
         />
-        <ProfileBar showProfileContainer={this.props.showProfileContainer}/>
       </div>
     )
   }

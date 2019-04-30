@@ -27,10 +27,9 @@ class PlayerProfileCardsContainer extends Component {
 
   render() {
     return (
-      <div>
-        <h2>In Player Profile Cards Container</h2>
+      <>
         {this.renderPlayerProfileCards()}
-      </div>
+      </>
     )
   }
 }

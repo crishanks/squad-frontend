@@ -28,7 +28,6 @@ class MyInfoContainer extends Component {
     return (
       <div>
         <div>
-          <h1>In MyInfo Container</h1>
           {this.renderComponents()}
         </div>
       </div>

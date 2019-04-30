@@ -48,11 +48,8 @@ class CandidatesContainer extends Component {
 
   render() {
     return (
-      <div>
-        <div>
-          <h1>In Candidates Container</h1>
-          {this.renderComponents()}
-        </div>
+      <div id='candidates-container'>
+        {this.renderComponents()}
       </div>
     )
   }
