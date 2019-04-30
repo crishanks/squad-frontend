@@ -11,9 +11,10 @@ class PlayerProfileCardsContainer extends Component {
   
 
   renderPlayerProfileCards = () => {
-    console.log('PLAYER PROFILE CARDS CONTAINER PROPS', this.props)
     const allPlayersLength = this.props.allPlayers.length
-    const playerToShow = this.props.allPlayers[allPlayersLength - 2]
+    //Need to Refactor this -- player cards should not repeat on each login.
+    const playerToShow = this.props.allPlayers[Math.floor(Math.random() * allPlayersLength - 2)]
+    console.log('PLAYER PROFILE CARDS CONTAINER PROPS', playerToShow)
     return <PlayerProfileCard 
       player={playerToShow} 
       /* key={playerToShow.id} */
