@@ -20,7 +20,7 @@ const PlayerProfile = (props) => {
   return (
     <div>
       <div>
-        <h2>Create Your Player</h2>
+        <h2>Profile</h2>
         <button onClick={props.login}>Go to Discover</button> 
         {/* <button onClick={props.showCreateTeamForm}>Create Team</button> */}
         {/* <button onClick={props.showTeams}>Find Teams</button> */}

@@ -92,16 +92,13 @@ class HomeScreenContainer extends Component {
       }
     }
 
-    fetch(ALL_TEAMS_API, requestParams)
+    return fetch(ALL_TEAMS_API, requestParams)
     .then(response => response.json())
     .then(json => {
       // console.log('all teams json', json)
       this.props.receiveAllTeams(json)
+      this.props.receiveCurrentTeam(this.props.currentPlayer.player.teams[0])
     })
-  }
-
-  createNewTeam = () => {
-
   }
 
   renderComponents = () => {
@@ -121,7 +118,12 @@ class HomeScreenContainer extends Component {
         receiveCurrentPlayer={this.props.receiveCurrentPlayer}
       />
     } else if (this.props.showLoginForm) {
-      return <LoginForm requestAccessToken={this.requestAccessToken} logout={this.props.logout}/>
+      return <LoginForm 
+        requestAccessToken={this.requestAccessToken} 
+        requestPlayers={this.fetchAllPlayers}
+        requestTeams={this.fetchAllTeams}
+        logout={this.props.logout}
+      />
     } else if (!this.props.loggedIn && !this.props.showCreateProfileForm && !this.props.showLoginForm) {
       return <WelcomeBanner showLoginFormClick={this.props.toggleShowLoginForm} signupClick={this.props.signup}/>
     } else if (this.props.loggedIn) {

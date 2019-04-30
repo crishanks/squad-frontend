@@ -13,10 +13,10 @@ class PlayerProfileCardsContainer extends Component {
   renderPlayerProfileCards = () => {
     console.log('PLAYER PROFILE CARDS CONTAINER PROPS', this.props)
     const allPlayersLength = this.props.allPlayers.length
-    const playerToShow = this.props.allPlayers[allPlayersLength - 1]
+    const playerToShow = this.props.allPlayers[allPlayersLength - 2]
     return <PlayerProfileCard 
       player={playerToShow} 
-      key={playerToShow.id}
+      /* key={playerToShow.id} */
       choosePlayer={this.props.choosePlayer}
       declinePlayer={this.props.declinePlayer}
       associatePlayerWithTeam={this.props.associatePlayerWithTeam}
