@@ -27,6 +27,7 @@ class LoginForm extends Component {
           <input type="text" name="password"/>
           <input type="submit" value="Submit"/>
         </form>
+        <button onClick={this.props.logout}>Home</button>
       </div>
     )
   }

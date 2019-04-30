@@ -121,7 +121,7 @@ class HomeScreenContainer extends Component {
         receiveCurrentPlayer={this.props.receiveCurrentPlayer}
       />
     } else if (this.props.showLoginForm) {
-      return <LoginForm requestAccessToken={this.requestAccessToken}/>
+      return <LoginForm requestAccessToken={this.requestAccessToken} logout={this.props.logout}/>
     } else if (!this.props.loggedIn && !this.props.showCreateProfileForm && !this.props.showLoginForm) {
       return <WelcomeBanner showLoginFormClick={this.props.toggleShowLoginForm} signupClick={this.props.signup}/>
     } else if (this.props.loggedIn) {
