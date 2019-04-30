@@ -36,6 +36,8 @@ class ProfileContainer extends Component {
   }
 
   render() {
+    console.log('ALL TEAMS', this.props.allTeams)
+    console.log('CURRENT TEAM', this.props.currentTeam)
     return (
       <div>
         <h1>In Profile Container</h1>
@@ -45,6 +47,8 @@ class ProfileContainer extends Component {
           currentPlayer={this.props.currentPlayer}
           /* showTeams={this.updatePlayerShowTeams} */
           showPlayers={this.updatePlayerShowPlayers}
+          currentTeam={this.props.currentTeam}
+          allTeams={this.props.allTeams}
         />
       </div>
     )

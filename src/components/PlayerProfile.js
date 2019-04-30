@@ -3,15 +3,20 @@ import React from 'react'
 
 const PlayerProfile = (props) => {
 
-  //buttons need to do a patch request to update the current user's showTeams column.
-
   const renderTeammates = () => {
-    //Need to get choose player to actually add teammates to player's team
+    const myTeam = props.allTeams.find(team => props.currentTeam)
+    const teammates = myTeam.players
     console.log('renderTeammates props', props)
-    return props.currentPlayer.player.team_players.map(teammate => {
+    console.log('renderTeammates teammates', teammates)
+    return teammates.map(teammate => {
       return (
         <div>
-          <h3>Render Teammate {teammate.id}</h3>
+          <img src="" alt="image"/>
+          <h3>{teammate.name}</h3>
+          <p>{teammate.position}</p>
+          <p>{teammate.height}</p>
+          <p>{teammate.experience_level}</p>
+          <p>{teammate.description}</p>
         </div>
       )
     })

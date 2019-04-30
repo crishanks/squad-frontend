@@ -8,11 +8,10 @@ const PlayerProfileCard = (props) => {
   // or can keep as removing from state? If so, need to create handleclick for choose player that does both choosePlayer and removes player from allPlayers array.....
 
   const handleChoosePlayer = () => {
+    //need to set the team players array state with the new player
     props.associatePlayerWithTeam(props.player)
     props.declinePlayer(props.player)
   }
-
-  console.log('player profile card props', props)
 
   return (
     <div className="player-profile-card-image">

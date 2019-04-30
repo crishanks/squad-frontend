@@ -107,6 +107,8 @@ class HomeScreenContainer extends Component {
         loginClick={this.props.login} 
         /* showCreateTeamForm={this.props.createTeam} */
         currentPlayer={this.props.currentPlayer}
+        currentTeam={this.props.currentTeam}
+        allTeams={this.props.allTeams}
       />
     } else if (this.props.showCreateProfileForm) {
       return <CreateProfileForm 

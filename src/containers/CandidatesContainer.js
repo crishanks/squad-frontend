@@ -14,7 +14,6 @@ class CandidatesContainer extends Component {
   }
 
   renderComponents = () => {
-    console.log('candidates container props', this.props)
     return <PlayerProfileCardsContainer 
       allPlayers={this.props.allPlayers}
       choosePlayer={this.props.choosePlayer}
@@ -45,11 +44,9 @@ class CandidatesContainer extends Component {
       }})
     }
     return fetch(TEAM_PLAYERS_API, requestParams)
-    // .then(this.props.fetchPlayersAndTeams())
   }
 
   render() {
-    console.log('candidates container props', this.props)
     return (
       <div>
         <div>
