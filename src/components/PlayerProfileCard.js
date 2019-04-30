@@ -19,15 +19,15 @@ const PlayerProfileCard = (props) => {
         <img id="profile-image" src="" alt=""/>
       </div>
       <div id="name-box">
-        <div>
+        <div className="header">
           {props.player.name}, 28
         </div>
-        <div className="header">{props.player.position}</div>
-        <div>{props.player.height}</div>
-        <div>{props.player.experience_level}</div>
+        <div>Position {props.player.position}</div>
+        <div>Height {props.player.height}</div>
+        <div>Experience {props.player.experience_level}</div>
       </div>
-      <div id="description">
-        <p>{props.player.description}</p>
+      <div id="description-box">
+        <div>{props.player.description}</div>
       </div>
       <div id="footer">
         <div className="circle" id="decline-circle" onClick={() => props.declinePlayer(props.player)}></div>
