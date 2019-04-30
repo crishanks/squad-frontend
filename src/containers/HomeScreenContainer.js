@@ -17,6 +17,7 @@ import { declineTeam } from '../actions/homescreenActions'
 import { receiveCurrentTeam } from '../actions/homescreenActions'
 import { receiveCurrentPlayer } from '../actions/homescreenActions'
 
+
 // Components
 import WelcomeBanner from '../components/WelcomeBanner'
 import DiscoverContainer from './DiscoverContainer'

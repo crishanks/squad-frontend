@@ -90,9 +90,19 @@ const homescreenReducer = (state = initialState, action) => {
         allTeams: allTeamsExceptChosen
     }
     case 'DECLINE_PLAYER':
-    const allPlayersExceptChosen = state.allPlayers.filter(player => {
-      return player.id !== action.payload.player.id
-    })
+    console.log('hitting decline player reducer')
+      const allPlayersExceptDeclined = state.allPlayers.filter(player => {
+        return player.id !== action.payload.player.id
+      })
+      console.log('allplayers except declined', allPlayersExceptDeclined)
+      return {
+        ...state,
+        allPlayers: allPlayersExceptDeclined
+      }
+    case 'CHOOSE_PLAYER':
+      const allPlayersExceptChosen = state.allPlayers.filter(player => {
+        return player.id !== action.payload.player.id
+      })
       return {
         ...state,
         allPlayers: allPlayersExceptChosen

@@ -68,6 +68,7 @@ export const receiveCurrentTeam = (json) => {
 }
 
 export const declinePlayer = (player) => {
+  console.log('hitting decline player action')
   return {
     type: 'DECLINE_PLAYER',
     payload: {player}

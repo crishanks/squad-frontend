@@ -1,14 +1,18 @@
 import React from 'react'
 
+// import { declinePlayer } from '../actions/homescreenActions'
+
+
 const PlayerProfileCard = (props) => {
-  // console.log('PLAYER PROFILE CARD PLAYER', props.player)
   // add columns to player for teams and players to choose from and do a patch request to remove?
-  // or can keep as removing from state? If so, need to create handleclick for choose player that does bothe choosePlayer and removes player from allPlayers array.....
+  // or can keep as removing from state? If so, need to create handleclick for choose player that does both choosePlayer and removes player from allPlayers array.....
 
   const handleChoosePlayer = () => {
     props.associatePlayerWithTeam(props.player)
-    // props.choosePlayer(props.player)
+    props.declinePlayer(props.player)
   }
+
+  console.log('player profile card props', props)
 
   return (
     <div className="player-profile-card-image">
