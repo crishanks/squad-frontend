@@ -22,7 +22,7 @@ const PlayerProfileCard = (props) => {
         <div>
           {props.player.name}, 28
         </div>
-        <div>{props.player.position}</div>
+        <div className="header">{props.player.position}</div>
         <div>{props.player.height}</div>
         <div>{props.player.experience_level}</div>
       </div>
