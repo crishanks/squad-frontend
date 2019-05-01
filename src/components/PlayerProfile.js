@@ -10,14 +10,20 @@ const PlayerProfile = (props) => {
     console.log('renderTeammates teammates', teammates)
     return teammates.map(teammate => {
       return (
-        <div>
-          <img src="" alt="image"/>
-          <h3>{teammate.name}</h3>
-          <p>{teammate.position}</p>
-          <p>{teammate.height}</p>
-          <p>{teammate.experience_level}</p>
-          <p>{teammate.description}</p>
+      <div id="teammate-card-container">
+        <div id="picture">
+          <img id="profile-image" src="" alt=""/>
         </div>
+        <div id="name-box">
+          <div className="header">{teammate.name}, 28</div>
+          <div>Position {teammate.position}</div>
+          <div>Height {teammate.height}</div>
+          <div>Experience {teammate.experience_level}</div>
+        </div>
+        <div id="description-box">
+          <div>{teammate.description}</div>
+        </div>
+      </div>
       )
     })
   }

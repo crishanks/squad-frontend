@@ -105,7 +105,7 @@ const homescreenReducer = (state = initialState, action) => {
       allTeams: [...state, action.payload.team]
     }
     case 'RECEIVE_CURRENT_TEAM':
-    console.log('CURRENT TEAM ACTION PAYLOAD', action.payload.json)
+    console.log('RECEIVE CURRENT TEAM ACTION PAYLOAD', action.payload.json)
     return {
       ...state,
       currentTeam: action.payload.json

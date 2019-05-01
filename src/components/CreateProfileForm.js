@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 
+const ALL_PLAYERS_API = "http://localhost:3000/api/v1/players"
+const ALL_TEAMS_API = "http://localhost:3000/api/v1/teams"
 const TEAM_PLAYERS_API = "http://localhost:3000/api/v1/team_players"
 const PLAYERS_API = "http://localhost:3000/api/v1/players"
 const TEAMS_API = "http://localhost:3000/api/v1/teams"
@@ -80,13 +82,45 @@ class CreateProfileForm extends Component {
       }})
     }
     return fetch(TEAM_PLAYERS_API, requestParams)
-    .then(this.props.fetchPlayersAndTeams())
+    .then(this.fetchAllPlayers())
+  }
+
+  fetchAllPlayers = () => {
+    console.log('fetch players')
+    const requestParams = {
+      method: 'GET',
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('token')}`
+      }
+    }
+
+    return fetch(ALL_PLAYERS_API, requestParams)
+    .then(response => response.json())
+    .then(json => {
+      this.props.receiveAllPlayers(json)
+    })
+    .then(this.fetchAllTeams())
+  }
+
+  fetchAllTeams = () => {
+    console.log('fetch teams')
+    const requestParams = {
+      method: 'GET',
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('token')}`
+      }
+    }
+
+    return fetch(ALL_TEAMS_API, requestParams)
+    .then(response => response.json())
+    .then(json => {
+      this.props.receiveAllTeams(json)
+    })
   }
 
   handleSubmit = (ev) => {
     ev.preventDefault()
     return this.createPlayer(ev)
-    // .then(this.props.loginClick())
   }
 
   render() {
