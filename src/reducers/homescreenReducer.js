@@ -40,14 +40,8 @@ const homescreenReducer = (state = initialState, action) => {
         showCreateProfileForm: false
       }
     case 'LOG_OUT':
-    localStorage.removeItem('token')
-      return {
-        ...state,
-        loggedIn: false,
-        showCreateProfileForm: false,
-        showLoginForm: false,
-        showProfileContainer: false
-      }
+      localStorage.removeItem('token')
+      return initialState
     case 'SIGN_UP':
       return {
         ...state,

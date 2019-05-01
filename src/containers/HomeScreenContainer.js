@@ -41,7 +41,6 @@ class HomeScreenContainer extends Component {
   // }
 
   requestAccessToken = (ev) => {
-    console.log('request access token')
     const requestParams = {
       method: 'POST',
       headers: {
@@ -60,45 +59,53 @@ class HomeScreenContainer extends Component {
     .then((response) => {return response.json()})
     .then((json) => {
       this.props.receiveJWT(json)
+      console.log("FETCHED ACCESS TOKEN json", json)
       localStorage.setItem('token', json.jwt)
+      return json.jwt
     })
-    .then(this.fetchAllPlayers())
+    .then(jwt => {
+      this.fetchAllPlayers(jwt);
+      return this.fetchAllTeams(jwt);
+    })
+    .then(json => {
+      this.props.receiveAllTeams(json)
+      this.props.receiveCurrentTeam(this.props.currentPlayer.player.teams[0])
+    })
+    // .then(this.fetchAllPlayers())
   }
 
-  fetchAllPlayers = () => {
-    console.log('fetch players')
+  fetchAllPlayers = (token) => {
     const requestParams = {
       method: 'GET',
       headers: {
-        Authorization: `Bearer ${localStorage.getItem('token')}`
+        Authorization: `Bearer ${token}`
       }
     }
 
     return fetch(ALL_PLAYERS_API, requestParams)
     .then(response => response.json())
     .then(json => {
-      // console.log('all players json', json)
+      console.log('FETCHED ALL PLAYERS - json', json)
       return this.props.receiveAllPlayers(json)
     })
     .then(this.fetchAllTeams())
   }
 
-  fetchAllTeams = () => {
-    console.log('fetch teams')
+  fetchAllTeams = (token) => {
     const requestParams = {
       method: 'GET',
       headers: {
-        Authorization: `Bearer ${localStorage.getItem('token')}`
+        Authorization: `Bearer ${token}`
       }
     }
 
     return fetch(ALL_TEAMS_API, requestParams)
     .then(response => response.json())
-    .then(json => {
-      // find out when the currentPlayer is being set to state, make sure that happens before the below
+    /*.then(json => {
+      console.log("FETCHED ALL TEAMS - json", json)
       this.props.receiveAllTeams(json)
       this.props.receiveCurrentTeam(this.props.currentPlayer.player.teams[0])
-    })
+    })*/
   }
 
   renderComponents = () => {
