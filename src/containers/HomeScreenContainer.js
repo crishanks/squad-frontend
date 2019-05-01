@@ -36,10 +36,6 @@ class HomeScreenContainer extends Component {
     super(props)
   }
 
-  // componentDidMount = () => {
-  //   this.requestAccessToken()
-  // }
-
   requestAccessToken = (ev) => {
     const requestParams = {
       method: 'POST',

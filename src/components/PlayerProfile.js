@@ -4,9 +4,11 @@ import React from 'react'
 const PlayerProfile = (props) => {
 
   const renderTeammates = () => {
-    const myTeam = props.allTeams.find(team => props.currentTeam)
+    // debugger
+    console.log("RENDER TEAMMATES PROPS", props)
+    const myTeam = props.allTeams.find(team => team.id === props.currentTeam.id)
     const teammates = myTeam.players
-    console.log('renderTeammates props', props)
+    console.log('renderTeammates myteam', myTeam)
     console.log('renderTeammates teammates', teammates)
     return teammates.map(teammate => {
       return (

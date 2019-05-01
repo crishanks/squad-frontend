@@ -16,7 +16,7 @@ class CreateProfileForm extends Component {
 
   createPlayer = (ev) => {
     ev.persist()
-    console.log('creating player', ev.target)
+    console.log('creating player', ev.target.username.value)
     const requestParams = {
       method: 'POST',
       headers: {
@@ -46,6 +46,7 @@ class CreateProfileForm extends Component {
   }
 
   createTeam = (ev, playerJson) => {
+    console.log('PLAYERJSON - create team', playerJson)
     ev.persist()
     const requestParams = {
       method: 'POST',
@@ -70,7 +71,7 @@ class CreateProfileForm extends Component {
   }
 
   associateTeamWithPlayer = (playerJson, teamJson) => {
-    console.log('ASSOCIATING TEAM AND PLAYER - CREATE PROFILE FORM')
+    console.log('ASSOCIATING TEAM AND PLAYER = playerJson', playerJson)
     const requestParams = {
       method: 'POST',
       headers: {

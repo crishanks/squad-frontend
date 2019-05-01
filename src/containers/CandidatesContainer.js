@@ -20,6 +20,7 @@ class CandidatesContainer extends Component {
       declinePlayer={this.props.declinePlayer}
       associatePlayerWithTeam={this.associatePlayerWithTeam}
       currentTeam={this.props.currentTeam}
+      currentPlayer={this.props.currentPlayer}
     />
   }
 
@@ -31,7 +32,7 @@ class CandidatesContainer extends Component {
   //   /> 
 
   associatePlayerWithTeam = (player) => {
-    console.log('ASSOCIATING PLAYER AND TEAM - CANDIDATES CONTAINER')
+    console.log('ASSOCIATING PLAYER AND TEAM - CANDIDATES CONTAINER', player, 'CURRENT TEAM', this .props.currentTeam)
     const requestParams = {
       method: 'POST',
       headers: {
@@ -40,10 +41,13 @@ class CandidatesContainer extends Component {
       },
       body: JSON.stringify({team_player: {
         player_id: player.id,
-        team_id: this.props.currentTeam.id
+        team_id: this.props.currentTeam.id,
+        organizer: false
       }})
     }
     return fetch(TEAM_PLAYERS_API, requestParams)
+    .then(result => result.json())
+    .then(json => console.log('Associated Player and Team - json', json))
   }
 
   render() {

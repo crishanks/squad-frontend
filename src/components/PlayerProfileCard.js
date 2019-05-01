@@ -9,8 +9,8 @@ const PlayerProfileCard = (props) => {
 
   const handleChoosePlayer = () => {
     //need to set the team players array state with the new player
-    props.associatePlayerWithTeam(props.player)
-    props.declinePlayer(props.player)
+    return props.associatePlayerWithTeam(props.player)
+    .then(props.declinePlayer(props.player))
   }
 
   if (props.player) {
