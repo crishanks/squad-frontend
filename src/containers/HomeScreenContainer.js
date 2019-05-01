@@ -78,7 +78,7 @@ class HomeScreenContainer extends Component {
     .then(response => response.json())
     .then(json => {
       // console.log('all players json', json)
-      this.props.receiveAllPlayers(json)
+      return this.props.receiveAllPlayers(json)
     })
     .then(this.fetchAllTeams())
   }
@@ -95,7 +95,7 @@ class HomeScreenContainer extends Component {
     return fetch(ALL_TEAMS_API, requestParams)
     .then(response => response.json())
     .then(json => {
-      // console.log('all teams json', json)
+      // find out when the currentPlayer is being set to state, make sure that happens before the below
       this.props.receiveAllTeams(json)
       this.props.receiveCurrentTeam(this.props.currentPlayer.player.teams[0])
     })

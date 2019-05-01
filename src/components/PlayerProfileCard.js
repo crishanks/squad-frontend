@@ -13,7 +13,8 @@ const PlayerProfileCard = (props) => {
     props.declinePlayer(props.player)
   }
 
-  return (
+  if (props.player) {
+    return (
     <div id="player-card-container">
       <div id="picture">
         <img id="profile-image" src="" alt=""/>
@@ -33,7 +34,8 @@ const PlayerProfileCard = (props) => {
         </div>
       </div>
     </div>
-  )
+  )}
+  return null;
 }
 
 export default PlayerProfileCard

@@ -31,7 +31,7 @@ class CandidatesContainer extends Component {
   //   /> 
 
   associatePlayerWithTeam = (player) => {
-    console.log('associate choose player', this.props)
+    console.log('ASSOCIATING PLAYER AND TEAM - CANDIDATES CONTAINER')
     const requestParams = {
       method: 'POST',
       headers: {

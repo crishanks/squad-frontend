@@ -20,10 +20,10 @@ class LoginForm extends Component {
       <div>
         <h1>Log In</h1>
         <form onSubmit={(ev) => this.handleFormSubmit(ev)}>
-          <label htmlFor="">Username</label>
+          <label>Username</label>
           <input type="text" name="username"/>
-          <label htmlFor="">Password</label>
-          <input type="text" name="password"/>
+          <label>Password</label>
+          <input type="password" name="password"/>
           <input type="submit" value="Submit"/>
         </form>
         <button onClick={this.props.logout}>Home</button>

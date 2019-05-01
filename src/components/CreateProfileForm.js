@@ -70,6 +70,7 @@ class CreateProfileForm extends Component {
   }
 
   associateTeamWithPlayer = (playerJson, teamJson) => {
+    console.log('ASSOCIATING TEAM AND PLAYER - CREATE PROFILE FORM')
     const requestParams = {
       method: 'POST',
       headers: {
