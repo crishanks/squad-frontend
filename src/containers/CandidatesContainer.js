@@ -47,7 +47,8 @@ class CandidatesContainer extends Component {
     }
     return fetch(TEAM_PLAYERS_API, requestParams)
     .then(result => result.json())
-    .then(json => console.log('Associated Player and Team - json', json))
+    .then(() => this.props.addPlayerToCurrentTeam(player))
+    // .then(json => console.log('Associated Player and Team - json', json))
   }
 
   render() {

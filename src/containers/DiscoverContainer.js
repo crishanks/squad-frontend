@@ -36,6 +36,7 @@ class DiscoverContainer extends Component {
           declinePlayer={this.props.declinePlayer}
           declineTeam={this.props.declineTeam}
           fetchPlayersAndTeams={this.fetchAllPlayers}
+          addPlayerToCurrentTeam={this.props.addPlayerToCurrentTeam}
         />
         <Footer />
       </div>

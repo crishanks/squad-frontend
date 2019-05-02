@@ -109,6 +109,23 @@ const homescreenReducer = (state = initialState, action) => {
         ...state,
         currentPlayer: action.payload.player
       }
+    case 'ADD_PLAYER_TO_CURRENT_TEAM':
+      const myTeam = state.allTeams.find(team => team.id === state.currentTeam.id)
+      const idx = state.allTeams.indexOf(myTeam)
+      const updatedTeam = Object.assign({}, myTeam, {players: myTeam.players.concat(action.payload)})
+      let updatedTeams = state.allTeams.slice()
+      updatedTeams.splice(idx, 1, updatedTeam)
+      // updatedTeams.map(team => {
+      //   if (team.id === updatedTeam.id) {
+      //     return updatedTeam
+      //   }
+      //   return team
+      // })
+
+      return {
+        ...state,
+        allTeams: updatedTeams
+      }
    default:
     return state
   }

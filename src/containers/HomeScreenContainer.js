@@ -16,6 +16,7 @@ import { declinePlayer } from '../actions/homescreenActions'
 import { declineTeam } from '../actions/homescreenActions'
 import { receiveCurrentTeam } from '../actions/homescreenActions'
 import { receiveCurrentPlayer } from '../actions/homescreenActions'
+import { addPlayerToCurrentTeam } from '../actions/homescreenActions'
 
 
 // Components
@@ -145,6 +146,7 @@ class HomeScreenContainer extends Component {
         declineTeam={this.props.declineTeam}
         currentTeam={this.props.currentTeam}
         fetchPlayersAndTeams={this.fetchAllPlayers}
+        addPlayerToCurrentTeam={this.props.addPlayerToCurrentTeam}
       />
     }
   }
@@ -191,7 +193,8 @@ const mapDispatchToProps = dispatch => {
     declinePlayer: (player) => dispatch(declinePlayer(player)),
     declineTeam: (team) => dispatch(declineTeam(team)),
     receiveCurrentTeam: (json) => dispatch(receiveCurrentTeam(json)),
-    receiveCurrentPlayer: (player) => dispatch(receiveCurrentPlayer(player))
+    receiveCurrentPlayer: (player) => dispatch(receiveCurrentPlayer(player)),
+    addPlayerToCurrentTeam: (player) => dispatch(addPlayerToCurrentTeam(player))
   }
 }
 

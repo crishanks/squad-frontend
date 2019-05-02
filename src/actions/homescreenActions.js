@@ -89,3 +89,11 @@ export const receiveCurrentPlayer = (player) => {
     payload: {player}
   }
 }
+
+export const addPlayerToCurrentTeam = (player) => {
+  // debugger
+  return {
+    type: 'ADD_PLAYER_TO_CURRENT_TEAM',
+    payload: player
+  }
+}
