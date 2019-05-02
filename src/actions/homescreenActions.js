@@ -61,6 +61,7 @@ export const receiveAllTeams = (json) => {
 }
 
 export const receiveCurrentTeam = (json) => {
+  console.log('RECEIVING CURRENT TEAM ACTION - json', json)
   return {
     type: 'RECEIVE_CURRENT_TEAM',
     payload: {json}

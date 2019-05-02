@@ -60,6 +60,7 @@ class HomeScreenContainer extends Component {
       return json.jwt
     })
     .then(jwt => {
+      console.log('FETCH ALL STUFF - JWT', jwt)
       this.fetchAllPlayers(jwt);
       return this.fetchAllTeams(jwt);
     })
@@ -88,6 +89,7 @@ class HomeScreenContainer extends Component {
   }
 
   fetchAllTeams = (token) => {
+    console.log('FETCH ALL TEAMS - token', token)
     const requestParams = {
       method: 'GET',
       headers: {
