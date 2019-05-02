@@ -87,8 +87,8 @@ body, html {
 }
 
 .profile-bar-circle{
-  width: 10vmin;
-  height: 10vmin;
+  width: 3vh;
+  height: 3vh;
   background-color: rgb(233, 233, 241);
   border-radius: 50%;
   display: inline-block;
@@ -122,7 +122,8 @@ body, html {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  background-color: #3792d8
+  background-color: #3792d8;
+  grid-row: 1;
 }
 
 .profile-bar-logout {
@@ -144,33 +145,43 @@ body, html {
 /* Profile Container */
 #profile-container {
   display: grid;
-  grid-template-rows: 5% 1fr 5%;
+  grid-template-rows: 5vh 30% 60% 5vh;
   width: 100vw;
   min-height: 100vh;
 }
 
 #player-info-container {
   display: grid;
-  grid-template-rows: 20% 5% 1fr;
+  grid-row: 2;
+  grid-template-rows: 15% 1fr 10%;
+  grid-template-columns: 5% 65% 1fr 5%;
+}
+
+#player-info {
+  padding-top: 1vh;
+  grid-row: 1;
+  grid-column: 2/3;
 }
 
 #teammates-header {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-content: space-between;
-  background-color: rgb(24, 25, 26);
+  grid-row: 3;
+  grid-column: 1/5;
+  background-color: black;
   color: white;
+  text-align: center;
+}
+
+.discover-button {
+  grid-row: 1;
+  grid-column: 3;
+  font-size: 3vw;
+  padding-top: 4vw;
+  text-align: end;
 }
 
 #teammate-cards-container {
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: space-around;
-}
-
-#teammate-card {
-  
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
 }
 
 /* Footer  */

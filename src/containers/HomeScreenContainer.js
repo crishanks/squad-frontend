@@ -157,9 +157,9 @@ class HomeScreenContainer extends Component {
   render() {
     console.log('hsc props', this.props)
   return (
-      <div>
-        {this.renderComponents()}
-      </div>
+    <>
+      {this.renderComponents()}
+    </>
     )
   }
 }

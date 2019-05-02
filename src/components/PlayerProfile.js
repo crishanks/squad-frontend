@@ -33,12 +33,11 @@ const PlayerProfile = (props) => {
 
   return (
     <>
-    <div id="player-info-container">Player Profile Info Here
-      <div onClick={props.login}>Go to Discover</div>
+    <div id="player-info-container">
+      <div id="player-info">Player Profile Info Here</div>
+      <div id="teammates-header">My Team</div>
+      <div className="discover-button" onClick={props.login}>Discover</div>
     </div> 
-    <div id="teammates-header">
-        <h3>My Team</h3>
-      </div>
     <div id="teammate-cards-container">
       {renderTeammates()}
     </div>
