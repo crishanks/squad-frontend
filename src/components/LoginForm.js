@@ -16,16 +16,22 @@ class LoginForm extends Component {
 
   render() {
     return (
-      <div>
-        <h1>Log In</h1>
-        <form onSubmit={(ev) => this.handleFormSubmit(ev)}>
-          <label>Username</label>
-          <input type="text" name="username"/>
-          <label>Password</label>
-          <input type="password" name="password"/>
-          <input type="submit" value="Submit"/>
-        </form>
-        <button onClick={this.props.logout}>Home</button>
+      <div id="login-form-container">
+          <form id="login-form" onSubmit={(ev) => this.handleFormSubmit(ev)}>
+            <div className='logo'>SQUAD</div>
+            <div className="username-input">
+              <label>Username</label>
+              <input type="text" name="username"/>
+            </div>
+            <div className="password-input">
+              <label>Password</label>
+              <input type="password" name="password"/>
+            </div>
+            <div className="submit-button">
+              <input type="submit" value="Submit"/>
+            </div>
+          </form>
+          <div clasName="home-button" onClick={this.props.logout}>Home</div>
       </div>
     )
   }
