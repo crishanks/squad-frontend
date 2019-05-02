@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 
 import PlayerProfile from '../components/PlayerProfile'
+import ProfileBar from '../components/ProfileBar'
+import Footer from '../components/Footer'
 
 const PLAYERS_API = "http://localhost:3000/api/v1/players/"
 
@@ -39,8 +41,8 @@ class ProfileContainer extends Component {
     console.log('ALL TEAMS', this.props.allTeams)
     console.log('CURRENT TEAM', this.props.currentTeam)
     return (
-      <div>
-        <h1>In Profile Container</h1>
+      <div id="profile-container">
+      <ProfileBar />
         <PlayerProfile 
           login={this.props.loginClick} 
           /* showCreateTeamForm={this.props.showCreateTeamForm} */
@@ -50,6 +52,7 @@ class ProfileContainer extends Component {
           currentTeam={this.props.currentTeam}
           allTeams={this.props.allTeams}
         />
+        <Footer />
       </div>
     )
   }

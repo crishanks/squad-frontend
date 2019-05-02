@@ -1,4 +1,5 @@
 import React from 'react'
+
 // import PlayerProfileCard from './PlayerProfileCard'
 
 const PlayerProfile = (props) => {
@@ -31,20 +32,17 @@ const PlayerProfile = (props) => {
   }
 
   return (
-    <div>
-      <div>
-        <h2>Profile</h2>
-        <button onClick={props.login}>Go to Discover</button> 
-        {/* <button onClick={props.showCreateTeamForm}>Create Team</button> */}
-        {/* <button onClick={props.showTeams}>Find Teams</button> */}
-        {/* <button onClick={props.showPlayers}>Find Players</button> */}
-      </div>
-      <div>
-        <h2>My Team</h2>
-        {renderTeammates()}
-      </div>
+    <div id="player-info-container">
+      <div>Profile</div>
+      <div onClick={props.login}>Go to Discover</div> 
+      <div>My Team</div>
+      {renderTeammates()}
     </div>
   )
 }
 
 export default PlayerProfile
+
+      {/* <button onClick={props.showCreateTeamForm}>Create Team</button> */}
+      {/* <button onClick={props.showTeams}>Find Teams</button> */}
+      {/* <button onClick={props.showPlayers}>Find Players</button> */}

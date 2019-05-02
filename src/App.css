@@ -125,7 +125,7 @@ body, html {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  background-color: rgb(55, 146, 216)
+  background-color: #3792d8
 }
 
 .profile-bar-logout {
@@ -145,13 +145,20 @@ body, html {
   
 }
 
+/* Profile Container */
+#profile-container {
+  display: grid;
+  grid-template-rows: 5% 1fr 5%;
+  width: 100vw;
+  min-height: 100vh;
+}
+
 /* Footer  */
 
 #app-footer {
   flex-direction: row;
   justify-content: flex-center;
-  /* padding-right: 10%; */
   align-items: center;
-  background-color: rgb(4, 23, 37);
+  background-color: rgb(24, 25, 26);
   color: white;
 }
