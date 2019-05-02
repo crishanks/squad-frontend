@@ -6,6 +6,7 @@ import { connect } from 'react-redux'
 import MyInfoContainer from './MyInfoContainer'
 import CandidatesContainer from './CandidatesContainer'
 import ProfileBar from '../components/ProfileBar'
+import Footer from '../components/Footer'
 
 // Actions
 import { choosePlayer } from '../actions/discoverActions'
@@ -36,6 +37,7 @@ class DiscoverContainer extends Component {
           declineTeam={this.props.declineTeam}
           fetchPlayersAndTeams={this.fetchAllPlayers}
         />
+        <Footer />
       </div>
     )
   }

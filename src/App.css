@@ -57,14 +57,18 @@ body, html {
   grid-row: 3;
   grid-column: 2;
   font-size: 2.5vw;
+  border-bottom: 1px solid rgba(0,0,0,.1);
+  box-sizing: border-box;
+  margin-top: 1vh;
 }
 
-#footer {
+#profile-card-footer {
   grid-row: 4;
   grid-column: 1/4;
   display: flex;
   justify-content: space-around;
   align-items: center;
+  margin-top: 1vh;
 }
 
 .flex-center {
@@ -74,11 +78,20 @@ body, html {
 }
 
 .circle {
-  width: 10vmin;
-  height: 10vmin;
+  width: 14vmin;
+  height: 14vmin;
   background-color: blue;
   border-radius: 50%;
   display: inline-block;
+}
+
+.profile-bar-circle{
+  width: 10vmin;
+  height: 10vmin;
+  background-color: rgb(233, 233, 241);
+  border-radius: 50%;
+  display: inline-block;
+  margin-left: 5%;
 }
 
 #decline-circle {
@@ -99,7 +112,7 @@ body, html {
 
 #discover-page {
   display: grid;
-  grid-template-rows: 15% 1fr;
+  grid-template-rows: 5% 1fr 5%;
   width: 100vw;
   min-height: 100vh;
   /* May need to adjust width and height for scrolling*/
@@ -110,18 +123,35 @@ body, html {
 #profile-bar-container {
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: center;
+  background-color: rgb(55, 146, 216)
 }
 
-.profile-bar-item {
-  padding-left: 10vw;
+.profile-bar-logout {
+  padding-right: 5vw;
+  font-family: 'Roboto', ans-serif;
+  font-size: 1.5vh;
+  color: white;
 }
 
 /* Candidates Container */
 
 #candidates-container {
   display: grid;
-  grid-template-columns: 1fr 60% 1fr;
-  grid-template-rows: 1fr 75% 1fr;
+  grid-template-columns: 1fr 75% 1fr;
+  grid-template-rows: 1fr 75% 1fr 5%;
+  background-color: rgb(224, 230, 231);
+  
+}
+
+/* Footer  */
+
+#app-footer {
+  flex-direction: row;
+  justify-content: flex-center;
+  /* padding-right: 10%; */
+  align-items: center;
+  background-color: rgb(4, 23, 37);
+  color: white;
 }

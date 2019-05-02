@@ -28,7 +28,7 @@ const PlayerProfileCard = (props) => {
       <div id="description-box">
         <div>{props.player.description}</div>
       </div>
-      <div id="footer">
+      <div id="profile-card-footer">
         <div className="circle" id="decline-circle" onClick={() => props.declinePlayer(props.player)}></div>
         <div className="circle" id="accept-circle" onClick={(props) => handleChoosePlayer(props)}>
         </div>
