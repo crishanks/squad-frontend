@@ -16,8 +16,8 @@ const PlayerProfileCard = (props) => {
   if (props.player) {
     return (
     <div id="player-card-container">
-      <div id="picture">
-        <img id="profile-image" src="" alt=""/>
+      <div id="profile-card-image-container">
+        <img id="profile-card-image" src={props.player.image} alt="player profile card image"/>
       </div>
       <div id="name-box">
         <div className="header">{props.player.name}, {props.player.age}</div>

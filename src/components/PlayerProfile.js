@@ -1,11 +1,10 @@
 import React from 'react'
 
-// import PlayerProfileCard from './PlayerProfileCard'
+import PlayerProfileCard from './PlayerProfileCard'
 
 const PlayerProfile = (props) => {
 
   const renderTeammates = () => {
-    // debugger
     console.log("RENDER TEAMMATES PROPS", props)
     const myTeam = props.allTeams.find(team => team.id === props.currentTeam.id)
     const teammates = myTeam.players
@@ -14,9 +13,9 @@ const PlayerProfile = (props) => {
     return teammates.map(teammate => {
       return (
       <div id="teammate-card">
-      {/* <PlayerProfileCard /> - why can't I just import and use this?*/}
+      {/* <PlayerProfileCard /> */}
         <div id="picture">
-          <img id="profile-image" src="" alt=""/>
+          <img id="profile-image" src={teammate.image} alt="profile card image"/>
         </div>
         <div id="name-box">
           <div className="header">{teammate.name}, {teammate.age}</div>
