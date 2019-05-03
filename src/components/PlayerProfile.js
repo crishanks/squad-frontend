@@ -14,6 +14,7 @@ const PlayerProfile = (props) => {
     return teammates.map(teammate => {
       return (
       <div id="teammate-card">
+      {/* <PlayerProfileCard /> - why can't I just import and use this?*/}
         <div id="picture">
           <img id="profile-image" src="" alt=""/>
         </div>
