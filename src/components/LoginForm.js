@@ -25,11 +25,11 @@ class LoginForm extends Component {
             <div className="password-input">
               <input type="password" name="password" placeholder="password"/>
             </div>
+            <div className="home-button" onClick={this.props.logout}>HOME</div>
             <div className="submit-button">
               <input type="submit" value="SUBMIT"/>
             </div>
           </form>
-          <div clasName="home-button" onClick={this.props.logout}>Home</div>
       </div>
     )
   }

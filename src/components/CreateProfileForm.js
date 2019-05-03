@@ -127,47 +127,61 @@ class CreateProfileForm extends Component {
 
   render() {
     return (
-      <div>
-        <h2>Create Your Profile</h2>
-        <form onSubmit={(ev) => this.handleSubmit(ev)}>
-          <label htmlFor="">First Name</label>
-          <input type="text" name="firstname"/>
-          <label htmlFor="">Last Name</label>
-          <input type="text" name="lastname"/>
-          <label htmlFor="">Username</label>
-          <input type="text" name="username"/>
-          <label htmlFor="">Password</label>
-          <input type="text" name="password"/>
-          <label htmlFor="">Profile Image URL</label>
-          <input type="text" name="image"/>
-          <label htmlFor="">Height</label>
-          <input type="text" name="height"/>
-          <label htmlFor="">Position</label>
-          <input type="text" name="position"/>
-          <label htmlFor="">Experience Level</label>
-          <select name="experiencelevel">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-            <option value="9">9</option>
-            <option value="10">10</option>
-          </select>
-          <label htmlFor="">Bio</label>
-          <textarea name="bio" cols="30" rows="10"></textarea>
+      <div id="create-profile-container">
+        <form id="create-profile-form" onSubmit={(ev) => this.handleSubmit(ev)}>
+          <div id="create-profile-logo">SQUAD</div>
+          <div className="create-profile-input">
+            <input placeholder="first name" type="text" name="firstname"/>
+          </div>
+          <div className="create-profile-input">
+            <input placeholder="last name" type="text" name="lastname"/>
+          </div>
+          <div className="create-profile-input">
+            <input placeholder="username" type="text" name="username"/>
+          </div>
+          <div className="create-profile-input">
+            <input placeholder="password" type="text" name="password"/>
+          </div>
+          <div className="create-profile-input">
+            <input placeholder="image url" type="text" name="image"/>
+          </div>
+          <div className="create-profile-input">
+            <input placeholder="height" type="text" name="height"/>
+          </div>
+          <div className="create-profile-input">
+            <input placeholder="position" type="text" name="position"/>
+          </div>
+          <div className="create-profile-input">
+            <select name="experiencelevel">
+              <option id="create-profile-label" default>skill level &#8250;</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+            </select>
+          </div>
+          <div className="create-profile-input">
+            
+            <textarea className="create-profile-input"  placeholder="bio" name="bio" cols="30" rows="10"></textarea>
+          </div>
 
           <h2>Create Your Team</h2>
-          <label>Team Name</label>
-          <input type="text" name="teamname"/>
-          <label>Location</label>
-          <input type="text" name="teamlocation"/>
-          <label>League</label>
-          <input type="text" name="league"/>
-          <input type="submit" value="Submit"/>
+          <div className="create-profile-input">
+            <input placeholder="team name" type="text" name="teamname"/>
+          </div>
+          <div className="create-profile-input">
+            <input placeholder="location" type="text" name="teamlocation"/>
+          </div>
+          <div className="create-profile-input">
+            <input placeholder="league" type="text" name="league"/>
+          </div>
+          <input id="create-profile-submit" type="submit" value="SUBMIT"/>
       </form>
     </div>
     )
