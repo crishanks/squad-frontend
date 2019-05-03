@@ -42,7 +42,7 @@ class ProfileContainer extends Component {
     console.log('CURRENT TEAM', this.props.currentTeam)
     return (
       <div id="profile-container">
-      <ProfileBar logout={this.props.logout}/>
+      <ProfileBar logout={this.props.logout} currentPlayer={this.props.currentPlayer}/>
         <PlayerProfile 
           login={this.props.loginClick} 
           /* showCreateTeamForm={this.props.showCreateTeamForm} */

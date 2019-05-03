@@ -37,7 +37,7 @@ const PlayerProfile = (props) => {
       <div id="player-info">
         <h2>{props.currentPlayer.player.name}
         </h2>
-        <img src="" alt="player profile image"/>
+        <img src={props.currentPlayer.player.image} alt="player profile image"/>
         <p>{props.currentPlayer.player.description}</p>
       </div>
       <div id="teammates-header">My Team</div>
