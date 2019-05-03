@@ -20,7 +20,7 @@ const PlayerProfileCard = (props) => {
         <img id="profile-image" src="" alt=""/>
       </div>
       <div id="name-box">
-        <div className="header">{props.player.name}, 28</div>
+        <div className="header">{props.player.name}, {props.player.age}</div>
         <div>Position {props.player.position}</div>
         <div>Height {props.player.height}</div>
         <div>Experience {props.player.experience_level}</div>

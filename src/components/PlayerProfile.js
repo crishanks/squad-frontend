@@ -18,7 +18,7 @@ const PlayerProfile = (props) => {
           <img id="profile-image" src="" alt=""/>
         </div>
         <div id="name-box">
-          <div className="header">{teammate.name}, 28</div>
+          <div className="header">{teammate.name}, {teammate.age}</div>
           <div>Position {teammate.position}</div>
           <div>Height {teammate.height}</div>
           <div>Experience {teammate.experience_level}</div>
