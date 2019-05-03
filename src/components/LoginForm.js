@@ -20,15 +20,13 @@ class LoginForm extends Component {
           <form id="login-form" onSubmit={(ev) => this.handleFormSubmit(ev)}>
             <div className='logo'>SQUAD</div>
             <div className="username-input">
-              <label>Username</label>
-              <input type="text" name="username"/>
+              <input type="text" name="username" placeholder="username"/>
             </div>
             <div className="password-input">
-              <label>Password</label>
-              <input type="password" name="password"/>
+              <input type="password" name="password" placeholder="password"/>
             </div>
             <div className="submit-button">
-              <input type="submit" value="Submit"/>
+              <input type="submit" value="SUBMIT"/>
             </div>
           </form>
           <div clasName="home-button" onClick={this.props.logout}>Home</div>
