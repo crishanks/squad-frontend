@@ -115,6 +115,7 @@ class HomeScreenContainer extends Component {
         currentPlayer={this.props.currentPlayer}
         currentTeam={this.props.currentTeam}
         allTeams={this.props.allTeams}
+        logout={this.props.logout}
       />
     } else if (this.props.showCreateProfileForm) {
       return <CreateProfileForm 
@@ -138,7 +139,7 @@ class HomeScreenContainer extends Component {
       return <WelcomeBanner showLoginFormClick={this.props.toggleShowLoginForm} signupClick={this.props.signup}/>
     } else if (this.props.loggedIn) {
       return <DiscoverContainer 
-        logoutClick={this.props.logout} 
+        logout={this.props.logout} 
         showProfileContainer={this.props.toggleShowProfileContainer} 
         currentPlayer={this.props.currentPlayer}
         allPlayers={this.props.allPlayers}

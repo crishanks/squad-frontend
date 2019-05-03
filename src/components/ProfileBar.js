@@ -5,7 +5,7 @@ const ProfileBar = (props) => {
     <div id="profile-bar-container" className="flex-center">
       <div className="profile-bar-circle" onClick={props.showProfileContainer}></div>
       <div>SQUAD</div>
-      <div className="profile-bar-logout flex-center" onClick={props.logoutClick}>Logout</div>
+      <div className="profile-bar-logout flex-center" onClick={props.logout}>Logout</div>
     </div>
   )
 }
