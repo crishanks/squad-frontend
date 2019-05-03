@@ -51,10 +51,12 @@ class HomeScreenContainer extends Component {
         }
       })
     }
-
     return fetch(JWT_API, requestParams)
     .then((response) => {return response.json()})
     .then((json) => {
+      if (json.message) {
+        throw new Error('Invalid Username or Password')
+      } 
       this.props.receiveJWT(json)
       console.log("FETCHED ACCESS TOKEN json", json)
       localStorage.setItem('token', json.jwt)
@@ -68,8 +70,9 @@ class HomeScreenContainer extends Component {
     .then(json => {
       this.props.receiveAllTeams(json)
       this.props.receiveCurrentTeam(this.props.currentPlayer.player.teams[0])
+    }).catch(error => {
+      alert(error.message)
     })
-    // .then(this.fetchAllPlayers())
   }
 
   fetchAllPlayers = (token) => {

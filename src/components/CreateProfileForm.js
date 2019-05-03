@@ -37,6 +37,11 @@ class CreateProfileForm extends Component {
     return fetch(PLAYERS_API, requestParams)
     .then(res => res.json())
     .then(json => {
+      console.log("NEW PLAYER JSON", json.error)
+      if (json.error) {
+        alert('Invalid Username or Password')
+        throw 'error'
+      }
       localStorage.setItem('token', json.jwt)
       console.log('CREATE NEW PLAYER JSON', json)
       this.props.receiveCurrentPlayer(json)
@@ -117,6 +122,8 @@ class CreateProfileForm extends Component {
     .then(response => response.json())
     .then(json => {
       this.props.receiveAllTeams(json)
+    }).catch(error => {
+      alert(error.message)
     })
   }
 
