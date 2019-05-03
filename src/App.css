@@ -56,7 +56,7 @@ input {
   grid-column: 2;
   grid-row: 2;
   grid-template-columns: 5% 1fr 5%;
-  grid-template-rows: 10% 30% 5% 1fr 5% 1fr 5% 1fr 5%;
+  grid-template-rows: 10% 20% 5% 1fr 5% 1fr 5% 1fr 5%;
 }
 
 .logo {
@@ -86,7 +86,7 @@ input {
 .password-input {
  grid-column: 2;
  grid-row: 6;
- align-self: center;
+ align-self: top;
  justify-self: center;
 }
 
@@ -99,7 +99,7 @@ input {
 
 .submit-button {
   grid-column: 2;
-  grid-row: 7;
+  grid-row: 8;
   justify-self: center;
 }
 
