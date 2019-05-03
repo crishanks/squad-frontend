@@ -127,6 +127,7 @@ class HomeScreenContainer extends Component {
         receiveCurrentPlayer={this.props.receiveCurrentPlayer}
         receiveAllTeams={this.props.receiveAllTeams}
         receiveAllPlayers={this.props.receiveAllPlayers}
+        logout={this.props.logout}
       />
     } else if (this.props.showLoginForm) {
       return <LoginForm 

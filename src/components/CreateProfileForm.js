@@ -129,7 +129,7 @@ class CreateProfileForm extends Component {
     return (
       <div id="create-profile-container">
         <form id="create-profile-form" onSubmit={(ev) => this.handleSubmit(ev)}>
-          <div id="create-profile-logo">SQUAD</div>
+          <div id="create-profile-logo" onClick={this.props.logout}>SQUAD</div>
           <div className="create-profile-input">
             <input placeholder="first name" type="text" name="firstname"/>
           </div>
