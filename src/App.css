@@ -151,6 +151,7 @@ input {
 .create-profile-input {
   align-self: center;
   justify-self: center;
+  padding: 1vw;
 }
 
 .create-profile-input input {
@@ -176,8 +177,9 @@ input {
 }
 
 #create-profile-submit{
+  grid-row: 15;
   font-size: 4vw;
-  justify-self: top;
+  margin-bottom: 10vw;
 }
 
 /* Player Profile Card */
