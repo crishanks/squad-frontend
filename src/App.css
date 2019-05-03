@@ -12,6 +12,7 @@ body, html {
 input {
   color: rgb(27, 26, 26);
   text-align: center;
+  padding: 3vw;
 }
 
 .header {
@@ -63,6 +64,9 @@ input {
   grid-row: 2;
   align-self: center;
   justify-self: center;
+  font-size: 6vh;
+  color: rgb(22, 21, 21);
+  opacity: .6;
 }
 
 .username-input {
@@ -75,7 +79,8 @@ input {
 .username-input input {
   background: transparent;
   border: none;
-  border-bottom: 1px solid #5B7BFF
+  border-bottom: 1px solid #5B7BFF;
+  width: 25vw;
 }
 
 .password-input {
@@ -88,7 +93,8 @@ input {
 .password-input input {
   background: transparent;
   border: none;
-  border-bottom: 1px solid #5B7BFF
+  border-bottom: 1px solid #5B7BFF;
+  width: 25vw;
 }
 
 .submit-button {
