@@ -22,14 +22,14 @@ input {
 
 /* WelcomeBanner */
 
-/* .hero-image {
+#welcome-banner-container {
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('./assets/images/basketball_court.jpg');
-  height: 50%;
+  min-height: 100vh;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
-} */
+}
 
 .hero-content {
   text-align: center;
@@ -38,8 +38,13 @@ input {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  color: rgb(19, 18, 18);
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('./assets/images/basketball_court.jpg');
+  color: rgb(173, 166, 166);
+  font-size: 4vh;
+}
+
+.hero-content button{
+  color: rgb(173, 166, 166);
+  font-size: 5vw;
 }
 
 /* Login Form */
@@ -252,7 +257,6 @@ span {
 .circle {
   width: 14vmin;
   height: 14vmin;
-  background-color: blue;
   border-radius: 50%;
   display: inline-block;
 }
@@ -268,12 +272,15 @@ span {
 
 #decline-circle {
   background-color: #FF4E68;
-
 }
 
 #accept-circle {
   background-color: #5BC495;
+/* add a check */
+}
 
+.circle image {
+  position: absolute;
 }
 
 /* Discover */
