@@ -1,4 +1,6 @@
 import React from 'react'
+import check from '../assets/images/icons/check.png';
+import x from '../assets/images/icons/x.png';
 
 const PlayerProfileCard = (props) => {
 
@@ -24,10 +26,10 @@ const PlayerProfileCard = (props) => {
       </div>
       <div id="profile-card-footer">
         <div className="circle" id="decline-circle" onClick={() => props.declinePlayer(props.player)}>
-          <img src="../src/assets/images/icons/x.png" alt="x"/>
+          <img src={x} alt="x"/>
         </div>
         <div className="circle" id="accept-circle" onClick={(props) => handleChoosePlayer(props)}>
-          <img src="../src/assets/images/icons/check.png" alt="check"/>
+          <img src={check} alt="check"/>
         </div>
       </div>
     </div>
