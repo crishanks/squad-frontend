@@ -53,7 +53,7 @@ export const receiveAllPlayers = (json) => {
 }
 
 export const receiveAllTeams = (json) => {
-  console.log('receive all teams action')
+  debugger
   return {
     type: 'RECEIVE_ALL_TEAMS',
     payload: {json}

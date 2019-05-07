@@ -54,7 +54,6 @@ class HomeScreenContainer extends Component {
     return fetch(JWT_API, requestParams)
     .then((response) => {return response.json()})
     .then((json) => {
-      // debugger
       if (json.message) {
         throw new Error('Invalid Username or Password')
       } 
@@ -64,14 +63,10 @@ class HomeScreenContainer extends Component {
       return json.jwt
     })
     .then(jwt => {
-      // debugger
       console.log('FETCH ALL STUFF - JWT', jwt)
-      this.fetchAllTeams(jwt)
       return this.fetchAllPlayers(jwt)
     })
     .then(json => {
-      // debugger
-      this.props.receiveAllTeams(json)
       this.props.receiveCurrentTeam(this.props.currentPlayer.player.teams[0])
     }).catch(error => {
       alert(error.message)
@@ -89,16 +84,15 @@ class HomeScreenContainer extends Component {
     return fetch(ALL_PLAYERS_API, requestParams)
     .then(response => response.json())
     .then(json => {
-      // debugger
       console.log('FETCHED ALL PLAYERS - json', json)
       return this.props.receiveAllPlayers(json)
     })
-    .then(this.fetchAllTeams())
+    .then(this.fetchAllTeams(token))
   }
 
   fetchAllTeams = (token) => {
     console.log('FETCH ALL TEAMS - token', token)
-    // debugger
+    debugger
     const requestParams = {
       method: 'GET',
       headers: {
@@ -108,11 +102,11 @@ class HomeScreenContainer extends Component {
 
     return fetch(ALL_TEAMS_API, requestParams)
     .then(response => response.json())
-    /*.then(json => {
+    .then(json => {
       console.log("FETCHED ALL TEAMS - json", json)
       this.props.receiveAllTeams(json)
       this.props.receiveCurrentTeam(this.props.currentPlayer.player.teams[0])
-    })*/
+    })
   }
 
   renderComponents = () => {
