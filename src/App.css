@@ -295,7 +295,7 @@ span {
 
 #decline-circle img {
   width: 12vw;
-  height: 6vh;
+  height: calc(12vw / 1.2);
   align-self: center;
 }
 
@@ -308,7 +308,7 @@ span {
 
 #accept-circle img {
   width: 12vw;
-  height: 6vh;
+  height: calc(12vw / 1.2);
   align-self: center;
 }
 
