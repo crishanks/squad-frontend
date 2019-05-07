@@ -12,7 +12,7 @@ const PlayerProfile = (props) => {
     console.log('renderTeammates teammates', teammates)
     return teammates.map(teammate => {
       return (
-        <div id="player-card-container">
+        <div id="teammate-card-container">
           <div id="profile-card-image-container">
             <img id="profile-card-image" src={teammate.image} alt="profile card image"/>
           </div>
