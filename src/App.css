@@ -377,17 +377,15 @@ span {
   max-height: 100vh;
 }
 
-#player-info p {
-  padding-right: 10vw;
-}
-
-
 #player-info {
-  padding-top: 1vh;
   grid-row: 1/3;
   grid-column: 2/4;
-  height: 100vh;
-  width: 100vw;
+  max-height: 100vw;
+  overflow: scroll;
+}
+
+#player-info p {
+  font-size: 3vw;
 }
 
 #player-info img {
@@ -407,9 +405,10 @@ span {
 .discover-button {
   grid-row: 1;
   grid-column: 3;
-  font-size: 3vw;
+  font-size: 2.5vw;
   padding-top: 4vw;
   text-align: end;
+  z-index: 1;
 }
 
 #teammate-cards-container {
@@ -469,6 +468,6 @@ span {
   align-items: center;
   background-color: rgb(24, 25, 26);
   color: white;
-  grid-row: 4;
+  grid-row: 3;
   max-height: 100vh;
 }
