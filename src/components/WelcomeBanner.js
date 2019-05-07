@@ -5,9 +5,11 @@ const WelcomeBanner = (props) => {
   return (
     <div id="welcome-banner-container">
       <div className='hero-content'>
-          <h1>SQUAD</h1>
-          <div onClick={props.signupClick}>Sign Up</div><br/>
-          <div onClick={props.showLoginFormClick}>Log In</div>
+          <h1 className="logo">SQUAD</h1>
+          <div id="welcome-inputs">
+            <div onClick={props.signupClick}>Sign Up</div><br/>
+            <div onClick={props.showLoginFormClick}>Log In</div>
+          </div>
       </div>
     </div>
   )

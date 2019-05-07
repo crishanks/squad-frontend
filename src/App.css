@@ -2,7 +2,7 @@
 
 body, html {
   height: 100%;
-  background-color: rgb(224, 230, 231);
+  background-color: #F7FFF7;
 }
 
 ::-webkit-input-placeholder {
@@ -14,7 +14,11 @@ input {
   color: rgb(27, 26, 26);
   text-align: center;
   padding: 3vw;
-  font-size: 2vw;
+  font-size: inherit;
+}
+
+textarea {
+  font-size: inherit;
 }
 
 .header {
@@ -25,7 +29,7 @@ input {
 /* WelcomeBanner */
 
 #welcome-banner-container {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('./assets/images/basketball_court.jpg');
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.2)), url('./assets/images/hoop2.jpg');
   min-height: 100vh;
   background-position: center;
   background-repeat: no-repeat;
@@ -49,6 +53,10 @@ input {
   font-size: 5vw;
 }
 
+#welcome-inputs {
+  margin-top: 10vw;
+}
+
 /* Login Form */
 
 #login-form-container {
@@ -56,7 +64,6 @@ input {
   grid-template-columns: 5% 1fr 5%;
   grid-template-rows: 5% 1fr 5%;
   height: 100vh;
-  /* background-image: linear-gradient(#6686FF, #5D9EE8, #74D9FF, #5DE8E8, #66FFD4); */
   background-color: #F7FFF7
 }
 
@@ -75,7 +82,8 @@ input {
   justify-self: center;
   font-size: 12vw;
   color: #06AED5;
-  opacity: .6;
+  opacity: .8;
+  letter-spacing: 2vw;
 }
 
 .username-input {
@@ -113,8 +121,8 @@ input {
 }
 
 .submit-button input {
-  color: #5B7BFF;
-
+  color: #06AED5;
+  font-size: 2.5vw;
 }
 
 .home-button {
@@ -132,8 +140,8 @@ input {
 #create-profile-container {
   display: grid;
   grid-template-columns: 5% 1fr 5%;
-  height: 100vh;
-  /* background-image: linear-gradient(#6686FF, #5D9EE8, #74D9FF, #5DE8E8, #66FFD4); */
+  max-height: 100vh;
+  max-width: 100vw;
   background-color: #F7FFF7;
 }
 
@@ -142,7 +150,7 @@ input {
   height: 100vh;
   grid-column: 2;
   grid-row: 2;
-  grid-template-rows: 10% 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 5% 1fr 1fr 1fr 10%;
+  grid-template-rows: 25% 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 5% 1fr 1fr 1fr;
 }
 
 #create-profile-logo {
@@ -174,6 +182,7 @@ input {
   border: none;
   border-bottom: 1px solid #5B7BFF;
   width: 25vw;
+  margin: 2vw;
 }
 
 .create-profile-input textarea {
@@ -183,6 +192,7 @@ input {
   width: 60vw;
   height: 30vw;
   padding-top: 2vw;
+  margin: 5vw;
 }
 
 #create-profile-form h2 {
@@ -191,10 +201,18 @@ input {
   font-size: 2vh;
 }
 
+#create-profile-form select {
+  font-size: 2vw;
+  padding-left: 2vw;
+  color: rgb(109, 110, 109);
+  margin: 2vw;
+}
+
 #create-profile-submit{
-  grid-row: 15;
-  font-size: 4vw;
+  grid-row: 16;
+  font-size: 3vw;
   margin-bottom: 10vw;
+  color: #5B7BFF;
 }
 
 /* Player Profile Card */
