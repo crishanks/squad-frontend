@@ -1,6 +1,7 @@
 import React from 'react'
 
 import PlayerProfileCard from './PlayerProfileCard'
+import Footer from '../components/Footer'
 
 const PlayerProfile = (props) => {
 
@@ -16,13 +17,13 @@ const PlayerProfile = (props) => {
           <div id="profile-card-image-container">
             <img id="profile-card-image" src={teammate.image} alt="profile card image"/>
           </div>
-          <div id="name-box">
-            <div className="header">{teammate.name}, {teammate.age}</div>
+          <div id="teammate-card-name-box">
+            <div>{teammate.name}, {teammate.age}</div>
             <div>Position {teammate.position}</div>
             <div>Height {teammate.height}</div>
             <div>Experience {teammate.experience_level}</div>
           </div>
-          <div id="description-box">
+          <div id="teammate-card-description-box">
             <div>{teammate.description}</div>
           </div>
         </div>
@@ -48,6 +49,9 @@ const PlayerProfile = (props) => {
     </div> 
     <div id="teammate-cards-container">
       {renderTeammates()}
+    </div>
+    <div id="teammate-profile-app-footer" className="flex-center">
+      <div className="profile-bar-item">SQUAD</div>
     </div>
     </>
   )

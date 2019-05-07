@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 
 import PlayerProfile from '../components/PlayerProfile'
 import ProfileBar from '../components/ProfileBar'
-import Footer from '../components/Footer'
 
 const PLAYERS_API = "http://localhost:3000/api/v1/players/"
 
@@ -52,7 +51,6 @@ class ProfileContainer extends Component {
           currentTeam={this.props.currentTeam}
           allTeams={this.props.allTeams}
         />
-        <Footer />
       </div>
     )
   }

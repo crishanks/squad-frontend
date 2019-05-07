@@ -55,7 +55,7 @@ export const receiveAllPlayers = (json) => {
 export const receiveAllTeams = (json) => {
   return {
     type: 'RECEIVE_ALL_TEAMS',
-    payload: {json.payload.json}
+    payload: {json}
   }
 }
 
@@ -90,7 +90,6 @@ export const receiveCurrentPlayer = (player) => {
 }
 
 export const addPlayerToCurrentTeam = (player) => {
-  // debugger
   return {
     type: 'ADD_PLAYER_TO_CURRENT_TEAM',
     payload: player

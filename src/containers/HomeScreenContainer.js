@@ -92,7 +92,6 @@ class HomeScreenContainer extends Component {
 
   fetchAllTeams = (token) => {
     console.log('FETCH ALL TEAMS - token', token)
-    debugger
     const requestParams = {
       method: 'GET',
       headers: {
