@@ -4,7 +4,7 @@ const ProfileBar = (props) => {
   console.log("PROFILE BAR PROPS", props)
   return (
     <div id="profile-bar-container" className="flex-center">
-      <div className="profile-bar-circle" onClick={props.showProfileContainer}></div>
+      <img src={props.currentPlayer.player.image} className="profile-bar-circle" onClick={props.showProfileContainer}/>
       <div>SQUAD</div>
       <div className="profile-bar-logout flex-center" onClick={props.logout}>Logout</div>
     </div>

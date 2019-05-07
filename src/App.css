@@ -62,6 +62,7 @@ textarea {
   position: absolute;
   top: 17vh;
   min-width: 50vw;
+  font-size: 4.5vw;
 }
 
 /* Login Form */
