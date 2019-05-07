@@ -1,6 +1,6 @@
-#SQUAD
+# SQUAD
 
-##Technologies
+## Technologies
 
 - ReactJS
 - Redux
@@ -8,7 +8,7 @@
 - Ruby on Rails
 - JWT Authentication
 
-##Features
+## Features
 
 - Single Page Application
 - Mobile-First & Responsive Design
@@ -16,15 +16,15 @@
 - Full JWT Authentication for secure profile creation and sign in
 - Error handling for incorrect username or password
 
-##Summary
+## Summary
 
 Build your team with SQUAD - an interactive single page application that allows users to create a player profile & sign in with full JWT authentication, sift through a list of all registered players and add any number to their team.
 
-##Usage
+## How to Use SQUAD
 
 Create an account with an authentic username and password, and start searching for players. Click the green button to add a player to your roster. Click the red button to move to the next player card.
 
-###Future Updates
+### Future Updates
 
 Players will be able to:
 - add to his/her team using match-logic (much like popular dating apps)
