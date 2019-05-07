@@ -34,7 +34,8 @@ textarea {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  position: relative;
+  display: grid;
+  grid-template-rows: 15vh;
 }
 
 .hero-content {
@@ -46,15 +47,21 @@ textarea {
   transform: translate(-50%, -50%);
   color: rgb(173, 166, 166);
   font-size: 3vh;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
 }
 
-.hero-content button{
-  color: rgb(173, 166, 166);
-  font-size: 5vw;
+.hero-content .logo {
+  position: absolute;
+  height: 30vh;
 }
 
 #welcome-inputs {
-  margin-top: 10vw;
+  position: absolute;
+  top: 17vh;
+  min-width: 50vw;
 }
 
 /* Login Form */
