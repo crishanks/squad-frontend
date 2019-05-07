@@ -312,8 +312,8 @@ span {
 }
 
 .profile-bar-circle{
-  width: 3vh;
-  height: 3vh;
+  width: 5%;
+  height: auto;
   background-color: rgb(233, 233, 241);
   border-radius: 50%;
   display: inline-block;
@@ -325,6 +325,8 @@ span {
   display: flex;
   align-content: center;
   justify-content: center; 
+  width: 14vw;
+  height: 14vw;
 }
 
 #decline-circle img {
@@ -338,6 +340,8 @@ span {
   display: flex;
   align-content: center;
   justify-content: center; 
+  width: 14vw;
+  height: 14vw;
 }
 
 #accept-circle img {
