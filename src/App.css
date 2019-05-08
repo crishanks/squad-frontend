@@ -219,8 +219,12 @@ textarea {
 #create-profile-submit{
   grid-row: 16;
   font-size: 3vw;
-  margin-bottom: 10vw;
+  margin: 5vw;
   color: #5B7BFF;
+  min-width: 10vw;
+  max-width: 15vw;
+  justify-self: center;
+  align-self: center;
 }
 
 /* Player Profile Card */
