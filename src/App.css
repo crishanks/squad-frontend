@@ -324,12 +324,12 @@ span {
 }
 
 .profile-bar-circle{
-  width: 5%;
+  width: 8%;
   height: auto;
   background-color: rgb(233, 233, 241);
   border-radius: 50%;
   display: inline-block;
-  margin-left: 5%;
+  margin: 5%;
 }
 
 #decline-circle {
