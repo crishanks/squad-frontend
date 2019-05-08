@@ -2,7 +2,7 @@
 
 // // import CreateTeamForm from '../components/CreateTeamForm'
 
-// const TEAMS_API = "http://localhost:3000/api/v1/teams"
+// const TEAMS_API = "https://squad-backend.herokuapp.com/api/v1/teams"
 
 // class CreateTeamContainer extends Component {
 //   constructor(props) {

@@ -28,9 +28,9 @@ import ProfileContainer from './ProfileContainer'
 import CreateTeamContainer from './CreateTeamContainer'
 
 //URLs
-const JWT_API = "http://localhost:3000/api/v1/login"
-const ALL_PLAYERS_API = "http://localhost:3000/api/v1/players"
-const ALL_TEAMS_API = "http://localhost:3000/api/v1/teams"
+const JWT_API = "https://squad-backend.herokuapp.com/api/v1/login"
+const ALL_PLAYERS_API = "https://squad-backend.herokuapp.com/api/v1/players"
+const ALL_TEAMS_API = "https://squad-backend.herokuapp.com/api/v1/teams"
 
 class HomeScreenContainer extends Component {
   constructor(props) {
