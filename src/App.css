@@ -35,7 +35,21 @@ textarea {
   background-repeat: no-repeat;
   background-size: cover;
   display: grid;
-  grid-template-rows: 15vh;
+  grid-template-rows: 1fr 20% 5% 10% 10% 1fr;
+  grid-template-columns: 5% 1fr 5%;
+}
+
+#welcome-logo {
+  grid-row: 2;
+  grid-column: 2;
+  display: flex;
+  align-self: flex-end;
+  justify-self: center;
+  font-size: 12vw;
+  color: #06AED5;
+  opacity: .8;
+  letter-spacing: 2vw;
+  margin: 0;
 }
 
 .hero-content {
@@ -47,22 +61,24 @@ textarea {
   transform: translate(-50%, -50%);
   color: rgb(173, 166, 166);
   font-size: 3vh;
-  display: flex;
-  flex-wrap: wrap;
-  align-content: center;
-  justify-content: center;
 }
 
-.hero-content .logo {
-  position: absolute;
-  height: 50vh;
+#welcome-signup {
+  grid-row: 4;
+  grid-column: 2;
+  align-self: flex-end;
+  justify-self: center;
+  color: rgb(173, 166, 166);
+  font-size: 3vh;
 }
 
-#welcome-inputs {
-  position: absolute;
-  top: 17vh;
-  min-width: 50vw;
-  font-size: 4.5vw;
+#welcome-login {
+  grid-row: 5;
+  grid-column: 2;
+  align-self: center;
+  justify-self: center;
+  color: rgb(173, 166, 166);
+  font-size: 3vh;
 }
 
 /* Login Form */
