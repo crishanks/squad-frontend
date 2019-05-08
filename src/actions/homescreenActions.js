@@ -17,7 +17,6 @@ export const signup = () => {
 }
 
 export const login = () => {
-  console.log('login action')
   return {
     type: 'LOG_IN'
   }
@@ -37,7 +36,6 @@ export const createTeam = (team) => {
 }
 
 export const receiveJWT = (json) => {
-  console.log('receiveJWT action')
   return {
     type: 'RECEIVE_JWT',
     payload: {json}
@@ -45,7 +43,6 @@ export const receiveJWT = (json) => {
 }
 
 export const receiveAllPlayers = (json) => {
-  console.log('receive all players action')
   return {
     type: 'RECEIVE_ALL_PLAYERS',
     payload: {json}
@@ -60,7 +57,6 @@ export const receiveAllTeams = (json) => {
 }
 
 export const receiveCurrentTeam = (json) => {
-  console.log('RECEIVING CURRENT TEAM ACTION - json', json)
   return {
     type: 'RECEIVE_CURRENT_TEAM',
     payload: {json}
@@ -68,7 +64,6 @@ export const receiveCurrentTeam = (json) => {
 }
 
 export const declinePlayer = (player) => {
-  console.log('hitting decline player action')
   return {
     type: 'DECLINE_PLAYER',
     payload: {player}

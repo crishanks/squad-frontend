@@ -11,7 +11,6 @@ const discoverReducer = (state = initialState, action) => {
         allTeams: [...state.myTeams, action.payload.team]
       }
     case 'CHOOSE_PLAYER':
-    console.log('discover reducer state', state)
       return {
         ...state,
         allPlayers: [...state.allPlayers, action.payload.player]

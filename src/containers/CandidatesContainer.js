@@ -6,7 +6,7 @@ import { connect } from 'react-redux'
 import TeamProfileCardsContainer from './TeamProfileCardsContainer'
 import PlayerProfileCardsContainer from './PlayerProfileCardsContainer'
 
-const TEAM_PLAYERS_API = "http://localhost:3000/api/v1/team_players"
+const TEAM_PLAYERS_API = "https://squad-backend.herokuapp.com/api/v1/team_players"
 
 class CandidatesContainer extends Component {
   constructor(props) {
@@ -32,7 +32,6 @@ class CandidatesContainer extends Component {
   //   /> 
 
   associatePlayerWithTeam = (player) => {
-    console.log('ASSOCIATING PLAYER AND TEAM - CANDIDATES CONTAINER', player, 'CURRENT TEAM', this .props.currentTeam)
     const requestParams = {
       method: 'POST',
       headers: {
@@ -48,7 +47,6 @@ class CandidatesContainer extends Component {
     return fetch(TEAM_PLAYERS_API, requestParams)
     .then(result => result.json())
     .then(() => this.props.addPlayerToCurrentTeam(player))
-    // .then(json => console.log('Associated Player and Team - json', json))
   }
 
   render() {

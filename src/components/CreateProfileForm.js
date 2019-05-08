@@ -16,7 +16,6 @@ class CreateProfileForm extends Component {
 
   createPlayer = (ev) => {
     ev.persist()
-    console.log('creating player', ev.target.username.value)
     const requestParams = {
       method: 'POST',
       headers: {
@@ -37,13 +36,11 @@ class CreateProfileForm extends Component {
     return fetch(PLAYERS_API, requestParams)
     .then(res => res.json())
     .then(json => {
-      console.log("NEW PLAYER JSON", json.error)
       if (json.error) {
         alert('Invalid Username or Password')
         throw 'error'
       }
       localStorage.setItem('token', json.jwt)
-      console.log('CREATE NEW PLAYER JSON', json)
       this.props.receiveCurrentPlayer(json)
       return json
     })
@@ -51,7 +48,6 @@ class CreateProfileForm extends Component {
   }
 
   createTeam = (ev, playerJson) => {
-    console.log('PLAYERJSON - create team', playerJson)
     ev.persist()
     const requestParams = {
       method: 'POST',
@@ -68,7 +64,6 @@ class CreateProfileForm extends Component {
     return fetch(TEAMS_API, requestParams)
     .then(results => results.json())
     .then(json => {
-      console.log('CREATE NEW TEAM JSON', json)
       this.props.receiveCurrentTeam(json)
       return json
     })
@@ -76,7 +71,6 @@ class CreateProfileForm extends Component {
   }
 
   associateTeamWithPlayer = (playerJson, teamJson) => {
-    console.log('ASSOCIATING TEAM AND PLAYER = playerJson', playerJson)
     const requestParams = {
       method: 'POST',
       headers: {
@@ -93,7 +87,6 @@ class CreateProfileForm extends Component {
   }
 
   fetchAllPlayers = () => {
-    console.log('fetch players')
     const requestParams = {
       method: 'GET',
       headers: {
@@ -110,7 +103,6 @@ class CreateProfileForm extends Component {
   }
 
   fetchAllTeams = () => {
-    console.log('fetch teams')
     const requestParams = {
       method: 'GET',
       headers: {

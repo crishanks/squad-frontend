@@ -20,7 +20,6 @@ class DiscoverContainer extends Component {
   //choose player/team and decline player/team may need to be a patch request to the DB instead of updating state
 
   render() {
-    console.log('discover props', this.props)
     return (
       <div id="discover-page">
         {/* <button onClick={this.props.logoutClick}>Log Out</button> */}

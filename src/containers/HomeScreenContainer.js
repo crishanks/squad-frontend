@@ -58,12 +58,10 @@ class HomeScreenContainer extends Component {
         throw new Error('Invalid Username or Password')
       } 
       this.props.receiveJWT(json)
-      console.log("FETCHED ACCESS TOKEN json", json)
       localStorage.setItem('token', json.jwt)
       return json.jwt
     })
     .then(jwt => {
-      console.log('FETCH ALL STUFF - JWT', jwt)
       return this.fetchAllPlayers(jwt)
     })
     .then(json => {
@@ -84,14 +82,12 @@ class HomeScreenContainer extends Component {
     return fetch(ALL_PLAYERS_API, requestParams)
     .then(response => response.json())
     .then(json => {
-      console.log('FETCHED ALL PLAYERS - json', json)
       return this.props.receiveAllPlayers(json)
     })
     .then(this.fetchAllTeams(token))
   }
 
   fetchAllTeams = (token) => {
-    console.log('FETCH ALL TEAMS - token', token)
     const requestParams = {
       method: 'GET',
       headers: {
@@ -102,7 +98,6 @@ class HomeScreenContainer extends Component {
     return fetch(ALL_TEAMS_API, requestParams)
     .then(response => response.json())
     .then(json => {
-      console.log("FETCHED ALL TEAMS - json", json)
       this.props.receiveAllTeams(json)
       this.props.receiveCurrentTeam(this.props.currentPlayer.player.teams[0])
     })
@@ -158,7 +153,6 @@ class HomeScreenContainer extends Component {
   //   return <CreateTeamContainer/>
 
   render() {
-    console.log('hsc props', this.props)
   return (
     <>
       {this.renderComponents()}

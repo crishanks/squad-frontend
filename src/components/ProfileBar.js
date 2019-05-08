@@ -1,7 +1,6 @@
 import React from 'react'
 
 const ProfileBar = (props) => {
-  console.log("PROFILE BAR PROPS", props)
   return (
     <div id="profile-bar-container" className="flex-center">
       <img src={props.currentPlayer.player.image} className="profile-bar-circle" onClick={props.showProfileContainer}/>

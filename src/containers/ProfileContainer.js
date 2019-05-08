@@ -37,8 +37,6 @@ class ProfileContainer extends Component {
   }
 
   render() {
-    console.log('ALL TEAMS', this.props.allTeams)
-    console.log('CURRENT TEAM', this.props.currentTeam)
     return (
       <div id="profile-container">
       <ProfileBar logout={this.props.logout} currentPlayer={this.props.currentPlayer}/>

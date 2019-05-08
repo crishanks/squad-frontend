@@ -12,13 +12,11 @@ const initialState = {
 const homescreenReducer = (state = initialState, action) => {
   switch(action.type) {
     case 'RECEIVE_JWT':
-      console.log('receiveJWT reducer')
       return {
         ...state,
         currentPlayer: action.payload.json
       }
     case 'RECEIVE_ALL_PLAYERS':
-    console.log('receive all players reducer')
       return {
         ...state,
         allPlayers: action.payload.json,
@@ -27,7 +25,6 @@ const homescreenReducer = (state = initialState, action) => {
         showCreateProfileForm: false
       }
     case 'RECEIVE_ALL_TEAMS':
-    console.log('receive all teams reducer')
       return {
         ...state,
         allTeams: action.payload.json
@@ -51,7 +48,6 @@ const homescreenReducer = (state = initialState, action) => {
         showProfileContainer: false
       }
     case 'LOG_IN':
-    console.log('login reducer')
       return {
         ...state,
         loggedIn: true,
@@ -76,11 +72,9 @@ const homescreenReducer = (state = initialState, action) => {
         allTeams: allTeamsExceptChosen
     }
     case 'DECLINE_PLAYER':
-    console.log('hitting decline player reducer')
       const allPlayersExceptDeclined = state.allPlayers.filter(player => {
         return player.id !== action.payload.player.id
       })
-      console.log('allplayers except declined', allPlayersExceptDeclined)
       return {
         ...state,
         allPlayers: allPlayersExceptDeclined
@@ -99,7 +93,6 @@ const homescreenReducer = (state = initialState, action) => {
       allTeams: [...state, action.payload.team]
     }
     case 'RECEIVE_CURRENT_TEAM':
-    console.log('RECEIVE CURRENT TEAM ACTION PAYLOAD', action.payload.json)
     return {
       ...state,
       currentTeam: action.payload.json
