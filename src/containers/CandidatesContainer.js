@@ -2,8 +2,10 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
+//Actions
+import { addPlayerToCurrentTeam } from '../actions/teamActions'
+
 // Components
-import TeamProfileCardsContainer from './TeamProfileCardsContainer'
 import PlayerProfileCardsContainer from './PlayerProfileCardsContainer'
 
 const TEAM_PLAYERS_API = "https://squad-backend.herokuapp.com/api/v1/team_players"
@@ -51,4 +53,16 @@ class CandidatesContainer extends Component {
   }
 }
 
-export default CandidatesContainer
+const mapStateToProps = state => {
+  return {
+    currentTeam: state.teamReducer.currentTeam
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    addPlayerToCurrentTeam: (player) => dispatch(addPlayerToCurrentTeam(player))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(CandidatesContainer)

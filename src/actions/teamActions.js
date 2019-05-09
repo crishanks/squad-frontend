@@ -26,3 +26,9 @@ export const declineTeam = (team) => {
   }
 }
 
+export const addPlayerToCurrentTeam = (player) => {
+  return {
+    type: 'ADD_PLAYER_TO_CURRENT_TEAM',
+    payload: player
+  }
+}
