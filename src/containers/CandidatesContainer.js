@@ -24,13 +24,6 @@ class CandidatesContainer extends Component {
     />
   }
 
-  // if (this.props.currentPlayer.showTeams) {
-  //   return <TeamProfileCardsContainer 
-  //     allTeams={this.props.allTeams}
-  //     chooseTeam={this.props.chooseTeam}
-  //     declineTeam={this.props.declineTeam}
-  //   /> 
-
   associatePlayerWithTeam = (player) => {
     const requestParams = {
       method: 'POST',

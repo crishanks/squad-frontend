@@ -1,12 +1,14 @@
+//Libraries
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+
+//Actions
+import { logout } from '../actions/componentActions'
 
 class LoginForm extends Component {
   constructor(props) {
     super(props)
-
   }
-
-  //onSubmit requests the user that matches the credentials and renders the discover component (changes state to showCreateProfile to false, and loggedIn to true)
 
   handleFormSubmit = (ev) => {
     ev.preventDefault()
@@ -33,4 +35,10 @@ class LoginForm extends Component {
   }
 }
 
-export default LoginForm
+const mapDispatchToProps = dispatch => {
+  return {
+    logout: () => dispatch(logout())
+  }
+}
+
+export default connect(null, mapDispatchToProps)(LoginForm)

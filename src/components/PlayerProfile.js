@@ -1,7 +1,9 @@
+//Libraries
 import React from 'react'
+import { connect } from 'react-redux'
 
-import PlayerProfileCard from './PlayerProfileCard'
-import Footer from '../components/Footer'
+//Actions
+import { login } from '../actions/componentActions'
 
 const PlayerProfile = (props) => {
 
@@ -24,10 +26,9 @@ const PlayerProfile = (props) => {
             <div>{teammate.description}</div>
           </div>
         </div>
-        )
-      })
+      )
+    })
   }
-
 
   return (
     <>
@@ -54,8 +55,19 @@ const PlayerProfile = (props) => {
   )
 }
 
-export default PlayerProfile
+const mapStateToProps = state => {
+  return {
+    currentPlayer: state.playerReducer.currentPlayer,
+    currentTeam: state.teamReducer.currentTeam,
+    allTeams: state.teamReducer.allTeams
+  }
+}
 
-      {/* <button onClick={props.showCreateTeamForm}>Create Team</button> */}
-      {/* <button onClick={props.showTeams}>Find Teams</button> */}
-      {/* <button onClick={props.showPlayers}>Find Players</button> */}
+const mapDispatchToProps = dispatch => {
+  return {
+    login: () => dispatch(login())
+  }
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(PlayerProfile)

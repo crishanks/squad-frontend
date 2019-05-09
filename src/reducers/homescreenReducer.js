@@ -108,12 +108,6 @@ const homescreenReducer = (state = initialState, action) => {
       const updatedTeam = Object.assign({}, myTeam, {players: myTeam.players.concat(action.payload)})
       let updatedTeams = state.allTeams.slice()
       updatedTeams.splice(idx, 1, updatedTeam)
-      // updatedTeams.map(team => {
-      //   if (team.id === updatedTeam.id) {
-      //     return updatedTeam
-      //   }
-      //   return team
-      // })
 
       return {
         ...state,
@@ -125,13 +119,3 @@ const homescreenReducer = (state = initialState, action) => {
 }
 
 export default homescreenReducer
-
-    // case 'SHOW_CREATE_TEAM_FORM':
-    //   return {
-    //     ...state,
-    //     loggedIn: true,
-    //     showLoginForm: false,
-    //     showCreateProfileForm: false,
-    //     showProfileContainer: false,
-    //     // showCreateTeamForm: true
-    //   }
