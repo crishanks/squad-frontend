@@ -1,7 +1,8 @@
 # SQUAD
 
 ### Demo Video
-[![Squad Demo Video(https://scontent-ort2-2.xx.fbcdn.net/v/t1.0-9/60069047_10156380912653036_2057864765912383488_o.jpg?_nc_cat=108&_nc_ht=scontent-ort2-2.xx&oh=4d7ec1c0e07a41f80fd88dcdb9e8bb21&oe=5D68B2D2)](https://youtu.be/6y2uFgZduvY)
+
+[![Squad Demo Video](https://scontent-ort2-2.xx.fbcdn.net/v/t1.0-9/60069047_10156380912653036_2057864765912383488_o.jpg?_nc_cat=108&_nc_ht=scontent-ort2-2.xx&oh=4d7ec1c0e07a41f80fd88dcdb9e8bb21&oe=5D68B2D2)](https://youtu.be/6y2uFgZduvY)
 
 ## Technologies
 
