@@ -1,5 +1,8 @@
+//Libraries
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 
+//Components
 import PlayerProfileCard from '../components/PlayerProfileCard'
 
 class PlayerProfileCardsContainer extends Component {
@@ -7,21 +10,14 @@ class PlayerProfileCardsContainer extends Component {
     super(props)
   }
 
-  //show one at a time: just like sushi. Add a state of current profile. Add a button the player profile card that is accept or decline. On accept, add to myPlayers
-  
-
   renderPlayerProfileCards = () => {
     const allPlayersLength = this.props.allPlayers.length
     //Need to Refactor this -- player cards should not repeat on each login.
     const playerToShow = this.props.allPlayers[Math.floor(Math.random() * allPlayersLength - 2)]
+    console.log('RENDER PLAYER CARDS PLAYER', playerToShow)
     return <PlayerProfileCard 
       player={playerToShow} 
-      /* key={playerToShow.id} */
-      choosePlayer={this.props.choosePlayer}
-      declinePlayer={this.props.declinePlayer}
       associatePlayerWithTeam={this.props.associatePlayerWithTeam}
-      currentTeam={this.props.currentTeam}
-      currentPlayer={this.props.currentPlayer}
     />
   }
 
@@ -34,4 +30,10 @@ class PlayerProfileCardsContainer extends Component {
   }
 }
 
-export default PlayerProfileCardsContainer
+const mapStateToProps = state => {
+  return {
+    allPlayers: state.playerReducer.allPlayers
+  }
+}
+
+export default connect(mapStateToProps, null)(PlayerProfileCardsContainer)

@@ -2,8 +2,10 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
+//Actions
+import { addPlayerToCurrentTeam } from '../actions/teamActions'
+
 // Components
-import TeamProfileCardsContainer from './TeamProfileCardsContainer'
 import PlayerProfileCardsContainer from './PlayerProfileCardsContainer'
 
 const TEAM_PLAYERS_API = "https://squad-backend.herokuapp.com/api/v1/team_players"
@@ -14,24 +16,11 @@ class CandidatesContainer extends Component {
   }
 
   renderComponents = () => {
-    return <PlayerProfileCardsContainer 
-      allPlayers={this.props.allPlayers}
-      choosePlayer={this.props.choosePlayer}
-      declinePlayer={this.props.declinePlayer}
-      associatePlayerWithTeam={this.associatePlayerWithTeam}
-      currentTeam={this.props.currentTeam}
-      currentPlayer={this.props.currentPlayer}
-    />
+    return <PlayerProfileCardsContainer associatePlayerWithTeam={this.associatePlayerWithTeam} />
   }
 
-  // if (this.props.currentPlayer.showTeams) {
-  //   return <TeamProfileCardsContainer 
-  //     allTeams={this.props.allTeams}
-  //     chooseTeam={this.props.chooseTeam}
-  //     declineTeam={this.props.declineTeam}
-  //   /> 
-
   associatePlayerWithTeam = (player) => {
+    console.log('ASCOCIATE PLAYER WITH TEAM - PLAYER', player)
     const requestParams = {
       method: 'POST',
       headers: {
@@ -58,4 +47,16 @@ class CandidatesContainer extends Component {
   }
 }
 
-export default CandidatesContainer
+const mapStateToProps = state => {
+  return {
+    currentTeam: state.teamReducer.currentTeam
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    addPlayerToCurrentTeam: (player) => dispatch(addPlayerToCurrentTeam(player))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(CandidatesContainer)

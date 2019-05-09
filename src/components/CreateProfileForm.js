@@ -1,5 +1,16 @@
+//Libraries
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 
+//Actions
+import { login } from '../actions/componentActions'
+import { logout } from '../actions/componentActions'
+import { receiveCurrentTeam } from '../actions/teamActions'
+import { receiveAllTeams } from '../actions/teamActions'
+import { receiveCurrentPlayer } from '../actions/playerActions'
+import { receiveAllPlayers } from '../actions/playerActions'
+
+//Routes
 const ALL_PLAYERS_API = "https://squad-backend.herokuapp.com/api/v1/players"
 const ALL_TEAMS_API = "https://squad-backend.herokuapp.com/api/v1/teams"
 const TEAM_PLAYERS_API = "https://squad-backend.herokuapp.com/api/v1/team_players"
@@ -9,10 +20,7 @@ const TEAMS_API = "https://squad-backend.herokuapp.com/api/v1/teams"
 class CreateProfileForm extends Component {
   constructor(props) {
     super(props)
-
   }
-
-  //onSubmit posts to the api with a new user and renders the discover component (changes state to showCreateProfile to false, and loggedIn to true)
 
   createPlayer = (ev) => {
     ev.persist()
@@ -45,6 +53,7 @@ class CreateProfileForm extends Component {
       return json
     })
     .then(json => this.createTeam(ev, json))
+    .then(this.props.login)
   }
 
   createTeam = (ev, playerJson) => {
@@ -170,7 +179,6 @@ class CreateProfileForm extends Component {
             <textarea className="create-profile-input"  placeholder="bio" name="bio" cols="30" rows="10"></textarea>
           </div>
 
-          {/* <h2>Create Your Team</h2> */}
           <div className="create-profile-input">
             <input placeholder="team name" type="text" name="teamname"/>
           </div>
@@ -187,4 +195,22 @@ class CreateProfileForm extends Component {
   }
 }
 
-export default CreateProfileForm
+const mapStateToProps = state => {
+  return {
+    currentPlayer: state.playerReducer.currentPlayer,
+    currentTeam: state.teamReducer.currentTeam
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    login: () => dispatch(login()),
+    logout: () => dispatch(logout()),
+    receiveAllPlayers: (json) => dispatch(receiveAllPlayers(json)),
+    receiveAllTeams: (json) => dispatch(receiveAllTeams(json)),
+    receiveCurrentTeam: (json) => dispatch(receiveCurrentTeam(json)),
+    receiveCurrentPlayer: (player) => dispatch(receiveCurrentPlayer(player))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(CreateProfileForm)

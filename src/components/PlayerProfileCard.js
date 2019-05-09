@@ -1,4 +1,11 @@
+//Libraries
 import React from 'react'
+import { connect } from 'react-redux'
+
+//Actions
+import { declinePlayer } from '../actions/playerActions'
+
+//Assets
 import check from '../assets/images/icons/check.png';
 import x from '../assets/images/icons/x.png';
 
@@ -37,4 +44,17 @@ const PlayerProfileCard = (props) => {
   return null;
 }
 
-export default PlayerProfileCard
+const mapStateToProps = state => {
+  return {
+    currentPlayer: state.playerReducer.currentPlayer,
+    currentTeam: state.teamReducer.currentTeam
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    declinePlayer: (player) => dispatch(declinePlayer(player))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(PlayerProfileCard)

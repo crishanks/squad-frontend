@@ -3,21 +3,12 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
 // Actions
-import { login } from '../actions/homescreenActions'
-import { logout } from '../actions/homescreenActions'
-import { signup } from '../actions/homescreenActions'
-import { toggleShowLoginForm } from '../actions/homescreenActions'
-import { toggleShowProfileContainer } from '../actions/homescreenActions'
-import { createTeam } from '../actions/homescreenActions'
 import { receiveJWT } from '../actions/homescreenActions'
-import { receiveAllPlayers } from '../actions/homescreenActions'
-import { receiveAllTeams } from '../actions/homescreenActions'
-import { declinePlayer } from '../actions/homescreenActions'
-import { declineTeam } from '../actions/homescreenActions'
-import { receiveCurrentTeam } from '../actions/homescreenActions'
-import { receiveCurrentPlayer } from '../actions/homescreenActions'
-import { addPlayerToCurrentTeam } from '../actions/homescreenActions'
-
+import { receiveAllPlayers } from '../actions/playerActions'
+import { receiveAllTeams } from '../actions/teamActions'
+import { receiveCurrentTeam } from '../actions/teamActions'
+import { receiveCurrentPlayer } from '../actions/playerActions'
+import { login } from '../actions/componentActions'
 
 // Components
 import WelcomeBanner from '../components/WelcomeBanner'
@@ -25,7 +16,6 @@ import DiscoverContainer from './DiscoverContainer'
 import CreateProfileForm from '../components/CreateProfileForm'
 import LoginForm from '../components/LoginForm'
 import ProfileContainer from './ProfileContainer'
-import CreateTeamContainer from './CreateTeamContainer'
 
 //URLs
 const JWT_API = "https://squad-backend.herokuapp.com/api/v1/login"
@@ -62,11 +52,14 @@ class HomeScreenContainer extends Component {
       return json.jwt
     })
     .then(jwt => {
+      console.log('REQUEST ACCESS TOKEN JWT', jwt)
       return this.fetchAllPlayers(jwt)
     })
     .then(json => {
-      this.props.receiveCurrentTeam(this.props.currentPlayer.player.teams[0])
-    }).catch(error => {
+      return this.props.receiveCurrentTeam(this.props.currentPlayer.player.teams[0])
+    })
+    .then(this.props.login)
+    .catch(error => {
       alert(error.message)
     })
   }
@@ -98,61 +91,33 @@ class HomeScreenContainer extends Component {
     return fetch(ALL_TEAMS_API, requestParams)
     .then(response => response.json())
     .then(json => {
+      console.log('FETCH ALL TEAMS JSON', json)
       this.props.receiveAllTeams(json)
       this.props.receiveCurrentTeam(this.props.currentPlayer.player.teams[0])
     })
   }
 
   renderComponents = () => {
+    console.log('RENDER COMP PROPS', this.props)
     if (this.props.loggedIn && this.props.showProfileContainer) {
-      return <ProfileContainer 
-        loginClick={this.props.login} 
-        /* showCreateTeamForm={this.props.createTeam} */
-        currentPlayer={this.props.currentPlayer}
-        currentTeam={this.props.currentTeam}
-        allTeams={this.props.allTeams}
-        logout={this.props.logout}
-      />
+      return <ProfileContainer />
     } else if (this.props.showCreateProfileForm) {
-      return <CreateProfileForm 
-        fetchPlayersAndTeams={this.fetchAllPlayers} 
-        currentPlayer={this.props.currentPlayer} 
-        loginClick={this.props.login} 
-        receiveCurrentTeam={this.props.receiveCurrentTeam}
-        currentTeam={this.props.currentTeam}
-        receiveCurrentPlayer={this.props.receiveCurrentPlayer}
-        receiveAllTeams={this.props.receiveAllTeams}
-        receiveAllPlayers={this.props.receiveAllPlayers}
-        logout={this.props.logout}
-      />
+      return <CreateProfileForm fetchPlayersAndTeams={this.fetchAllPlayers} />
     } else if (this.props.showLoginForm) {
       return <LoginForm 
         requestAccessToken={this.requestAccessToken} 
         requestPlayers={this.fetchAllPlayers}
         requestTeams={this.fetchAllTeams}
-        logout={this.props.logout}
       />
     } else if (!this.props.loggedIn && !this.props.showCreateProfileForm && !this.props.showLoginForm) {
-      return <WelcomeBanner showLoginFormClick={this.props.toggleShowLoginForm} signupClick={this.props.signup}/>
+      return <WelcomeBanner />
     } else if (this.props.loggedIn) {
-      return <DiscoverContainer 
-        logout={this.props.logout} 
-        showProfileContainer={this.props.toggleShowProfileContainer} 
-        currentPlayer={this.props.currentPlayer}
-        allPlayers={this.props.allPlayers}
-        declinePlayer={this.props.declinePlayer}
-        declineTeam={this.props.declineTeam}
-        currentTeam={this.props.currentTeam}
-        fetchPlayersAndTeams={this.fetchAllPlayers}
-        addPlayerToCurrentTeam={this.props.addPlayerToCurrentTeam}
-      />
+      return <DiscoverContainer fetchPlayersAndTeams={this.fetchAllPlayers} />
     }
   }
 
-  // else if (this.props.loggedIn && this.props.showCreateTeamForm) {
-  //   return <CreateTeamContainer/>
-
   render() {
+    console.log('HSC Props', this.props)
   return (
     <>
       {this.renderComponents()}
@@ -163,35 +128,25 @@ class HomeScreenContainer extends Component {
 
 const mapStateToProps = state => {
   return {
-    loggedIn: state.homescreenReducer.loggedIn,
-    showLoginForm: state.homescreenReducer.showLoginForm,
-    currentPlayer: state.homescreenReducer.currentPlayer,
-    showCreateProfileForm: state.homescreenReducer.showCreateProfileForm,
-    showProfileContainer: state.homescreenReducer.showProfileContainer,
-    // showCreateTeamForm: state.homescreenReducer.showCreateTeamForm,
-    currentPlayer: state.homescreenReducer.currentPlayer,
-    allPlayers: state.homescreenReducer.allPlayers,
-    allTeams: state.homescreenReducer.allTeams,
-    currentTeam: state.homescreenReducer.currentTeam
+    loggedIn: state.componentReducer.loggedIn,
+    showLoginForm: state.componentReducer.showLoginForm,
+    currentPlayer: state.playerReducer.currentPlayer,
+    showCreateProfileForm: state.componentReducer.showCreateProfileForm,
+    showProfileContainer: state.componentReducer.showProfileContainer,
+    allPlayers: state.playerReducer.allPlayers,
+    allTeams: state.teamReducer.allTeams,
+    currentTeam: state.teamReducer.currentTeam
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    login: () => dispatch(login()),
-    logout: () => dispatch(logout()),
-    signup: () => dispatch(signup()),
-    toggleShowLoginForm: () => dispatch(toggleShowLoginForm()),
-    toggleShowProfileContainer: () => dispatch(toggleShowProfileContainer()),
-    createTeam: (team) => dispatch(createTeam(team)),
     receiveJWT: (json) => dispatch(receiveJWT(json)),
     receiveAllPlayers: (json) => dispatch(receiveAllPlayers(json)),
     receiveAllTeams: (json) => dispatch(receiveAllTeams(json)),
-    declinePlayer: (player) => dispatch(declinePlayer(player)),
-    declineTeam: (team) => dispatch(declineTeam(team)),
     receiveCurrentTeam: (json) => dispatch(receiveCurrentTeam(json)),
     receiveCurrentPlayer: (player) => dispatch(receiveCurrentPlayer(player)),
-    addPlayerToCurrentTeam: (player) => dispatch(addPlayerToCurrentTeam(player))
+    login: () => dispatch(login())
   }
 }
 
