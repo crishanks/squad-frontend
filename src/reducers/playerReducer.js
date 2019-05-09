@@ -11,7 +11,6 @@ const playerReducer = (state = initialState, action) => {
         currentPlayer: action.payload.json
       }
     case 'RECEIVE_ALL_PLAYERS':
-      console.log('RECIEVE ALL PLAYERS', action.payload.json)
       return {
         ...state,
         allPlayers: action.payload.json

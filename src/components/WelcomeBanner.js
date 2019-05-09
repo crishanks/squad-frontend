@@ -7,7 +7,6 @@ import { toggleShowLoginForm } from '../actions/componentActions'
 import { signup } from '../actions/componentActions'
 
 const WelcomeBanner = (props) => {
-  console.log('WELCOME BANNER PROPS', props)
   return (
     <div id="welcome-banner-container">
       <h1 id="welcome-logo">SQUAD</h1>

@@ -24,7 +24,6 @@ class MyInfoContainer extends Component {
   }
 
   render() {
-    // console.log('MyInfo container props', this.props)
     return (
       <div>
         <div>
@@ -36,7 +35,6 @@ class MyInfoContainer extends Component {
 }
 
 const mapStateToProps = state => {
-  // console.log('my info container mstp state', state)
   return {
     showTeamCards: state.myInfoReducer.showTeamCards,
     showTeammateCards: state.myInfoReducer.showTeammateCards

@@ -52,7 +52,6 @@ class HomeScreenContainer extends Component {
       return json.jwt
     })
     .then(jwt => {
-      console.log('REQUEST ACCESS TOKEN JWT', jwt)
       return this.fetchAllPlayers(jwt)
     })
     .then(json => {
@@ -91,14 +90,12 @@ class HomeScreenContainer extends Component {
     return fetch(ALL_TEAMS_API, requestParams)
     .then(response => response.json())
     .then(json => {
-      console.log('FETCH ALL TEAMS JSON', json)
       this.props.receiveAllTeams(json)
       this.props.receiveCurrentTeam(this.props.currentPlayer.player.teams[0])
     })
   }
 
   renderComponents = () => {
-    console.log('RENDER COMP PROPS', this.props)
     if (this.props.loggedIn && this.props.showProfileContainer) {
       return <ProfileContainer />
     } else if (this.props.showCreateProfileForm) {
@@ -117,7 +114,6 @@ class HomeScreenContainer extends Component {
   }
 
   render() {
-    console.log('HSC Props', this.props)
   return (
     <>
       {this.renderComponents()}

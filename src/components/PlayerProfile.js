@@ -8,7 +8,6 @@ import { login } from '../actions/componentActions'
 const PlayerProfile = (props) => {
 
   const renderTeammates = () => {
-    console.log("RENDER TEAMMATES PROPS", props)
     const myTeam = props.allTeams.find(team => team.id === props.currentTeam.id)
     const teammates = myTeam.players
     return teammates.map(teammate => {
