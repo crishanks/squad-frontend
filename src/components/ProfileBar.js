@@ -8,9 +8,15 @@ import { logout } from '../actions/componentActions'
 
 
 const ProfileBar = (props) => {
+
+  const addDefaultImage = (e) => {
+    e.target.src = "https://static.clubs.nfl.com/image/private/t_q-best/seahawks/eptwyxjylrexxgrofe3l"
+    e.target.onerror = null
+  }
+
   return (
     <div id="profile-bar-container" className="flex-center">
-      <img src={props.currentPlayer.player.image} className="profile-bar-circle" onClick={props.toggleShowProfileContainer}/>
+      <img src={props.currentPlayer.player.image} onError={(e) => addDefaultImage(e)} className="profile-bar-circle" onClick={props.toggleShowProfileContainer}/>
       <div>SQUAD</div>
       <div className="profile-bar-logout flex-center" onClick={props.logout}>Logout</div>
     </div>
