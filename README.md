@@ -1,5 +1,7 @@
 # SQUAD
 
+[![Squad Demo Video](https://youtu.be/6y2uFgZduvY)
+
 ## Technologies
 
 - ReactJS
