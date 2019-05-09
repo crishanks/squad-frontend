@@ -1,9 +1,6 @@
 const initialState = {
   allPlayers: [],
-  currentPlayer: {},
-  loggedIn: false,
-  showLoginForm: false,
-  showCreateProfileForm: false
+  currentPlayer: {}
 }
 
 const playerReducer = (state = initialState, action) => {
@@ -17,10 +14,7 @@ const playerReducer = (state = initialState, action) => {
       console.log('RECIEVE ALL PLAYERS', action.payload.json)
       return {
         ...state,
-        allPlayers: action.payload.json,
-        loggedIn: true,
-        showLoginForm: false,
-        showCreateProfileForm: false
+        allPlayers: action.payload.json
       }
     case 'DECLINE_PLAYER':
       const allPlayersExceptDeclined = state.allPlayers.filter(player => {

@@ -8,6 +8,7 @@ import { receiveAllPlayers } from '../actions/playerActions'
 import { receiveAllTeams } from '../actions/teamActions'
 import { receiveCurrentTeam } from '../actions/teamActions'
 import { receiveCurrentPlayer } from '../actions/playerActions'
+import { login } from '../actions/componentActions'
 
 // Components
 import WelcomeBanner from '../components/WelcomeBanner'
@@ -55,8 +56,10 @@ class HomeScreenContainer extends Component {
       return this.fetchAllPlayers(jwt)
     })
     .then(json => {
-      this.props.receiveCurrentTeam(this.props.currentPlayer.player.teams[0])
-    }).catch(error => {
+      return this.props.receiveCurrentTeam(this.props.currentPlayer.player.teams[0])
+    })
+    .then(this.props.login)
+    .catch(error => {
       alert(error.message)
     })
   }
@@ -142,7 +145,8 @@ const mapDispatchToProps = dispatch => {
     receiveAllPlayers: (json) => dispatch(receiveAllPlayers(json)),
     receiveAllTeams: (json) => dispatch(receiveAllTeams(json)),
     receiveCurrentTeam: (json) => dispatch(receiveCurrentTeam(json)),
-    receiveCurrentPlayer: (player) => dispatch(receiveCurrentPlayer(player))
+    receiveCurrentPlayer: (player) => dispatch(receiveCurrentPlayer(player)),
+    login: () => dispatch(login())
   }
 }
 

@@ -19,7 +19,7 @@ const ProfileBar = (props) => {
 
 const mapStateToProps = state => {
   return {
-    currentPlayer: state.homescreenReducer.currentPlayer
+    currentPlayer: state.playerReducer.currentPlayer
   }
 }
 

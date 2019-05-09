@@ -1,5 +1,8 @@
+//Libraries
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 
+//Components
 import PlayerProfileCard from '../components/PlayerProfileCard'
 
 class PlayerProfileCardsContainer extends Component {
@@ -28,4 +31,10 @@ class PlayerProfileCardsContainer extends Component {
   }
 }
 
-export default PlayerProfileCardsContainer
+const mapStateToProps = state => {
+  return {
+    allPlayers: state.playerReducer.allPlayers
+  }
+}
+
+export default connect(mapStateToProps, null)(PlayerProfileCardsContainer)
