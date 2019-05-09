@@ -53,6 +53,7 @@ class CreateProfileForm extends Component {
       return json
     })
     .then(json => this.createTeam(ev, json))
+    .then(this.props.login)
   }
 
   createTeam = (ev, playerJson) => {
@@ -178,7 +179,6 @@ class CreateProfileForm extends Component {
             <textarea className="create-profile-input"  placeholder="bio" name="bio" cols="30" rows="10"></textarea>
           </div>
 
-          {/* <h2>Create Your Team</h2> */}
           <div className="create-profile-input">
             <input placeholder="team name" type="text" name="teamname"/>
           </div>
