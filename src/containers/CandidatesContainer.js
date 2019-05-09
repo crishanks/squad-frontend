@@ -16,17 +16,11 @@ class CandidatesContainer extends Component {
   }
 
   renderComponents = () => {
-    return <PlayerProfileCardsContainer 
-      allPlayers={this.props.allPlayers}
-      choosePlayer={this.props.choosePlayer}
-      declinePlayer={this.props.declinePlayer}
-      associatePlayerWithTeam={this.associatePlayerWithTeam}
-      currentTeam={this.props.currentTeam}
-      currentPlayer={this.props.currentPlayer}
-    />
+    return <PlayerProfileCardsContainer associatePlayerWithTeam={this.associatePlayerWithTeam} />
   }
 
   associatePlayerWithTeam = (player) => {
+    console.log('ASCOCIATE PLAYER WITH TEAM - PLAYER', player)
     const requestParams = {
       method: 'POST',
       headers: {
