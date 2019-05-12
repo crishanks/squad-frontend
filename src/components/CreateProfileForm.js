@@ -5,15 +5,15 @@ import { connect } from 'react-redux'
 //Actions
 import { login } from '../actions/componentActions'
 import { logout } from '../actions/componentActions'
-import { receiveCurrentTeam } from '../actions/teamActions'
-import { receiveAllTeams } from '../actions/teamActions'
+// import { receiveCurrentTeam } from '../actions/teamActions'
+// import { receiveAllTeams } from '../actions/teamActions'
 import { receiveCurrentPlayer } from '../actions/playerActions'
 import { receiveAllPlayers } from '../actions/playerActions'
 
 //Routes
 const ALL_PLAYERS_API = "https://squad-backend.herokuapp.com/api/v1/players"
-const ALL_TEAMS_API = "https://squad-backend.herokuapp.com/api/v1/teams"
-const TEAM_PLAYERS_API = "https://squad-backend.herokuapp.com/api/v1/team_players"
+// const ALL_TEAMS_API = "https://squad-backend.herokuapp.com/api/v1/teams"
+// const TEAM_PLAYERS_API = "https://squad-backend.herokuapp.com/api/v1/team_players"
 const PLAYERS_API = "https://squad-backend.herokuapp.com/api/v1/players"
 const TEAMS_API = "https://squad-backend.herokuapp.com/api/v1/teams"
 
@@ -52,48 +52,48 @@ class CreateProfileForm extends Component {
       this.props.receiveCurrentPlayer(json)
       return json
     })
-    .then(json => this.createTeam(ev, json))
+    // .then(json => this.createTeam(ev, json))
     .then(this.props.login)
   }
 
-  createTeam = (ev, playerJson) => {
-    ev.persist()
-    const requestParams = {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Accept: 'application/json',
-      },
-      body: JSON.stringify({team: {
-        name: ev.target.teamname.value,
-        location: ev.target.teamlocation.value,
-        league: ev.target.league.value
-      }})
-    }
-    return fetch(TEAMS_API, requestParams)
-    .then(results => results.json())
-    .then(json => {
-      this.props.receiveCurrentTeam(json)
-      return json
-    })
-    .then(json => this.associateTeamWithPlayer(playerJson, json))
-  }
+  // createTeam = (ev, playerJson) => {
+  //   ev.persist()
+  //   const requestParams = {
+  //     method: 'POST',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //       Accept: 'application/json',
+  //     },
+  //     body: JSON.stringify({team: {
+  //       name: ev.target.teamname.value,
+  //       location: ev.target.teamlocation.value,
+  //       league: ev.target.league.value
+  //     }})
+  //   }
+  //   return fetch(TEAMS_API, requestParams)
+  //   .then(results => results.json())
+  //   .then(json => {
+  //     this.props.receiveCurrentTeam(json)
+  //     return json
+  //   })
+  //   .then(json => this.associateTeamWithPlayer(playerJson, json))
+  // }
 
-  associateTeamWithPlayer = (playerJson, teamJson) => {
-    const requestParams = {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Accept: 'application/json'
-      },
-      body: JSON.stringify({team_player: {
-        player_id: playerJson.player.id,
-        team_id: teamJson.id
-      }})
-    }
-    return fetch(TEAM_PLAYERS_API, requestParams)
-    .then(this.fetchAllPlayers())
-  }
+  // associateTeamWithPlayer = (playerJson, teamJson) => {
+  //   const requestParams = {
+  //     method: 'POST',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //       Accept: 'application/json'
+  //     },
+  //     body: JSON.stringify({team_player: {
+  //       player_id: playerJson.player.id,
+  //       team_id: teamJson.id
+  //     }})
+  //   }
+  //   return fetch(TEAM_PLAYERS_API, requestParams)
+  //   .then(this.fetchAllPlayers())
+  // }
 
   fetchAllPlayers = () => {
     const requestParams = {
@@ -111,22 +111,22 @@ class CreateProfileForm extends Component {
     .then(this.fetchAllTeams())
   }
 
-  fetchAllTeams = () => {
-    const requestParams = {
-      method: 'GET',
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem('token')}`
-      }
-    }
+  // fetchAllTeams = () => {
+  //   const requestParams = {
+  //     method: 'GET',
+  //     headers: {
+  //       Authorization: `Bearer ${localStorage.getItem('token')}`
+  //     }
+  //   }
 
-    return fetch(ALL_TEAMS_API, requestParams)
-    .then(response => response.json())
-    .then(json => {
-      this.props.receiveAllTeams(json)
-    }).catch(error => {
-      alert(error.message)
-    })
-  }
+  //   return fetch(ALL_TEAMS_API, requestParams)
+  //   .then(response => response.json())
+  //   .then(json => {
+  //     this.props.receiveAllTeams(json)
+  //   }).catch(error => {
+  //     alert(error.message)
+  //   })
+  // }
 
   handleSubmit = (ev) => {
     ev.preventDefault()
@@ -207,8 +207,8 @@ const mapDispatchToProps = dispatch => {
     login: () => dispatch(login()),
     logout: () => dispatch(logout()),
     receiveAllPlayers: (json) => dispatch(receiveAllPlayers(json)),
-    receiveAllTeams: (json) => dispatch(receiveAllTeams(json)),
-    receiveCurrentTeam: (json) => dispatch(receiveCurrentTeam(json)),
+    // receiveAllTeams: (json) => dispatch(receiveAllTeams(json)),
+    // receiveCurrentTeam: (json) => dispatch(receiveCurrentTeam(json)),
     receiveCurrentPlayer: (player) => dispatch(receiveCurrentPlayer(player))
   }
 }

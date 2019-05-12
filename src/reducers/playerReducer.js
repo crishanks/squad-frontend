@@ -36,7 +36,6 @@ const playerReducer = (state = initialState, action) => {
         ...state,
         currentPlayer: action.payload.player
       }
-
     default:
       return state
   }

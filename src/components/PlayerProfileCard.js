@@ -12,9 +12,12 @@ import x from '../assets/images/icons/x.png';
 const PlayerProfileCard = (props) => {
 
   const handleChoosePlayer = () => {
-    return props.associatePlayerWithTeam(props.player)
-    .then(props.declinePlayer(props.player))
+    if (props.player.potential_matches.includes(props.currentPlayer)) {
+      return props.match(props.player)
+      .then(props.declinePlayer(props.player))
+    }
   }
+
 
   if (props.player) {
     return (
@@ -46,8 +49,8 @@ const PlayerProfileCard = (props) => {
 
 const mapStateToProps = state => {
   return {
-    currentPlayer: state.playerReducer.currentPlayer,
-    currentTeam: state.teamReducer.currentTeam
+    currentPlayer: state.playerReducer.currentPlayer
+    // currentTeam: state.teamReducer.currentTeam
   }
 }
 

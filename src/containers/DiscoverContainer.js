@@ -16,14 +16,14 @@ class DiscoverContainer extends Component {
       <div id="discover-page">
         <ProfileBar showProfileContainer={this.props.showProfileContainer} logout={this.props.logout} currentPlayer={this.props.currentPlayer}/>
         <CandidatesContainer 
-          currentPlayer={this.props.currentPlayer}
+          /* currentPlayer={this.props.currentPlayer}
           currentTeam={this.props.currentTeam}
           allTeams={this.props.allTeams}
           allPlayers={this.props.allPlayers}
           declinePlayer={this.props.declinePlayer}
           declineTeam={this.props.declineTeam}
-          fetchPlayersAndTeams={this.fetchAllPlayers}
-          addPlayerToCurrentTeam={this.props.addPlayerToCurrentTeam}
+          fetchPlayersAndTeams={this.fetchAllPlayers} */
+          /* addPlayerToCurrentTeam={this.props.addPlayerToCurrentTeam} */
         />
         <Footer />
       </div>

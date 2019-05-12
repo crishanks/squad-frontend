@@ -3,10 +3,10 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
 // Actions
-import { receiveJWT } from '../actions/homescreenActions'
+import { receiveJWT } from '../actions/playerActions'
 import { receiveAllPlayers } from '../actions/playerActions'
-import { receiveAllTeams } from '../actions/teamActions'
-import { receiveCurrentTeam } from '../actions/teamActions'
+// import { receiveAllTeams } from '../actions/teamActions'
+// import { receiveCurrentTeam } from '../actions/teamActions'
 import { receiveCurrentPlayer } from '../actions/playerActions'
 import { login } from '../actions/componentActions'
 
@@ -20,7 +20,7 @@ import ProfileContainer from './ProfileContainer'
 //URLs
 const JWT_API = "https://squad-backend.herokuapp.com/api/v1/login"
 const ALL_PLAYERS_API = "https://squad-backend.herokuapp.com/api/v1/players"
-const ALL_TEAMS_API = "https://squad-backend.herokuapp.com/api/v1/teams"
+// const ALL_TEAMS_API = "https://squad-backend.herokuapp.com/api/v1/teams"
 
 class HomeScreenContainer extends Component {
   constructor(props) {
@@ -54,9 +54,9 @@ class HomeScreenContainer extends Component {
     .then(jwt => {
       return this.fetchAllPlayers(jwt)
     })
-    .then(json => {
-      return this.props.receiveCurrentTeam(this.props.currentPlayer.player.teams[0])
-    })
+    // .then(json => {
+    //   return this.props.receiveCurrentTeam(this.props.currentPlayer.player.teams[0])
+    // })
     .then(this.props.login)
     .catch(error => {
       alert(error.message)
@@ -76,40 +76,40 @@ class HomeScreenContainer extends Component {
     .then(json => {
       return this.props.receiveAllPlayers(json)
     })
-    .then(this.fetchAllTeams(token))
+    // .then(this.fetchAllTeams(token))
   }
 
-  fetchAllTeams = (token) => {
-    const requestParams = {
-      method: 'GET',
-      headers: {
-        Authorization: `Bearer ${token}`
-      }
-    }
+  // fetchAllTeams = (token) => {
+  //   const requestParams = {
+  //     method: 'GET',
+  //     headers: {
+  //       Authorization: `Bearer ${token}`
+  //     }
+  //   }
 
-    return fetch(ALL_TEAMS_API, requestParams)
-    .then(response => response.json())
-    .then(json => {
-      this.props.receiveAllTeams(json)
-      this.props.receiveCurrentTeam(this.props.currentPlayer.player.teams[0])
-    })
-  }
+  //   return fetch(ALL_TEAMS_API, requestParams)
+  //   .then(response => response.json())
+  //   .then(json => {
+  //     this.props.receiveAllTeams(json)
+  //     this.props.receiveCurrentTeam(this.props.currentPlayer.player.teams[0])
+  //   })
+  // }
 
   renderComponents = () => {
     if (this.props.loggedIn && this.props.showProfileContainer) {
       return <ProfileContainer />
     } else if (this.props.showCreateProfileForm) {
-      return <CreateProfileForm fetchPlayersAndTeams={this.fetchAllPlayers} />
+      return <CreateProfileForm fetchPlayers={this.fetchAllPlayers} />
     } else if (this.props.showLoginForm) {
       return <LoginForm 
         requestAccessToken={this.requestAccessToken} 
-        requestPlayers={this.fetchAllPlayers}
-        requestTeams={this.fetchAllTeams}
+        fetchPlayers={this.fetchAllPlayers}
+        /* requestTeams={this.fetchAllTeams} */
       />
     } else if (!this.props.loggedIn && !this.props.showCreateProfileForm && !this.props.showLoginForm) {
       return <WelcomeBanner />
     } else if (this.props.loggedIn) {
-      return <DiscoverContainer fetchPlayersAndTeams={this.fetchAllPlayers} />
+      return <DiscoverContainer fetchPlayers={this.fetchAllPlayers} />
     }
   }
 
@@ -130,8 +130,8 @@ const mapStateToProps = state => {
     showCreateProfileForm: state.componentReducer.showCreateProfileForm,
     showProfileContainer: state.componentReducer.showProfileContainer,
     allPlayers: state.playerReducer.allPlayers,
-    allTeams: state.teamReducer.allTeams,
-    currentTeam: state.teamReducer.currentTeam
+    // allTeams: state.teamReducer.allTeams,
+    // currentTeam: state.teamReducer.currentTeam
   }
 }
 
@@ -139,8 +139,8 @@ const mapDispatchToProps = dispatch => {
   return {
     receiveJWT: (json) => dispatch(receiveJWT(json)),
     receiveAllPlayers: (json) => dispatch(receiveAllPlayers(json)),
-    receiveAllTeams: (json) => dispatch(receiveAllTeams(json)),
-    receiveCurrentTeam: (json) => dispatch(receiveCurrentTeam(json)),
+    // receiveAllTeams: (json) => dispatch(receiveAllTeams(json)),
+    // receiveCurrentTeam: (json) => dispatch(receiveCurrentTeam(json)),
     receiveCurrentPlayer: (player) => dispatch(receiveCurrentPlayer(player)),
     login: () => dispatch(login())
   }

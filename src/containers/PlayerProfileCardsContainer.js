@@ -16,7 +16,7 @@ class PlayerProfileCardsContainer extends Component {
     const playerToShow = this.props.allPlayers[Math.floor(Math.random() * allPlayersLength - 2)]
     return <PlayerProfileCard 
       player={playerToShow} 
-      associatePlayerWithTeam={this.props.associatePlayerWithTeam}
+      matchPlayers={this.props.matchPlayers}
     />
   }
 

@@ -3,12 +3,13 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
 //Actions
-import { addPlayerToCurrentTeam } from '../actions/teamActions'
+import { match } from '../actions/playerActions'
 
 // Components
 import PlayerProfileCardsContainer from './PlayerProfileCardsContainer'
 
-const TEAM_PLAYERS_API = "https://squad-backend.herokuapp.com/api/v1/team_players"
+// const TEAM_PLAYERS_API = "https://squad-backend.herokuapp.com/api/v1/team_players"
+const MATCHES_API = "https://squad-backend.herokuapp.com/api/v1/matches"
 
 class CandidatesContainer extends Component {
   constructor(props) {
@@ -16,25 +17,26 @@ class CandidatesContainer extends Component {
   }
 
   renderComponents = () => {
-    return <PlayerProfileCardsContainer associatePlayerWithTeam={this.associatePlayerWithTeam} />
+    return <PlayerProfileCardsContainer matchPlayers={this.matchPlayers} />
   }
 
-  associatePlayerWithTeam = (player) => {
+  matchPlayers = (player) => {
     const requestParams = {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         Accept: 'application/json'
       },
-      body: JSON.stringify({team_player: {
+      body: JSON.stringify({match: {
         player_id: player.id,
-        team_id: this.props.currentTeam.id,
-        organizer: false
+        player_match_id: this.props.currentTeam.id
       }})
     }
-    return fetch(TEAM_PLAYERS_API, requestParams)
+    return fetch(MATCHES_API, requestParams)
     .then(result => result.json())
-    .then(() => this.props.addPlayerToCurrentTeam(player))
+    .then(json => {
+      this.props.match(json)
+    })
   }
 
   render() {
@@ -48,13 +50,13 @@ class CandidatesContainer extends Component {
 
 const mapStateToProps = state => {
   return {
-    currentTeam: state.teamReducer.currentTeam
+    // currentTeam: state.teamReducer.currentTeam
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    addPlayerToCurrentTeam: (player) => dispatch(addPlayerToCurrentTeam(player))
+    match: (player) => dispatch(match(player))
   }
 }
 

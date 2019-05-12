@@ -25,3 +25,10 @@ export const receiveCurrentPlayer = (player) => {
     payload: {player}
   }
 }
+
+export const match = (player) => {
+  return {
+    type: 'MATCH',
+    payload: player
+  }
+}
