@@ -7,23 +7,28 @@ import { login } from '../actions/componentActions'
 
 const PlayerProfile = (props) => {
 
-  const renderTeammates = () => {
-    const myTeam = props.allTeams.find(team => team.id === props.currentTeam.id)
-    const teammates = myTeam.players
-    return teammates.map(teammate => {
+  const renderMatches = () => {
+    //need to console.log data so we know how it's formatted -- replace teammate with match
+    //get each of the player_match ids from the currentPlayer's player matches
+    //find the player object corresponding to each of the player match ids in that array
+    const currentPlayerMatchIds = props.currentPlayer.matches.map(match => match.player_match_id)
+    
+    const matches = currentPlayerMatchIds.map(id => props.allPlayers.find(player => player.id === id))
+
+    return matches.map(match => {
       return (
         <div id="teammate-card-container">
           <div id="profile-card-image-container">
-            <img id="profile-card-image" src={teammate.image} alt="profile card image"/>
+            <img id="profile-card-image" src={match.image} alt="profile card image"/>
           </div>
           <div id="teammate-card-name-box">
-            <div>{teammate.name}, {teammate.age}</div>
-            <div>Position {teammate.position}</div>
-            <div>Height {teammate.height}</div>
-            <div>Experience {teammate.experience_level}</div>
+            <div>{match.name}, {match.age}</div>
+            <div>Position {match.position}</div>
+            <div>Height {match.height}</div>
+            <div>Experience {match.experience_level}</div>
           </div>
           <div id="teammate-card-description-box">
-            <div>{teammate.description}</div>
+            <div>{match.description}</div>
           </div>
         </div>
       )
@@ -46,7 +51,7 @@ const PlayerProfile = (props) => {
       <div className="discover-button" onClick={props.login}>Discover</div>
     </div> 
     <div id="teammate-cards-container">
-      {renderTeammates()}
+      {renderMatches()}
     </div>
     <div id="teammate-profile-app-footer" className="flex-center">
       <div className="profile-bar-item">SQUAD</div>
@@ -58,8 +63,7 @@ const PlayerProfile = (props) => {
 const mapStateToProps = state => {
   return {
     currentPlayer: state.playerReducer.currentPlayer,
-    currentTeam: state.teamReducer.currentTeam,
-    allTeams: state.teamReducer.allTeams
+    matches: state.matchReducer.matches
   }
 }
 
