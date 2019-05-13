@@ -12,9 +12,9 @@ export const receiveAllPlayers = (json) => {
   }
 }
 
-export const declinePlayer = (player) => {
+export const hidePlayer = (player) => {
   return {
-    type: 'DECLINE_PLAYER',
+    type: 'HIDE_PLAYER',
     payload: {player}
   }
 }

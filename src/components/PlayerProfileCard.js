@@ -3,19 +3,67 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 //Actions
-import { declinePlayer } from '../actions/playerActions'
+import { hidePlayer } from '../actions/playerActions'
+import { match } from '../actions/matchActions'
 
 //Assets
-import check from '../assets/images/icons/check.png';
-import x from '../assets/images/icons/x.png';
+import check from '../assets/images/icons/check.png'
+import x from '../assets/images/icons/x.png'
+
+//API
+const MATCHES_API = 'http://localhost:3000/api/v1/matches'
+const POTENTIAL_MATCHES_API = 'http://localhost:3000/api/v1/potential_matches'
 
 const PlayerProfileCard = (props) => {
 
-  const handleChoosePlayer = () => {
-    if (props.player.potential_matches.includes(props.currentPlayer)) {
-      return props.match(props.player)
-      .then(props.declinePlayer(props.player))
+  const determineIfMatch = () => {
+    const playerShowing = props.player
+    if (playerShowing.potential_matches.includes(props.currentPlayer)) {
+      matchPlayers(playerShowing)
+    } else {
+      addToPotentialMatches(playerShowing)
     }
+  }
+
+  const matchPlayers = (player) => {
+    const requestParams = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify({
+        match: {
+          player_id: props.currentPlayer.player.id,
+          player_match_id: player.id
+        }
+      })
+    }
+    return fetch(MATCHES_API, requestParams)
+    .then(props.match(props.player))
+    .then(props.hidePlayer(props.player))
+  }
+
+  const addToPotentialMatches = (player) => {
+    const requestParams = {
+      method: 'POST',
+      headers: {
+        "Content-Type": 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify({
+        potential_match: {
+          player_id: props.currentPlayer.player.id,
+          player_match_id: player.id
+        }
+      })
+    }
+    fetch(POTENTIAL_MATCHES_API, requestParams)
+    .then(props.hidePlayer(props.player))
+  }
+
+  const handleChoosePlayer = () => {
+    determineIfMatch()
   }
 
 
@@ -35,7 +83,7 @@ const PlayerProfileCard = (props) => {
         <div>{props.player.description}</div>
       </div>
       <div id="profile-card-footer">
-        <div className="circle" id="decline-circle" onClick={() => props.declinePlayer(props.player)}>
+        <div className="circle" id="decline-circle" onClick={() => props.hidePlayer(props.player)}>
           <img src={x} alt="x"/>
         </div>
         <div className="circle" id="accept-circle" onClick={(props) => handleChoosePlayer(props)}>
@@ -50,13 +98,13 @@ const PlayerProfileCard = (props) => {
 const mapStateToProps = state => {
   return {
     currentPlayer: state.playerReducer.currentPlayer
-    // currentTeam: state.teamReducer.currentTeam
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    declinePlayer: (player) => dispatch(declinePlayer(player))
+    hidePlayer: (player) => dispatch(hidePlayer(player)),
+    match: (player) => dispatch(match(player))
   }
 }
 

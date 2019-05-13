@@ -15,7 +15,7 @@ const playerReducer = (state = initialState, action) => {
         ...state,
         allPlayers: action.payload.json
       }
-    case 'DECLINE_PLAYER':
+    case 'HIDE_PLAYER':
       const allPlayersExceptDeclined = state.allPlayers.filter(player => {
         return player.id !== action.payload.player.id
       })
