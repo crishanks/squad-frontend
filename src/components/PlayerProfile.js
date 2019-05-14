@@ -8,11 +8,12 @@ import { login } from '../actions/componentActions'
 const PlayerProfile = (props) => {
 
   const renderMatches = () => {
-    debugger
+    console.log('player profile props', props)
     //need to console.log data so we know how it's formatted -- replace teammate with match
     //get each of the player_match ids from the currentPlayer's player matches
     //find the player object corresponding to each of the player match ids in that array
-    const currentPlayerMatchIds = props.currentPlayer.matches.map(match => match.player_match_id)
+    const currentPlayerMatchIds = props.currentPlayer.player.matches.map(match => match.player_match_id)
+    console.log('currentPlayerMatchIds', currentPlayerMatchIds)
     
     const matches = currentPlayerMatchIds.map(id => props.allPlayers.find(player => player.id === id))
 
@@ -64,7 +65,8 @@ const PlayerProfile = (props) => {
 const mapStateToProps = state => {
   return {
     currentPlayer: state.playerReducer.currentPlayer,
-    matches: state.matchReducer.matches
+    matches: state.matchReducer.matches,
+    allPlayers: state.playerReducer.allPlayers
   }
 }
 
