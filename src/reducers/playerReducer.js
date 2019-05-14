@@ -6,6 +6,7 @@ const initialState = {
 const playerReducer = (state = initialState, action) => {
   switch(action.type) {
     case 'RECEIVE_JWT':
+      console.log('receive jwt action.payload.json', action.payload.json)
       return {
         ...state,
         currentPlayer: action.payload.json

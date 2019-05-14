@@ -11,7 +11,6 @@ import { receiveAllPlayers } from '../actions/playerActions'
 //Routes
 const ALL_PLAYERS_API = "http://localhost:3000/api/v1/players"
 const PLAYERS_API = "http://localhost:3000/api/v1/players"
-const TEAMS_API = "http://localhost:3000/api/v1/teams"
 
 class CreateProfileForm extends Component {
   constructor(props) {
