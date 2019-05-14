@@ -8,8 +8,8 @@ import { match } from '../actions/playerActions'
 // Components
 import PlayerProfileCardsContainer from './PlayerProfileCardsContainer'
 
-// const TEAM_PLAYERS_API = "https://squad-backend.herokuapp.com/api/v1/team_players"
-const MATCHES_API = "https://squad-backend.herokuapp.com/api/v1/matches"
+// const TEAM_PLAYERS_API = "http://localhost:3000/api/v1/team_players"
+const MATCHES_API = "http://localhost:3000/api/v1/matches"
 
 class CandidatesContainer extends Component {
   constructor(props) {

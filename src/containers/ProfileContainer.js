@@ -5,7 +5,7 @@ import React, { Component } from 'react'
 import PlayerProfile from '../components/PlayerProfile'
 import ProfileBar from '../components/ProfileBar'
 
-// const PLAYERS_API = "https://squad-backend.herokuapp.com/api/v1/players/"
+// const PLAYERS_API = "http://localhost:3000/api/v1/players/"
 
 class ProfileContainer extends Component {
   constructor(props) {

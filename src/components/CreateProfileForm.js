@@ -5,17 +5,13 @@ import { connect } from 'react-redux'
 //Actions
 import { login } from '../actions/componentActions'
 import { logout } from '../actions/componentActions'
-// import { receiveCurrentTeam } from '../actions/teamActions'
-// import { receiveAllTeams } from '../actions/teamActions'
 import { receiveCurrentPlayer } from '../actions/playerActions'
 import { receiveAllPlayers } from '../actions/playerActions'
 
 //Routes
-const ALL_PLAYERS_API = "https://squad-backend.herokuapp.com/api/v1/players"
-// const ALL_TEAMS_API = "https://squad-backend.herokuapp.com/api/v1/teams"
-// const TEAM_PLAYERS_API = "https://squad-backend.herokuapp.com/api/v1/team_players"
-const PLAYERS_API = "https://squad-backend.herokuapp.com/api/v1/players"
-const TEAMS_API = "https://squad-backend.herokuapp.com/api/v1/teams"
+const ALL_PLAYERS_API = "http://localhost:3000/api/v1/players"
+const PLAYERS_API = "http://localhost:3000/api/v1/players"
+const TEAMS_API = "http://localhost:3000/api/v1/teams"
 
 class CreateProfileForm extends Component {
   constructor(props) {

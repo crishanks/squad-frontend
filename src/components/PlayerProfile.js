@@ -8,6 +8,7 @@ import { login } from '../actions/componentActions'
 const PlayerProfile = (props) => {
 
   const renderMatches = () => {
+    debugger
     //need to console.log data so we know how it's formatted -- replace teammate with match
     //get each of the player_match ids from the currentPlayer's player matches
     //find the player object corresponding to each of the player match ids in that array
