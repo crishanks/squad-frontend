@@ -18,7 +18,10 @@ const PlayerProfileCard = (props) => {
 
   const determineIfMatch = () => {
     const playerShowing = props.player
-    if (playerShowing.potential_matches.includes(props.currentPlayer)) {
+    console.log('playerShowing', playerShowing)
+    const playerShowingPotentialMatches = playerShowing.potential_matches.map(pm => pm.player_match_id)
+    console.log('playerShowingPotentialMatches', playerShowingPotentialMatches)
+    if (playerShowingPotentialMatches.includes(props.currentPlayer.player.id)) {
       matchPlayers(playerShowing)
     } else {
       addToPotentialMatches(playerShowing)
@@ -26,6 +29,7 @@ const PlayerProfileCard = (props) => {
   }
 
   const matchPlayers = (player) => {
+    console.log('begin match players - player', player)
     const requestParams = {
       method: 'POST',
       headers: {
@@ -40,6 +44,8 @@ const PlayerProfileCard = (props) => {
       })
     }
     return fetch(MATCHES_API, requestParams)
+    .then(response => response.json())
+    .then(console.log)
     .then(props.match(props.player))
     .then(props.hidePlayer(props.player))
   }
@@ -59,6 +65,8 @@ const PlayerProfileCard = (props) => {
       })
     }
     fetch(POTENTIAL_MATCHES_API, requestParams)
+    .then(response => response.json())
+    .then(console.log)
     .then(props.hidePlayer(props.player))
   }
 

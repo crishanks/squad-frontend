@@ -9,17 +9,15 @@ const PlayerProfile = (props) => {
 
   const renderMatches = () => {
     console.log('player profile props', props)
-    //need to console.log data so we know how it's formatted -- replace teammate with match
     //get each of the player_match ids from the currentPlayer's player matches
     //find the player object corresponding to each of the player match ids in that array
     const currentPlayerMatchIds = props.currentPlayer.player.matches.map(match => match.player_match_id)
-    console.log('currentPlayerMatchIds', currentPlayerMatchIds)
     
     const matches = currentPlayerMatchIds.map(id => props.allPlayers.find(player => player.id === id))
 
     return matches.map(match => {
       return (
-        <div id="teammate-card-container">
+        <div id="teammate-card-container" key={match.id}>
           <div id="profile-card-image-container">
             <img id="profile-card-image" src={match.image} alt="profile card image"/>
           </div>

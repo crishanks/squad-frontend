@@ -14,8 +14,6 @@ const ProfileBar = (props) => {
     e.target.onerror = null
   }
 
-  console.log('profile bar props', props)
-
   return (
     <div id="profile-bar-container" className="flex-center">
       <img src={props.currentPlayer.player.image} onError={(e) => addDefaultImage(e)} className="profile-bar-circle" onClick={props.toggleShowProfileContainer}/>
