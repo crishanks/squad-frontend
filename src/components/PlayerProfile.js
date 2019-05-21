@@ -15,7 +15,7 @@ class PlayerProfile extends Component {
     const matches = currentPlayerMatchIds.map(id => this.props.allPlayers.find(player => player.id === id))
     console.log('renderMatches - matches', matches)
     this.props.match(matches)
-    this.props.receiveCurrentPlayer(this.props.currentPlayer)
+    this.props.currentPlayer.matches = matches
   }
 
   renderMatches = () => {
