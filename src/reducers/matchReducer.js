@@ -5,11 +5,12 @@ const initialState = {
 const matchReducer = (state = initialState, action) => {
   switch(action.type) {
     case 'MATCH': 
-      const matches = state.matches.splice()
-      matches.push(action.payload)
+      // const matches = action.payload
+      // matches.push(action.payload)
+      console.log('matchReducer matches', action.payload)
       return {
         ...state,
-        matches: matches
+        matches: action.payload
       }
     default:
       return state

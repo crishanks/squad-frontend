@@ -1,23 +1,30 @@
 //Libraries
-import React from 'react'
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
 //Actions
 import { login } from '../actions/componentActions'
+import { match } from '../actions/matchActions'
+import { receiveCurrentPlayer } from '../actions/playerActions'
 
-const PlayerProfile = (props) => {
+class PlayerProfile extends Component {
 
-  const renderMatches = () => {
-    console.log('player profile props', props)
-    //get each of the player_match ids from the currentPlayer's player matches
-    //find the player object corresponding to each of the player match ids in that array
-    const currentPlayerMatchIds = props.currentPlayer.player.matches.map(match => match.player_match_id)
-    
-    const matches = currentPlayerMatchIds.map(id => props.allPlayers.find(player => player.id === id))
+  componentDidMount = () => {
+    console.log('player profile props', this.props)
+    const currentPlayerMatchIds = this.props.currentPlayer.player.matches.map(match => match.player_match_id)
+    const matches = currentPlayerMatchIds.map(id => this.props.allPlayers.find(player => player.id === id))
+    console.log('renderMatches - matches', matches)
+    this.props.match(matches)
+    this.props.receiveCurrentPlayer(this.props.currentPlayer)
+  }
+
+  renderMatches = () => {
+    const currentPlayerMatchIds = this.props.currentPlayer.player.matches.map(match => match.player_match_id)
+    const matches = currentPlayerMatchIds.map(id => this.props.allPlayers.find(player => player.id === id))
 
     return matches.map(match => {
       return (
-        <div id="teammate-card-container" key={match.id}>
+        <div id="teammate-card-container">
           <div id="profile-card-image-container">
             <img id="profile-card-image" src={match.image} alt="profile card image"/>
           </div>
@@ -35,29 +42,31 @@ const PlayerProfile = (props) => {
     })
   }
 
-  return (
-    <>
-    <div id="player-info-container">
-      <div id="player-info">
-        <h2>{props.currentPlayer.player.name}
-        </h2>
-        <img src={props.currentPlayer.player.image} alt="player profile image"/>
-        <p>Height: {props.currentPlayer.player.height}</p>
-        <p>Skill Level: {props.currentPlayer.player.experience_level}</p>
-        <p>Position: {props.currentPlayer.player.position}</p>
-        <p>Bio: {props.currentPlayer.player.description}</p>
+  render () {
+    return (
+      <>
+      <div id="player-info-container">
+        <div id="player-info">
+          <h2>{this.props.currentPlayer.player.name}
+          </h2>
+          <img src={this.props.currentPlayer.player.image} alt="player profile image"/>
+          <p>Height: {this.props.currentPlayer.player.height}</p>
+          <p>Skill Level: {this.props.currentPlayer.player.experience_level}</p>
+          <p>Position: {this.props.currentPlayer.player.position}</p>
+          <p>Bio: {this.props.currentPlayer.player.description}</p>
+        </div>
+        <div id="teammates-header">My Team</div>
+        <div className="discover-button" onClick={this.props.login}>Discover</div>
+      </div> 
+      <div id="teammate-cards-container">
+        {this.renderMatches()}
       </div>
-      <div id="teammates-header">My Team</div>
-      <div className="discover-button" onClick={props.login}>Discover</div>
-    </div> 
-    <div id="teammate-cards-container">
-      {renderMatches()}
-    </div>
-    <div id="teammate-profile-app-footer" className="flex-center">
-      <div className="profile-bar-item">SQUAD</div>
-    </div>
-    </>
-  )
+      <div id="teammate-profile-app-footer" className="flex-center">
+        <div className="profile-bar-item">SQUAD</div>
+      </div>
+      </>
+    )
+  }
 }
 
 const mapStateToProps = state => {
@@ -70,9 +79,10 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    login: () => dispatch(login())
+    login: () => dispatch(login()),
+    match: (matches) => dispatch(match(matches)),
+    receiveCurrentPlayer: (player) => dispatch(receiveCurrentPlayer(player))
   }
 }
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(PlayerProfile)

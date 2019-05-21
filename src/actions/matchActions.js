@@ -1,6 +1,6 @@
-export const match = (player) => {
+export const match = (matches) => {
   return {
     type: 'MATCH',
-    payload: player
+    payload: matches
   }
 }
